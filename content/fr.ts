@@ -1,5 +1,5 @@
 /**
- * Tous les textes de la page de vente AP UPSELL (français).
+ * Tous les textes de la page de vente SINEBOX (français).
  * Source de vérité : docs/spec-page-de-vente.md.
  * Les textes entre crochets [...] sont des informations pas encore connues :
  * ils restent tels quels.
@@ -198,11 +198,11 @@ export const packParDefaut: PackId = "chien";
 export type Faq = { question: string; reponse: string };
 
 export const fr = {
-  marque: "AP UPSELL",
+  marque: "SINEBOX",
   baseline: "Kits d'accueil pour locations courte durée",
 
   seo: {
-    titre: "Kits d'accueil Airbnb livrés chaque semaine | AP UPSELL",
+    titre: "Kits d'accueil Airbnb livrés chaque semaine | SINEBOX",
     description:
       "Un kit d'accueil prêt à poser pour chaque arrivée, livré chaque dimanche selon vos réservations. 4,50 € HT par arrivée. Kit d'essai offert.",
   },
@@ -239,7 +239,7 @@ export const fr = {
     petitTitre: "Avant",
     titre: "Votre liste de courses de la semaine. Rayez tout.",
     texte:
-      "Acheter, stocker, compter, préparer, repartir en urgence parce qu'il manque du café. Avec AP UPSELL, cette liste n'existe plus.",
+      "Acheter, stocker, compter, préparer, repartir en urgence parce qu'il manque du café. Avec SINEBOX, cette liste n'existe plus.",
     feuilleTitre: "À faire cette semaine",
     liste: [
       "Acheter les savons",
@@ -318,33 +318,33 @@ export const fr = {
     titre: "Moins cher au carton. Plus cher au total.",
     texte:
       "Oui, un carton de produits coûte moins cher à l'unité. Mais le carton n'arrive pas trié, compté et étiqueté dans vos logements. Quelqu'un le fait, et ce quelqu'un, vous le payez.",
-    tableauLegende: "Comparaison : avec des cartons ou avec AP UPSELL",
-    colonnes: { critere: "Critère", cartons: "Avec des cartons", apUpsell: "Avec AP UPSELL" },
+    tableauLegende: "Comparaison : avec des cartons ou avec SINEBOX",
+    colonnes: { critere: "Critère", cartons: "Avec des cartons", sinebox: "Avec SINEBOX" },
     lignes: [
       {
         critere: "Commande",
         cartons: "Vous commandez à l'avance, par grosses quantités",
-        apUpsell: "Rien à commander : le calendrier suffit",
+        sinebox: "Rien à commander : le calendrier suffit",
       },
       {
         critere: "Paiement",
         cartons: "Vous payez tout le carton d'avance",
-        apUpsell: "Vous payez les kits livrés, une facture par mois",
+        sinebox: "Vous payez les kits livrés, une facture par mois",
       },
       {
         critere: "Stock",
         cartons: "Des cartons à ranger et à recompter",
-        apUpsell: "Aucun stock",
+        sinebox: "Aucun stock",
       },
       {
         critere: "Préparation",
         cartons: "Quelqu'un fait les sachets, logement par logement",
-        apUpsell: "Les kits arrivent prêts, étiquetés",
+        sinebox: "Les kits arrivent prêts, étiquetés",
       },
       {
         critere: "Dernière minute",
         cartons: "Une course en urgence si le stock est vide",
-        apUpsell: "1 ou 2 kits d'avance dans chaque colis",
+        sinebox: "1 ou 2 kits d'avance dans chaque colis",
       },
     ],
     phraseFin:

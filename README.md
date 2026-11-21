@@ -1,4 +1,4 @@
-# AP UPSELL — page de vente
+# SINEBOX — page de vente
 
 Site statique Next.js (export statique, sans serveur). Tous les textes sont dans `content/fr.ts`.
 La spécification de référence est `docs/spec-page-de-vente.md`.

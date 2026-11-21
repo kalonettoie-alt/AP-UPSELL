@@ -1,4 +1,4 @@
-# AP UPSELL — Spécification de la page de vente (pour l'IA de développement)
+# SINEBOX — Spécification de la page de vente (pour l'IA de développement)
 
 Version du 21/11/2026. Maquette de référence (à ouvrir à côté) : https://claude.ai/artifact/Rdwnqrvfvw3ZFqb4wCAmsC
 
@@ -101,7 +101,7 @@ Un seul H1 (bloc 2). Chaque titre de bloc en H2. Les titres de cartes en H3.
 ## 3. Bloc 1 — En-tête
 
 - Store rayé au-dessus (voir §1).
-- Gauche : **AP UPSELL** (Young Serif 28 px) ; dessous en DM Mono 11 px majuscules : « Kits d'accueil pour locations courte durée ».
+- Gauche : **SINEBOX** (Young Serif 28 px) ; dessous en DM Mono 11 px majuscules : « Kits d'accueil pour locations courte durée ».
 - Droite (balise `nav`) : liens ancres « Les kits » → `#kits`, « Les prix » → `#prix`, « La livraison » → `#livraison` ; bouton « Kit d'essai offert » → `#essai`.
 - Mobile : les éléments passent à la ligne.
 
@@ -123,7 +123,7 @@ Visuel (droite) : fond kraft arrondi 28 px ; étagère avec 4 boîtes (Salle de 
 
 - Petit titre : « Avant »
 - H2 : « Votre liste de courses de la semaine. Rayez tout. »
-- Texte : « Acheter, stocker, compter, préparer, repartir en urgence parce qu'il manque du café. Avec AP UPSELL, cette liste n'existe plus. »
+- Texte : « Acheter, stocker, compter, préparer, repartir en urgence parce qu'il manque du café. Avec SINEBOX, cette liste n'existe plus. »
 - Visuel : feuille de papier ligné blanche (marge rose à gauche, légère rotation), titre « À faire cette semaine », 5 lignes **rayées en rouge** :
   1. Acheter les savons
   2. Recompter le stock de café
@@ -211,9 +211,9 @@ Format des prix : virgule décimale, « 4,50 € », « 9 € » (pas de « ,00 
 - Fond blanc, bordures haut et bas encre.
 - Petit titre : « Le vrai calcul ». H2 : « Moins cher au carton. Plus cher au total. »
 - Texte : « Oui, un carton de produits coûte moins cher à l'unité. Mais le carton n'arrive pas trié, compté et étiqueté dans vos logements. Quelqu'un le fait, et ce quelqu'un, vous le payez. »
-- Tableau (vrai `<table>`, défilement horizontal sur mobile) : 1re colonne = critère (DM Mono), puis « Avec des cartons » (fond `#EFE6D8` / cellules `#F7F1E7`, texte secondaire) et « Avec AP UPSELL » (fond `#BFE3D0` / cellules `#E4F3EA`, gras, coche ✓).
+- Tableau (vrai `<table>`, défilement horizontal sur mobile) : 1re colonne = critère (DM Mono), puis « Avec des cartons » (fond `#EFE6D8` / cellules `#F7F1E7`, texte secondaire) et « Avec SINEBOX » (fond `#BFE3D0` / cellules `#E4F3EA`, gras, coche ✓).
 
-| Critère | Avec des cartons | Avec AP UPSELL |
+| Critère | Avec des cartons | Avec SINEBOX |
 | --- | --- | --- |
 | Commande | Vous commandez à l'avance, par grosses quantités | Rien à commander : le calendrier suffit |
 | Paiement | Vous payez tout le carton d'avance | Vous payez les kits livrés, une facture par mois |
@@ -287,7 +287,7 @@ H2 : « Vos questions ». Accordéons (`<details>/<summary>`), fermés par défa
 ## 14. Bloc 12 — Pied de page
 
 Fond encre, texte crème.
-Gauche : « AP UPSELL » (Young Serif) + « Kits d'accueil pour locations courte durée · Livraison en Île-de-France ».
+Gauche : « SINEBOX » (Young Serif) + « Kits d'accueil pour locations courte durée · Livraison en Île-de-France ».
 Droite : [Contact] · Mentions légales · CGV · English (bientôt).
 
 ---
@@ -300,7 +300,7 @@ Droite : [Contact] · Mentions légales · CGV · English (bientôt).
 
 ## 16. SEO
 
-- `<title>` : « Kits d'accueil Airbnb livrés chaque semaine | AP UPSELL »
+- `<title>` : « Kits d'accueil Airbnb livrés chaque semaine | SINEBOX »
 - `<meta name="description">` : « Un kit d'accueil prêt à poser pour chaque arrivée, livré chaque dimanche selon vos réservations. 4,50 € HT par arrivée. Kit d'essai offert. »
 - `lang="fr"`. Un seul H1 (bloc 2). Chaque titre de bloc en H2, titres de cartes en H3.
 - Données structurées **schema.org FAQPage** (JSON-LD) avec les 10 questions et réponses du bloc 10, mot pour mot.

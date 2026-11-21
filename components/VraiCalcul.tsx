@@ -26,7 +26,7 @@ export default function VraiCalcul() {
                   {t.colonnes.cartons}
                 </th>
                 <th scope="col" className={styles.teteAp}>
-                  {t.colonnes.apUpsell}
+                  {t.colonnes.sinebox}
                 </th>
               </tr>
             </thead>
@@ -41,7 +41,7 @@ export default function VraiCalcul() {
                     <span className={styles.coche} aria-hidden="true">
                       ✓
                     </span>
-                    {l.apUpsell}
+                    {l.sinebox}
                   </td>
                 </tr>
               ))}
