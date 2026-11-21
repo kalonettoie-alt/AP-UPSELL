@@ -1,0 +1,52 @@
+.formulaire {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1.5px dashed var(--encre);
+}
+
+.label {
+  display: block;
+  max-width: 40em;
+  font-size: 17px;
+}
+
+.ligne {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.champ {
+  flex: 1 1 240px;
+  min-height: 56px;
+  padding: 14px 18px;
+  background: var(--blanc);
+  border: var(--trait);
+  border-radius: var(--rayon-m);
+  font-size: 16px;
+}
+
+.champ::placeholder {
+  color: var(--texte-3);
+}
+
+.erreur {
+  margin-top: 8px;
+  color: #9a2f1f;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.succes {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: var(--menthe);
+  border: var(--trait);
+  border-radius: var(--rayon-m);
+  font-weight: 600;
+}

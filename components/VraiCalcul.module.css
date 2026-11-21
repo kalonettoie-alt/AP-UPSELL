@@ -1,0 +1,101 @@
+.section {
+  padding: var(--espace-section) 0;
+  background: var(--blanc);
+  border-top: var(--trait);
+  border-bottom: var(--trait);
+}
+
+.titre {
+  margin-top: 16px;
+  max-width: 14em;
+}
+
+.texte {
+  margin-top: 20px;
+  max-width: 38em;
+  font-size: 18px;
+  color: var(--texte-2);
+}
+
+.defilement {
+  margin-top: 44px;
+  overflow-x: auto;
+  border: var(--trait);
+  border-radius: var(--rayon-l);
+  -webkit-overflow-scrolling: touch;
+}
+
+.tableau {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tableau th,
+.tableau td {
+  padding: 18px 20px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--ligne-papier);
+}
+
+.tableau tbody tr:last-child th,
+.tableau tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tableau thead th {
+  border-bottom: var(--trait);
+  font-family: var(--police-titre);
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.critere {
+  width: 22%;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--blanc);
+}
+
+.teteCartons {
+  background: var(--cartons-tete);
+  color: var(--texte-2);
+}
+
+.teteAp {
+  background: var(--ap-tete);
+}
+
+.cartons {
+  background: var(--cartons-cellule);
+  color: var(--texte-2);
+}
+
+.ap {
+  background: var(--ap-cellule);
+  font-weight: 600;
+}
+
+.coche {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+.phraseFin {
+  margin-top: 40px;
+  max-width: 30em;
+  font-family: var(--police-titre);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.bouton {
+  margin-top: 28px;
+}

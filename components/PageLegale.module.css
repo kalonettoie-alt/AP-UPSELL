@@ -1,0 +1,19 @@
+.page {
+  min-height: 50vh;
+  padding-top: clamp(32px, 6vw, 80px);
+  padding-bottom: var(--espace-section);
+}
+
+.contenu {
+  margin-top: 24px;
+  font-size: 18px;
+}
+
+.retour {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 24px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}

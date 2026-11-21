@@ -1,0 +1,55 @@
+.footer {
+  padding: 56px 0;
+  background: var(--encre);
+  color: var(--creme);
+}
+
+.grille {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px 48px;
+}
+
+.marque {
+  font-family: var(--police-titre);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.texte {
+  margin-top: 10px;
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.liens {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 8px;
+  font-size: 15px;
+}
+
+.liens li + li::before {
+  content: "·";
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.liens a,
+.liens span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.liens a {
+  text-underline-offset: 3px;
+}
+
+.liens a:focus-visible {
+  outline-color: var(--creme);
+}

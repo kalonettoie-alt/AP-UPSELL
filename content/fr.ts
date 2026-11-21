@@ -4,6 +4,7 @@
  * Les textes entre crochets [...] sont des informations pas encore connues :
  * ils restent tels quels.
  * Les prix sont en nombres (HT) ; le format d'affichage est dans lib/prix.ts.
+ * Typographie : une espace insécable (U+00A0) précède « : ? ! ; » et suit « « ».
  */
 
 export type Pastel =
@@ -162,7 +163,7 @@ export const packs: Pack[] = [
       "sacs de ramassage",
       "friandises",
       "1 lingette pour les pattes",
-      "1 mot « bienvenue à votre chien »",
+      "1 mot « bienvenue à votre chien »",
     ],
   },
   {
@@ -280,7 +281,7 @@ export const fr = {
       kitNom: "Les 3 kits",
       logo: "LOGO",
     },
-    bientot: "Connexion directe à votre logiciel de gestion : bientôt.",
+    bientot: "Connexion directe à votre logiciel de gestion : bientôt.",
   },
 
   nosKits: {
@@ -293,10 +294,10 @@ export const fr = {
 
   quiArrive: {
     petitTitre: "En plus, quand vous voulez",
-    titre: "Un couple, un chien, Noël ? Ajoutez le pack qui va avec.",
+    titre: "Un couple, un chien, Noël ? Ajoutez le pack qui va avec.",
     texte:
-      "L'essentiel part à chaque arrivée. Pour les séjours qui méritent plus, ajoutez un pack en un clic : par logement, par dates, ou réservation par réservation. Il arrive dans le même colis, avec la même étiquette.",
-    selecteurLabel: "Qui arrive ?",
+      "L'essentiel part à chaque arrivée. Pour les séjours qui méritent plus, ajoutez un pack en un clic : par logement, par dates, ou réservation par réservation. Il arrive dans le même colis, avec la même étiquette.",
+    selecteurLabel: "Qui arrive ?",
     /** Étiquette de colis d'exemple (vendredi). */
     etiquetteJour: "VENDREDI",
     etiquetteDate: "[04/12]",
@@ -308,7 +309,7 @@ export const fr = {
     pourCetteArrivee: "HT pour cette arrivée",
     sousTicket:
       "Vous ne payez un pack que pour les arrivées où vous l'ajoutez. Vous pouvez aussi le proposer en option à vos voyageurs, à votre prix.",
-    bientot: "Ajout automatique selon la réservation : bientôt.",
+    bientot: "Ajout automatique selon la réservation : bientôt.",
   },
 
   vraiCalcul: {
@@ -316,13 +317,13 @@ export const fr = {
     titre: "Moins cher au carton. Plus cher au total.",
     texte:
       "Oui, un carton de produits coûte moins cher à l'unité. Mais le carton n'arrive pas trié, compté et étiqueté dans vos logements. Quelqu'un le fait, et ce quelqu'un, vous le payez.",
-    tableauLegende: "Comparaison : avec des cartons ou avec AP UPSELL",
+    tableauLegende: "Comparaison : avec des cartons ou avec AP UPSELL",
     colonnes: { critere: "Critère", cartons: "Avec des cartons", apUpsell: "Avec AP UPSELL" },
     lignes: [
       {
         critere: "Commande",
         cartons: "Vous commandez à l'avance, par grosses quantités",
-        apUpsell: "Rien à commander : le calendrier suffit",
+        apUpsell: "Rien à commander : le calendrier suffit",
       },
       {
         critere: "Paiement",
@@ -359,7 +360,7 @@ export const fr = {
         pastille: "0 € de livraison",
         titre: "Compatible avec Deltom Operator",
         texte:
-          "Vos ménages passent par Deltom Operator ? Vos kits sont remis à Deltom Operator et arrivent dans le logement avec le ménage. Pas de colis à réceptionner, pas de frais de livraison.",
+          "Vos ménages passent par Deltom Operator ? Vos kits sont remis à Deltom Operator et arrivent dans le logement avec le ménage. Pas de colis à réceptionner, pas de frais de livraison.",
       },
       {
         icone: "colis" as const,
@@ -378,7 +379,7 @@ export const fr = {
         "Dans les deux cas, vous avez 1 ou 2 kits d'avance. Vous ne les payez que si vous les utilisez.",
     },
     lienDeltom: {
-      label: "Vous ne connaissez pas Deltom Operator ?",
+      label: "Vous ne connaissez pas Deltom Operator ?",
       href: "https://www.deltomops.com",
       nouvelOnglet: "(s'ouvre dans un nouvel onglet)",
     },
@@ -398,58 +399,58 @@ export const fr = {
     titre: "Vos questions",
     questions: [
       {
-        question: "C'est plus cher que d'acheter des cartons, non ?",
+        question: "C'est plus cher que d'acheter des cartons, non ?",
         reponse:
           "À l'unité, oui. Mais un carton, il faut le commander, le payer d'avance, le ranger, le recompter et en faire des sachets logement par logement. Nos kits arrivent prêts, étiquetés, au bon nombre. Vous payez ce qui est livré, rien d'autre.",
       },
       {
-        question: "Y a-t-il un abonnement ou un engagement ?",
+        question: "Y a-t-il un abonnement ou un engagement ?",
         reponse:
-          "Non. Vous payez les kits livrés, avec une facture par mois. Pour arrêter, prévenez-nous avant le dimanche : le colis suivant ne part pas.",
+          "Non. Vous payez les kits livrés, avec une facture par mois. Pour arrêter, prévenez-nous avant le dimanche : le colis suivant ne part pas.",
       },
       {
-        question: "Combien coûtent les frais d'envoi ?",
+        question: "Combien coûtent les frais d'envoi ?",
         reponse:
           "15 € HT par colis jusqu'à 12 arrivées dans la semaine, 22 € HT au-delà. 0 € si vos ménages passent par Deltom Operator.",
       },
       {
-        question: "Comment savez-vous quand mes voyageurs arrivent ?",
+        question: "Comment savez-vous quand mes voyageurs arrivent ?",
         reponse:
           "Vous collez le lien de calendrier de chaque logement, Airbnb ou Booking. Nous y lisons les dates d'arrivée. Nous n'avons accès ni aux noms des voyageurs ni à vos revenus.",
       },
       {
-        question: "Et si une réservation tombe à la dernière minute ?",
+        question: "Et si une réservation tombe à la dernière minute ?",
         reponse: "Chaque colis contient 1 ou 2 kits d'avance. Vous ne les payez que si vous les utilisez.",
       },
       {
-        question: "Et si une réservation est annulée après l'envoi ?",
+        question: "Et si une réservation est annulée après l'envoi ?",
         reponse: "Le kit reste chez vous comme kit d'avance. Il n'est facturé que s'il est utilisé.",
       },
       {
-        question: "Mon logement accueille 6 personnes. Un kit suffit ?",
+        question: "Mon logement accueille 6 personnes. Un kit suffit ?",
         reponse:
-          "Vous indiquez une fois la capacité de chaque logement. Jusqu'à 3 voyageurs : un jeu de 3 kits. De 4 à 6 : deux jeux. 7 et plus : trois jeux.",
+          "Vous indiquez une fois la capacité de chaque logement. Jusqu'à 3 voyageurs : un jeu de 3 kits. De 4 à 6 : deux jeux. 7 et plus : trois jeux.",
       },
       {
-        question: "Quels produits y a-t-il dans les kits ?",
+        question: "Quels produits y a-t-il dans les kits ?",
         reponse:
-          "Des produits d'accueil en format individuel, emballés un par un. Le plus simple est de juger sur pièce : le kit d'essai est offert.",
+          "Des produits d'accueil en format individuel, emballés un par un. Le plus simple est de juger sur pièce : le kit d'essai est offert.",
       },
       {
-        question: "Puis-je mettre mon logo ?",
+        question: "Puis-je mettre mon logo ?",
         reponse:
-          "Oui : un autocollant à votre logo sur la boîte et une carte d'accueil à votre nom. Sans engagement de durée.",
+          "Oui : un autocollant à votre logo sur la boîte et une carte d'accueil à votre nom. Sans engagement de durée.",
       },
       {
-        question: "Vous livrez où ?",
+        question: "Vous livrez où ?",
         reponse:
-          "En Île-de-France pour le moment. Le reste de la France arrive : laissez-nous votre e-mail.",
+          "En Île-de-France pour le moment. Le reste de la France arrive : laissez-nous votre e-mail.",
       },
     ] as Faq[],
   },
 
   kitEssai: {
-    titre: "Jugez sur pièce : votre premier kit est offert.",
+    titre: "Jugez sur pièce : votre premier kit est offert.",
     texte:
       "Dites-nous où l'envoyer. Vous recevez les 3 kits, envoi compris, vous regardez les produits, vous décidez ensuite. Réservé aux professionnels d'Île-de-France, un kit par société.",
   },
@@ -498,7 +499,7 @@ export const fr = {
     attente: {
       sujet: "Liste d'attente hors Île-de-France",
       label:
-        "Livraison en Île-de-France pour le moment. Ailleurs en France : laissez-nous votre e-mail, nous vous prévenons à l'ouverture.",
+        "Livraison en Île-de-France pour le moment. Ailleurs en France : laissez-nous votre e-mail, nous vous prévenons à l'ouverture.",
       placeholder: "Votre e-mail",
       bouton: "Me prévenir",
       succes: "C'est noté, nous vous prévenons à l'ouverture.",
