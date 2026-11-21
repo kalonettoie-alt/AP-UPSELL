@@ -1,0 +1,61 @@
+.section {
+  padding-bottom: var(--espace-section);
+}
+
+.titre {
+  max-width: 16em;
+}
+
+.etapes {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 860px) {
+  .etapes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.fiche {
+  padding: 22px 24px 28px;
+  border: var(--trait);
+  border-radius: var(--rayon-l);
+}
+
+.fiche:nth-child(1) {
+  transform: rotate(-1deg);
+}
+
+.fiche:nth-child(2) {
+  transform: rotate(0.8deg);
+}
+
+.fiche:nth-child(3) {
+  transform: rotate(-0.5deg);
+}
+
+.enTete {
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--encre);
+}
+
+.ficheTitre {
+  margin-top: 18px;
+  font-size: clamp(24px, 2.4vw, 30px);
+}
+
+.ficheTexte {
+  margin-top: 12px;
+}
+
+.bientot {
+  margin-top: 20px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--texte-2);
+}

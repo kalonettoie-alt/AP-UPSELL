@@ -1,14 +1,25 @@
 import fr from "@/content/fr";
+import Avant from "@/components/Avant";
+import CommentCaMarche from "@/components/CommentCaMarche";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import NosKits from "@/components/NosKits";
+import QuiArrive from "@/components/QuiArrive";
 
 export default function Page() {
   return (
-    <main className="conteneur" style={{ padding: "80px 24px" }}>
-      <p className="petit-titre">{fr.hero.petitTitre}</p>
-      <h1>{fr.hero.titre}</h1>
-      <p style={{ marginTop: 24 }}>{fr.hero.sousTitre}</p>
-      <h2 style={{ marginTop: 48 }}>{fr.avant.titre}</h2>
-      <p className="petit-titre" style={{ marginTop: 24 }}>{fr.hero.lignePrix}</p>
-      <a className="bouton" style={{ marginTop: 24 }} href="#essai">{fr.hero.bouton.label}</a>
-    </main>
+    <>
+      <a className="lien-evitement" href="#contenu">
+        {fr.general.lienEvitement}
+      </a>
+      <Header />
+      <main id="contenu">
+        <Hero />
+        <Avant />
+        <CommentCaMarche />
+        <NosKits />
+        <QuiArrive />
+      </main>
+    </>
   );
 }

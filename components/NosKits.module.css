@@ -1,0 +1,114 @@
+.section {
+  padding: var(--espace-section) 0;
+  background: var(--kraft);
+  border-top: var(--trait);
+  border-bottom: var(--trait);
+  scroll-margin-top: 0;
+}
+
+.titre {
+  margin-top: 16px;
+  max-width: 15em;
+}
+
+.texte {
+  margin-top: 20px;
+  max-width: 34em;
+  font-size: 18px;
+}
+
+.cartes {
+  list-style: none;
+  margin-top: 44px;
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 620px) {
+  .cartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .cartes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.carte {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 26px;
+  background: var(--blanc);
+  border: var(--trait);
+  border-radius: var(--rayon-l);
+}
+
+.enAvant {
+  background: var(--creme);
+  border-width: 3px;
+}
+
+.visuel {
+  padding: 18px 12px 0;
+  background: var(--kraftClair);
+  border-radius: var(--rayon-s);
+  overflow: hidden;
+}
+
+.boite {
+  width: 46%;
+  max-width: 110px;
+  margin: 0 auto;
+}
+
+.enAvant .boite {
+  width: 58%;
+  max-width: 140px;
+}
+
+.entete {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.nom {
+  font-size: 26px;
+}
+
+.prix {
+  padding: 4px 10px;
+  border: var(--trait);
+  border-radius: 6px;
+  background: var(--creme);
+  font-family: var(--police-mono);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.contenu {
+  margin-top: 16px;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.contenu li::marker {
+  color: var(--bois);
+}
+
+.note {
+  margin-top: 32px;
+  font-size: 17px;
+  max-width: 40em;
+}
+
+.bouton {
+  margin-top: 24px;
+}

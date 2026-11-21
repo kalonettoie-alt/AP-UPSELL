@@ -1,0 +1,149 @@
+.section {
+  padding-top: var(--espace-section);
+  padding-bottom: var(--espace-section);
+  scroll-margin-top: 0;
+}
+
+.panneau {
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  background: var(--blanc);
+  border: 3px solid var(--encre);
+  border-radius: var(--rayon-xxl);
+  box-shadow: 8px 8px 0 var(--encre);
+}
+
+.pastille {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--rose);
+  border: var(--trait);
+  border-radius: 999px;
+  transform: rotate(-1.5deg);
+}
+
+.titre {
+  margin-top: 20px;
+  max-width: 15em;
+}
+
+.texte {
+  margin-top: 20px;
+  max-width: 40em;
+  font-size: 18px;
+  color: var(--texte-2);
+}
+
+.interactif {
+  margin-top: 40px;
+}
+
+.selecteurLabel {
+  font-family: var(--police-titre);
+  font-size: 26px;
+}
+
+.pastilles {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.choix {
+  min-height: 48px;
+  padding: 10px 20px;
+  background: var(--creme);
+  border: var(--trait);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.choix:hover {
+  transform: translateY(-2px);
+}
+
+.choix[aria-pressed="true"] {
+  transform: translateY(-3px) rotate(-3deg);
+  box-shadow: 0 3px 0 var(--encre);
+}
+
+.resultat {
+  margin-top: 32px;
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .resultat {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 48px;
+  }
+}
+
+.scene {
+  display: grid;
+  gap: 28px;
+  padding: clamp(24px, 4vw, 40px);
+  border: var(--trait);
+  border-radius: var(--rayon-xl);
+  transition: background-color 0.25s ease;
+}
+
+@media (min-width: 640px) {
+  .scene {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+}
+
+.etagere {
+  width: 100%;
+  max-width: 340px;
+  justify-self: center;
+}
+
+.boitePack {
+  animation: apparaitre 0.25s ease-out both;
+}
+
+@keyframes apparaitre {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.etiquette {
+  transform: rotate(-1.5deg);
+}
+
+.ticketZone {
+  max-width: 400px;
+  width: 100%;
+  justify-self: center;
+}
+
+.calcul {
+  font-size: 13px;
+  color: var(--texte-2);
+}
+
+.sousTicket {
+  margin-top: 28px;
+  font-size: 16px;
+}
+
+.bientot {
+  margin-top: 28px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--texte-2);
+}

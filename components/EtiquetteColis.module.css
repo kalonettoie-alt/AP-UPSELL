@@ -1,0 +1,91 @@
+.etiquette {
+  background: var(--blanc);
+  color: var(--encre);
+  border: var(--trait);
+  border-radius: var(--rayon-s);
+  overflow: hidden;
+  box-shadow: var(--ombre-douce);
+}
+
+.enTete {
+  padding: 10px 16px;
+  border-bottom: var(--trait);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color 0.25s ease;
+}
+
+.corps {
+  padding: 16px;
+}
+
+.logement {
+  font-family: var(--police-titre);
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.1;
+}
+
+.lignes {
+  margin: 14px 0 0;
+  display: grid;
+  gap: 6px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+}
+
+.lignes div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.lignes dt {
+  min-width: 64px;
+  color: var(--texte-2);
+  letter-spacing: 0.08em;
+}
+
+.lignes dt::after {
+  content: " :";
+}
+
+.lignes dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.pied {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  flex: none;
+  padding: 6px 12px;
+  border: 1.5px dashed var(--encre);
+  border-radius: 999px;
+  font-family: var(--police-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.codeBarre {
+  flex: 1;
+  height: 38px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--encre) 0 2px,
+    transparent 2px 4px,
+    var(--encre) 4px 5px,
+    transparent 5px 8px,
+    var(--encre) 8px 11px,
+    transparent 11px 13px,
+    var(--encre) 13px 14px,
+    transparent 14px 17px
+  );
+}

@@ -1,0 +1,75 @@
+.encadre {
+  margin-top: 40px;
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 48px);
+  background: var(--encre);
+  color: var(--creme);
+  border-radius: var(--rayon-xl);
+}
+
+@media (min-width: 900px) {
+  .encadre {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+  }
+}
+
+.titre {
+  margin-top: 14px;
+  font-size: clamp(28px, 3vw, 38px);
+}
+
+.jours {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.jour {
+  min-height: 52px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--rayon-s);
+  color: var(--encre);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jour:hover {
+  transform: translateY(-2px);
+}
+
+.jour[aria-pressed="true"] {
+  border-color: var(--creme);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 0 -1px rgba(250, 244, 234, 0.35);
+}
+
+.jour:focus-visible {
+  outline-color: var(--creme);
+}
+
+.etiquetteZone {
+  display: flex;
+  justify-content: center;
+}
+
+.etiquette {
+  width: 100%;
+  max-width: 400px;
+  transform: rotate(1.5deg);
+}
+
+@media (max-width: 400px) {
+  .jour {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+}

@@ -1,0 +1,24 @@
+.etagere {
+  width: 100%;
+}
+
+.rangee,
+.sous {
+  display: grid;
+  gap: clamp(8px, 2vw, 16px);
+  padding: 0 clamp(8px, 2vw, 18px);
+  align-items: end;
+}
+
+.sous {
+  align-items: start;
+  justify-items: center;
+}
+
+.planche {
+  height: 17px;
+  background: var(--bois);
+  border: var(--trait);
+  border-radius: 4px;
+  box-shadow: inset 0 -5px 0 rgba(43, 33, 24, 0.22);
+}
