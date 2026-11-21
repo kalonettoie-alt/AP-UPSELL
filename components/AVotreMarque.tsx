@@ -1,16 +1,18 @@
-import fr from "@/content/fr";
+import fr, { kits } from "@/content/fr";
 import Boite from "./Boite";
 import styles from "./AVotreMarque.module.css";
 
 export default function AVotreMarque() {
   const t = fr.aVotreMarque;
+  const troisKits = kits.find((k) => k.id === "troisKits")!;
   return (
     <section className={`conteneur ${styles.section}`} aria-labelledby="titre-marque">
       <div className={styles.grille}>
         <div className={styles.visuel} aria-hidden="true">
           <div className={styles.boiteZone}>
-            <Boite couleurs={["lavande"]} className={styles.boite} />
-            <span className={styles.autocollant}>{t.autocollant}</span>
+            <Boite titre={troisKits.nomBoite} couleur={troisKits.bandeau} className={styles.boite}>
+              <span className={styles.autocollant}>{t.autocollant}</span>
+            </Boite>
           </div>
           <div className={styles.carte}>
             <p className={styles.carteTitre}>{t.carteTitre}</p>

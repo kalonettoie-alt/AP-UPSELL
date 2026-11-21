@@ -2,14 +2,16 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import fr from "@/content/fr";
 import { dmMono, inter, youngSerif } from "@/lib/fonts";
-import { SITE_URL } from "@/lib/site";
+import { INDEXABLE, SITE_URL, canonique } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: fr.seo.titre,
   description: fr.seo.description,
-  alternates: { canonical: "/" },
+  alternates: canonique("/"),
+  // Fermé aux moteurs de recherche tant que NEXT_PUBLIC_SITE_URL n'est pas définie (voir lib/site.ts).
+  robots: INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   openGraph: {
     title: fr.seo.titre,
     description: fr.seo.description,

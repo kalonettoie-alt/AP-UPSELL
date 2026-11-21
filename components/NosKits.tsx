@@ -20,7 +20,12 @@ export default function NosKits() {
             <li key={k.id} className={[styles.carte, k.enAvant ? styles.enAvant : ""].join(" ")}>
               <div className={styles.visuel} aria-hidden="true">
                 <Etagere colonnes="1fr">
-                  <Boite couleurs={k.couleurs} grande={k.enAvant} className={styles.boite} />
+                  <Boite
+                    titre={k.nomBoite}
+                    couleur={k.bandeau}
+                    className={styles.boite}
+                    style={{ aspectRatio: k.enAvant ? "1 / 1.25" : "1 / 1.3" }}
+                  />
                 </Etagere>
               </div>
               <div className={styles.entete}>

@@ -15,7 +15,7 @@ const proportions: Record<KitId, string> = {
 
 export default function Hero() {
   const t = fr.hero;
-  const boites = t.boites.map((b) => ({ ...b, kit: kits.find((k) => k.id === b.kit)! }));
+  const boites = t.boites.map((id) => ({ kit: kits.find((k) => k.id === id)! }));
   const colonnes = boites.map((b) => (b.kit.enAvant ? "1.35fr" : "1fr")).join(" ");
 
   return (
@@ -49,7 +49,7 @@ export default function Hero() {
           {boites.map((b, i) => (
             <Boite
               key={b.kit.id}
-              couleurs={[b.bandeau]}
+              couleur={b.kit.bandeau}
               titre={b.kit.nomBoite}
               className={styles.boite}
               style={{ aspectRatio: proportions[b.kit.id], animationDelay: `${0.15 + i * 0.08}s` }}

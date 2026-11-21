@@ -45,8 +45,14 @@ export default function SelecteurPack() {
         <div className={styles.scene} style={{ background: pastel(pack.couleur) }}>
           <div className={styles.etagere} aria-hidden="true">
             <Etagere colonnes="1.25fr 1fr">
-              <Boite couleurs={troisKits.couleurs} etiquette={troisKits.nomBoite} grande />
-              <Boite key={pack.id} couleurs={[pack.couleur]} etiquette={pack.nom} className={styles.boitePack} />
+              <Boite titre={troisKits.nomBoite} couleur={troisKits.bandeau} style={{ aspectRatio: "1 / 1.15" }} />
+              <Boite
+                key={pack.id}
+                titre={pack.nom}
+                couleur={pack.couleur}
+                className={styles.boitePack}
+                style={{ aspectRatio: "1 / 1.1" }}
+              />
             </Etagere>
           </div>
           <EtiquetteColis

@@ -13,31 +13,7 @@
   overflow: hidden;
 }
 
-.grande {
-  aspect-ratio: 1 / 1;
-}
-
-.bandes {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border-bottom: var(--trait);
-}
-
-.bandes span {
-  display: block;
-  height: 16px;
-}
-
-.bandes span + span {
-  border-top: 1px solid var(--encre);
-}
-
-.grande .bandes span {
-  height: 11px;
-}
-
-.bandeauTitre {
+.bandeau {
   width: 100%;
   padding: 8px 6px;
   border-bottom: var(--trait);
@@ -48,21 +24,4 @@
   letter-spacing: 0.06em;
   text-align: center;
   text-transform: uppercase;
-  overflow-wrap: anywhere;
-}
-
-.etiquette {
-  margin: auto 8px;
-  padding: 5px 6px;
-  max-width: calc(100% - 16px);
-  background: var(--creme);
-  border: 1px solid var(--encre);
-  border-radius: 4px;
-  font-family: var(--police-mono);
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  text-align: center;
-  text-transform: uppercase;
-  transform: rotate(-2deg);
 }

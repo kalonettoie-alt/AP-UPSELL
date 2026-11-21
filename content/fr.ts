@@ -46,7 +46,8 @@ export type Kit = {
   nom: string;
   /** Nom court affiché sur la boîte dessinée. */
   nomBoite: string;
-  couleurs: Pastel[];
+  /** Couleur du bandeau qui porte le nom, en haut de la boîte. */
+  bandeau: Pastel;
   prix: number;
   contenu: string[];
   enAvant?: boolean;
@@ -57,7 +58,7 @@ export const kits: Kit[] = [
     id: "salleDeBain",
     nom: "Kit Salle de bain",
     nomBoite: "Salle de bain",
-    couleurs: ["bleu"],
+    bandeau: "bleu",
     prix: prix.kit,
     contenu: ["2 doses de gel douche et shampoing 2-en-1", "1 savonnette emballée"],
   },
@@ -65,7 +66,7 @@ export const kits: Kit[] = [
     id: "cuisine",
     nom: "Kit Cuisine",
     nomBoite: "Cuisine",
-    couleurs: ["jaune"],
+    bandeau: "jaune",
     prix: prix.kit,
     contenu: ["2 cafés solubles", "2 sachets de thé", "4 bûchettes de sucre"],
   },
@@ -73,7 +74,7 @@ export const kits: Kit[] = [
     id: "entretien",
     nom: "Kit Entretien",
     nomBoite: "Entretien",
-    couleurs: ["menthe"],
+    bandeau: "menthe",
     prix: prix.kit,
     contenu: [
       "1 rouleau de papier toilette",
@@ -86,7 +87,7 @@ export const kits: Kit[] = [
     id: "troisKits",
     nom: "Les 3 kits",
     nomBoite: "Les 3 kits",
-    couleurs: ["bleu", "jaune", "menthe"],
+    bandeau: "rose",
     prix: prix.troisKits,
     contenu: ["Kit Salle de bain", "Kit Cuisine", "Kit Entretien", "Par arrivée"],
     enAvant: true,
@@ -230,13 +231,8 @@ export const fr = {
     bouton: { label: "Recevoir mon kit d'essai", href: "#essai" },
     lien: { label: "Voir le contenu des kits", href: "#kits" },
     sousBouton: "Offert, envoi compris.",
-    /** Boîtes du visuel, dans l'ordre de l'étagère, avec la couleur du bandeau qui porte leur nom. */
-    boites: [
-      { kit: "salleDeBain", bandeau: "bleu" },
-      { kit: "cuisine", bandeau: "jaune" },
-      { kit: "entretien", bandeau: "menthe" },
-      { kit: "troisKits", bandeau: "rose" },
-    ] as { kit: KitId; bandeau: Pastel }[],
+    /** Boîtes du visuel, dans l'ordre de l'étagère. */
+    boites: ["salleDeBain", "cuisine", "entretien", "troisKits"] as KitId[],
   },
 
   avant: {

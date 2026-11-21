@@ -30,7 +30,7 @@ npm start
 | --- | --- |
 | `NEXT_PUBLIC_FORMSPREE_ESSAI` | Identifiant du formulaire Formspree « Kit d'essai » (la fin de l'adresse `https://formspree.io/f/xxxxxxx`, soit `xxxxxxx`) |
 | `NEXT_PUBLIC_FORMSPREE_ATTENTE` | Identifiant du formulaire Formspree « Liste d'attente hors Île-de-France » |
-| `NEXT_PUBLIC_SITE_URL` | Adresse publique du site, sans barre finale, par ex. `https://www.exemple.fr` |
+| `NEXT_PUBLIC_SITE_URL` | Adresse publique du site, sans barre finale, par ex. `https://www.exemple.fr`. **Tant qu'elle est vide, le site est fermé à Google** (balise `noindex`, `robots.txt` « Disallow: / », sitemap vide). |
 
 3. Relancer `npm run dev` (ou `npm run build`) : les valeurs sont intégrées au moment de la construction.
 
@@ -47,13 +47,14 @@ Le champ caché `_gotcha` sert d'anti-spam : Formspree ignore les envois où il 
 
 1. Sur vercel.com : **Add New → Project**, importer le dépôt GitHub.
 2. Framework : **Next.js** (détecté automatiquement). Ne rien changer aux commandes de build.
-3. Dans **Settings → Environment Variables**, ajouter les 3 variables ci-dessus
-   (`NEXT_PUBLIC_FORMSPREE_ESSAI`, `NEXT_PUBLIC_FORMSPREE_ATTENTE`, `NEXT_PUBLIC_SITE_URL`)
-   pour l'environnement **Production** (et **Preview** si besoin).
+3. Dans **Settings → Environment Variables**, ajouter :
+   - `NEXT_PUBLIC_FORMSPREE_ESSAI` et `NEXT_PUBLIC_FORMSPREE_ATTENTE` pour **Production** et **Preview** ;
+   - `NEXT_PUBLIC_SITE_URL` pour **Production** seulement (les versions Preview restent ainsi fermées à Google).
 4. Lancer le déploiement. Après toute modification d'une variable, refaire un déploiement
    (**Deployments → Redeploy**) : les valeurs sont lues au moment du build.
-5. Brancher le nom de domaine dans **Settings → Domains**, puis vérifier que
-   `NEXT_PUBLIC_SITE_URL` correspond bien à cette adresse.
+5. Brancher le nom de domaine dans **Settings → Domains**, puis renseigner
+   `NEXT_PUBLIC_SITE_URL` avec cette adresse et redéployer : c'est ce qui ouvre le site à Google.
+   Pour un déploiement de test, laisser `NEXT_PUBLIC_SITE_URL` vide : le site ne sera pas indexé.
 
 ## Organisation
 
