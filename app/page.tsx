@@ -3,6 +3,7 @@ import AVotreMarque from "@/components/AVotreMarque";
 import Avant from "@/components/Avant";
 import CommentCaMarche from "@/components/CommentCaMarche";
 import Faq from "@/components/Faq";
+import FaqJsonLd from "@/components/FaqJsonLd";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -32,6 +33,7 @@ export default function Page() {
         <KitEssai />
       </main>
       <Footer />
+      <FaqJsonLd />
     </>
   );
 }

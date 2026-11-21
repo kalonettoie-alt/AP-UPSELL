@@ -25,7 +25,6 @@ export default function EtiquetteJours() {
               className={styles.jour}
               style={{ background: pastel(j.couleur) }}
               aria-pressed={j.id === choix}
-              aria-label={j.long}
               onClick={() => setChoix(j.id)}
             >
               {j.court}
