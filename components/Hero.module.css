@@ -65,35 +65,25 @@
 .visuel {
   display: flex;
   align-items: flex-end;
-  padding: clamp(40px, 6vw, 72px) clamp(12px, 3vw, 36px) clamp(56px, 7vw, 80px);
+  width: 100%;
+  max-width: 600px;
+  justify-self: center;
+  padding: clamp(22px, 3vw, 32px) clamp(4px, 1.5vw, 18px) clamp(20px, 2.5vw, 28px);
   background: var(--kraft);
   border: var(--trait);
   border-radius: var(--rayon-xl);
 }
 
 .boite {
-  aspect-ratio: 3 / 4;
-}
-
-.boite,
-.boiteGrande {
   animation: monter 0.7s ease-out both;
 }
 
-@media (min-width: 960px) {
-  .visuel {
-    align-self: stretch;
-  }
-}
-
 @media (max-width: 480px) {
-  .boite > span,
-  .boiteGrande > span {
-    margin: auto 3px;
-    padding: 4px 2px;
-    max-width: calc(100% - 6px);
+  .boite > span {
+    padding: 6px 1px;
     font-size: 8px;
     letter-spacing: 0;
+    overflow-wrap: normal;
   }
 }
 

@@ -22,15 +22,20 @@
   white-space: nowrap;
 }
 
+/* Balancement −5° ↔ +3° autour de la position droite ; au repos (et sans animation), l'étiquette est droite. */
 .balance {
-  animation: balancer 4s ease-in-out infinite alternate;
+  animation: balancer 4s ease-in-out infinite;
 }
 
 @keyframes balancer {
-  from {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
     transform: rotate(-5deg);
   }
-  to {
+  75% {
     transform: rotate(3deg);
   }
 }

@@ -8,12 +8,14 @@ type Props = {
   /** Éléments suspendus sous la planche (étiquettes de prix), alignés sur les boîtes. */
   sous?: ReactNode;
   className?: string;
+  /** Planche sans contour noir, qui dépasse nettement des boîtes de chaque côté. */
+  sansContour?: boolean;
 };
 
 /** Étagère en bois avec boîtes posées dessus (décorative). */
-export default function Etagere({ colonnes, children, sous, className }: Props) {
+export default function Etagere({ colonnes, children, sous, className, sansContour }: Props) {
   return (
-    <div className={[styles.etagere, className ?? ""].join(" ")}>
+    <div className={[styles.etagere, sansContour ? styles.sansContour : "", className ?? ""].join(" ")}>
       <div className={styles.rangee} style={{ gridTemplateColumns: colonnes }}>
         {children}
       </div>

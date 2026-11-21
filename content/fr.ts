@@ -230,8 +230,13 @@ export const fr = {
     bouton: { label: "Recevoir mon kit d'essai", href: "#essai" },
     lien: { label: "Voir le contenu des kits", href: "#kits" },
     sousBouton: "Offert, envoi compris.",
-    /** Boîtes du visuel, dans l'ordre de l'étagère. */
-    boites: ["salleDeBain", "cuisine", "entretien", "troisKits"] as KitId[],
+    /** Boîtes du visuel, dans l'ordre de l'étagère, avec la couleur du bandeau qui porte leur nom. */
+    boites: [
+      { kit: "salleDeBain", bandeau: "bleu" },
+      { kit: "cuisine", bandeau: "jaune" },
+      { kit: "entretien", bandeau: "menthe" },
+      { kit: "troisKits", bandeau: "rose" },
+    ] as { kit: KitId; bandeau: Pastel }[],
   },
 
   avant: {

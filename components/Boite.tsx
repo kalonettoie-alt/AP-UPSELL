@@ -8,23 +8,31 @@ type Props = {
   couleurs: Pastel[];
   /** Petit autocollant écrit sur la boîte. */
   etiquette?: string;
+  /** Nom écrit dans un bandeau pleine largeur en haut de la boîte (couleur : couleurs[0]). */
+  titre?: string;
   grande?: boolean;
   className?: string;
   style?: CSSProperties;
 };
 
 /** Boîte kraft dessinée en CSS (décorative : le parent porte aria-hidden). */
-export default function Boite({ couleurs, etiquette, grande, className, style }: Props) {
+export default function Boite({ couleurs, etiquette, titre, grande, className, style }: Props) {
   return (
     <div
       className={[styles.boite, grande ? styles.grande : "", className ?? ""].join(" ")}
       style={style}
     >
-      <div className={styles.bandes}>
+      {titre ? (
+        <span className={styles.bandeauTitre} style={{ background: pastel(couleurs[0]) }}>
+          {titre}
+        </span>
+      ) : (
+        <div className={styles.bandes}>
         {couleurs.map((c, i) => (
           <span key={i} style={{ background: pastel(c) }} />
         ))}
-      </div>
+        </div>
+      )}
       {etiquette ? <span className={styles.etiquette}>{etiquette}</span> : null}
     </div>
   );

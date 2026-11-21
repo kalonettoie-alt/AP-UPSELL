@@ -1,14 +1,22 @@
-import fr, { kits } from "@/content/fr";
+import fr, { kits, type KitId } from "@/content/fr";
 import { formatPrixHT } from "@/lib/prix";
 import Boite from "./Boite";
 import Etagere from "./Etagere";
 import EtiquettePrix from "./EtiquettePrix";
 import styles from "./Hero.module.css";
 
+/** Hauteur de chaque boîte (largeur / hauteur) : Cuisine la plus basse, Les 3 kits nettement plus haute. */
+const proportions: Record<KitId, string> = {
+  salleDeBain: "1 / 1.55",
+  cuisine: "1 / 1.2",
+  entretien: "1 / 1.55",
+  troisKits: "1 / 1.5",
+};
+
 export default function Hero() {
   const t = fr.hero;
-  const boites = t.boites.map((id) => kits.find((k) => k.id === id)!);
-  const colonnes = boites.map((k) => (k.enAvant ? "1.45fr" : "1fr")).join(" ");
+  const boites = t.boites.map((b) => ({ ...b, kit: kits.find((k) => k.id === b.kit)! }));
+  const colonnes = boites.map((b) => (b.kit.enAvant ? "1.35fr" : "1fr")).join(" ");
 
   return (
     <section className={`conteneur ${styles.hero}`} aria-labelledby="titre-hero">
@@ -33,18 +41,18 @@ export default function Hero() {
       <div className={styles.visuel} aria-hidden="true">
         <Etagere
           colonnes={colonnes}
-          sous={boites.map((k, i) => (
-            <EtiquettePrix key={k.id} texte={formatPrixHT(k.prix)} balance delai={i * -0.7} />
+          sansContour
+          sous={boites.map((b, i) => (
+            <EtiquettePrix key={b.kit.id} texte={formatPrixHT(b.kit.prix)} balance delai={i * 0.25} />
           ))}
         >
-          {boites.map((k, i) => (
+          {boites.map((b, i) => (
             <Boite
-              key={k.id}
-              couleurs={k.couleurs}
-              etiquette={k.nomBoite}
-              grande={k.enAvant}
-              className={k.enAvant ? styles.boiteGrande : styles.boite}
-              style={{ animationDelay: `${0.15 + i * 0.08}s` }}
+              key={b.kit.id}
+              couleurs={[b.bandeau]}
+              titre={b.kit.nomBoite}
+              className={styles.boite}
+              style={{ aspectRatio: proportions[b.kit.id], animationDelay: `${0.15 + i * 0.08}s` }}
             />
           ))}
         </Etagere>
