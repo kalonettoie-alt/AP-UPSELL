@@ -1,17 +1,22 @@
+import type { Metadata } from "next";
 import fr from "@/content/fr";
 import AVotreMarque from "@/components/AVotreMarque";
 import Avant from "@/components/Avant";
 import CommentCaMarche from "@/components/CommentCaMarche";
 import Faq from "@/components/Faq";
-import FaqJsonLd from "@/components/FaqJsonLd";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import JsonLd from "@/components/JsonLd";
 import KitEssai from "@/components/KitEssai";
 import Livraison from "@/components/Livraison";
 import NosKits from "@/components/NosKits";
 import QuiArrive from "@/components/QuiArrive";
 import VraiCalcul from "@/components/VraiCalcul";
+import { metaPage } from "@/lib/meta";
+import { schemaFaq, schemaProduits } from "@/lib/schema";
+
+export const metadata: Metadata = metaPage({ titre: fr.seo.titre, description: fr.seo.description, chemin: "/" });
 
 export default function Page() {
   return (
@@ -33,7 +38,10 @@ export default function Page() {
         <KitEssai />
       </main>
       <Footer />
-      <FaqJsonLd />
+      <JsonLd donnees={schemaFaq(fr.faq.questions)} />
+      {schemaProduits().map((p) => (
+        <JsonLd key={p.name} donnees={p} />
+      ))}
     </>
   );
 }

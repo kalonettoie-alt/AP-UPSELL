@@ -147,3 +147,64 @@
   font-size: 13px;
   color: var(--texte-2);
 }
+
+.detail {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1.5px dashed var(--encre);
+}
+
+.detailListe {
+  list-style: none;
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .detailListe {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .detailListe {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pack {
+  border: var(--trait);
+  border-radius: var(--rayon-l);
+  overflow: hidden;
+  background: var(--creme);
+}
+
+.packTete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 14px 18px;
+  border-bottom: var(--trait);
+}
+
+.packNom {
+  font-size: 22px;
+}
+
+.packPrix {
+  font-family: var(--police-mono);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.packContenu {
+  margin: 0;
+  padding: 14px 18px 18px 36px;
+  display: grid;
+  gap: 4px;
+  font-size: 15px;
+}

@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import fr from "@/content/fr";
-import { dateHeureEnvoi, envoyerFormspree, formspreeIds } from "@/lib/formspree";
+import { actionFormspree, dateHeureEnvoi, envoyerFormspree, formspreeIds } from "@/lib/formspree";
 import { estEmail, estVide } from "@/lib/validation";
 import PotDeMiel from "./PotDeMiel";
 import styles from "./ListeAttente.module.css";
@@ -22,6 +22,8 @@ export default function ListeAttente() {
   const emailRef = useRef<HTMLInputElement>(null);
   const [etat, setEtat] = useState<Etat>("attente");
   const [erreur, setErreur] = useState<string | undefined>();
+  const [hydrate, setHydrate] = useState(false);
+  useEffect(() => setHydrate(true), []);
 
   async function envoyer(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,7 +50,15 @@ export default function ListeAttente() {
   return (
     <div className={styles.formulaire}>
       {etat !== "reussi" ? (
-        <form ref={formRef} onSubmit={envoyer} noValidate>
+        <form
+          ref={formRef}
+          method="POST"
+          action={actionFormspree(formspreeIds.attente)}
+          onSubmit={envoyer}
+          noValidate={hydrate}
+        >
+          <input type="hidden" name="_subject" value={t.sujet} readOnly />
+          <input type="hidden" name="liste" value={t.sujet} readOnly />
           <label htmlFor="attente-email" className={styles.label}>
             {t.label}
           </label>

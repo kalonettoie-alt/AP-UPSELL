@@ -16,7 +16,6 @@ const proportions: Record<KitId, string> = {
 export default function Hero() {
   const t = fr.hero;
   const boites = t.boites.map((id) => ({ kit: kits.find((k) => k.id === id)! }));
-  const colonnes = boites.map((b) => (b.kit.enAvant ? "1.35fr" : "1fr")).join(" ");
 
   return (
     <section className={`conteneur ${styles.hero}`} aria-labelledby="titre-hero">
@@ -39,23 +38,34 @@ export default function Hero() {
       </div>
 
       <div className={styles.visuel} aria-hidden="true">
-        <Etagere
-          colonnes={colonnes}
-          sansContour
-          sous={boites.map((b, i) => (
-            <EtiquettePrix key={b.kit.id} texte={formatPrixHT(b.kit.prix)} balance delai={i * 0.25} />
-          ))}
-        >
-          {boites.map((b, i) => (
-            <Boite
-              key={b.kit.id}
-              couleur={b.kit.bandeau}
-              titre={b.kit.nomBoite}
-              className={styles.boite}
-              style={{ aspectRatio: proportions[b.kit.id], animationDelay: `${0.15 + i * 0.08}s` }}
-            />
-          ))}
-        </Etagere>
+        {/* Ordinateur et tablette : une étagère de 4 boîtes. Téléphone : deux étagères de 2 boîtes (textes lisibles à 12 px). */}
+        {[
+          { cle: "large", rangees: [boites], classe: styles.uneEtagere },
+          { cle: "etroit", rangees: [boites.slice(0, 2), boites.slice(2)], classe: styles.deuxEtageres },
+        ].map((v) => (
+          <div key={v.cle} className={v.classe}>
+            {v.rangees.map((rangee, r) => (
+              <Etagere
+                key={r}
+                colonnes={rangee.map((b) => (b.kit.enAvant ? "1.35fr" : "1fr")).join(" ")}
+                sansContour
+                sous={rangee.map((b, i) => (
+                  <EtiquettePrix key={b.kit.id} texte={formatPrixHT(b.kit.prix)} balance delai={i * 0.25} />
+                ))}
+              >
+                {rangee.map((b, i) => (
+                  <Boite
+                    key={b.kit.id}
+                    couleur={b.kit.bandeau}
+                    titre={b.kit.nomBoite}
+                    className={styles.boite}
+                    style={{ aspectRatio: proportions[b.kit.id], animationDelay: `${0.15 + i * 0.08}s` }}
+                  />
+                ))}
+              </Etagere>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );

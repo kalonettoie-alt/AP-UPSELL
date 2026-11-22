@@ -18,7 +18,7 @@
   padding: 8px 6px;
   border-bottom: var(--trait);
   font-family: var(--police-mono);
-  font-size: clamp(9px, 1.05vw, 12px);
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.06em;

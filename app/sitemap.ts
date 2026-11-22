@@ -1,13 +1,16 @@
 import type { MetadataRoute } from "next";
-import { INDEXABLE, SITE_URL } from "@/lib/site";
+import { INDEXABLE, urlAbsolue } from "@/lib/site";
 
 export const dynamic = "force-static";
 
+/** Pages indexables. Exclues : /merci/, /mentions-legales/, /cgv/ (toujours en noindex). */
+const PAGES = ["/", "/kits-accueil-conciergerie/", "/tarifs/", "/kit-essai/", "/contact/", "/a-propos/"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!INDEXABLE) return [];
-  return [
-    { url: `${SITE_URL}/`, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE_URL}/mentions-legales/`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${SITE_URL}/cgv/`, changeFrequency: "yearly", priority: 0.2 },
-  ];
+  return PAGES.map((chemin) => ({
+    url: urlAbsolue(chemin),
+    changeFrequency: "monthly",
+    priority: chemin === "/" ? 1 : 0.7,
+  }));
 }

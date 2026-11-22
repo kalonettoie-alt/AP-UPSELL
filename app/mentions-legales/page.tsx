@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import fr from "@/content/fr";
 import PageLegale from "@/components/PageLegale";
-import { canonique } from "@/lib/site";
+import { metaPage } from "@/lib/meta";
 
 const t = fr.pagesLegales.mentionsLegales;
+const chemin = "/mentions-legales/";
 
-export const metadata: Metadata = {
-  title: `${t.titre} | ${fr.marque}`,
-  alternates: canonique("/mentions-legales/"),
-  openGraph: { title: `${t.titre} | ${fr.marque}`, url: "/mentions-legales/", type: "website", locale: "fr_FR", siteName: fr.marque },
-};
+export const metadata: Metadata = metaPage({ titre: t.titreGoogle, description: t.description, chemin, jamaisIndexee: true });
 
 export default function MentionsLegales() {
-  return <PageLegale titre={t.titre} contenu={t.contenu} />;
+  return <PageLegale titre={t.titre} chemin={chemin} blocs={t.blocs} />;
 }

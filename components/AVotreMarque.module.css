@@ -53,7 +53,7 @@
   border: var(--trait);
   border-radius: 50%;
   font-family: var(--police-mono);
-  font-size: clamp(10px, 1.4vw, 13px);
+  font-size: clamp(12px, 1.4vw, 13px);
   font-weight: 500;
   letter-spacing: 0.06em;
   text-align: center;

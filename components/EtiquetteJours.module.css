@@ -68,8 +68,11 @@
 }
 
 @media (max-width: 400px) {
+  .jours {
+    gap: 6px;
+  }
   .jour {
-    font-size: 11px;
-    letter-spacing: 0.02em;
+    font-size: 12px;
+    letter-spacing: 0;
   }
 }

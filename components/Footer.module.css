@@ -1,15 +1,52 @@
 .footer {
-  padding: 56px 0;
+  padding: 56px 0 40px;
   background: var(--encre);
   color: var(--creme);
 }
 
-.grille {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 28px 48px;
+.colonnes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+@media (min-width: 860px) {
+  .colonnes {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.titre {
+  font-family: var(--police-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.liens {
+  list-style: none;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.liens a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.liens a:focus-visible {
+  outline-color: var(--creme);
+}
+
+.bas {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(250, 244, 234, 0.25);
 }
 
 .marque {
@@ -22,34 +59,4 @@
   margin-top: 10px;
   font-size: 15px;
   opacity: 0.85;
-}
-
-.liens {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 8px;
-  font-size: 15px;
-}
-
-.liens li + li::before {
-  content: "·";
-  margin-right: 8px;
-  opacity: 0.6;
-}
-
-.liens a,
-.liens span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.liens a {
-  text-underline-offset: 3px;
-}
-
-.liens a:focus-visible {
-  outline-color: var(--creme);
 }
