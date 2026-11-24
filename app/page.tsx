@@ -1,23 +1,27 @@
 import type { Metadata } from "next";
 import fr from "@/content/fr";
-import AVotreMarque from "@/components/AVotreMarque";
-import Avant from "@/components/Avant";
-import CommentCaMarche from "@/components/CommentCaMarche";
-import Faq from "@/components/Faq";
+import AvantApres from "@/components/accueil/AvantApres";
+import EnChiffres from "@/components/accueil/EnChiffres";
+import Essai from "@/components/accueil/Essai";
+import Etapes from "@/components/accueil/Etapes";
+import Etiquette from "@/components/accueil/Etiquette";
+import Hero from "@/components/accueil/Hero";
+import Journal from "@/components/accueil/Journal";
+import Livraison from "@/components/accueil/Livraison";
+import Marque from "@/components/accueil/Marque";
+import Packs from "@/components/accueil/Packs";
+import Questions from "@/components/accueil/Questions";
+import Rayon from "@/components/accueil/Rayon";
+import VraiCalcul from "@/components/accueil/VraiCalcul";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
-import KitEssai from "@/components/KitEssai";
-import Livraison from "@/components/Livraison";
-import NosKits from "@/components/NosKits";
-import QuiArrive from "@/components/QuiArrive";
-import VraiCalcul from "@/components/VraiCalcul";
 import { metaPage } from "@/lib/meta";
-import { schemaFaq, schemaProduits } from "@/lib/schema";
+import { schemaFilAriane, schemaProduits } from "@/lib/schema";
 
 export const metadata: Metadata = metaPage({ titre: fr.seo.titre, description: fr.seo.description, chemin: "/" });
 
+/** Accueil — maquette SINEBOX V2. */
 export default function Page() {
   return (
     <>
@@ -27,18 +31,21 @@ export default function Page() {
       <Header />
       <main id="contenu">
         <Hero />
-        <Avant />
-        <CommentCaMarche />
-        <NosKits />
-        <QuiArrive />
+        <Rayon />
+        <AvantApres />
+        <EnChiffres />
+        <Etapes />
+        <Etiquette />
+        <Packs />
+        <Marque />
         <VraiCalcul />
         <Livraison />
-        <AVotreMarque />
-        <Faq />
-        <KitEssai />
+        <Questions />
+        <Journal />
+        <Essai />
       </main>
       <Footer />
-      <JsonLd donnees={schemaFaq(fr.faq.questions)} />
+      <JsonLd donnees={schemaFilAriane([{ nom: fr.modele.accueil, chemin: "/" }])} />
       {schemaProduits().map((p) => (
         <JsonLd key={p.name} donnees={p} />
       ))}

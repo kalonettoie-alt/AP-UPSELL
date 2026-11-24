@@ -1,16 +1,19 @@
 import type { MetadataRoute } from "next";
-import { INDEXABLE, urlAbsolue } from "@/lib/site";
+import { PAGES } from "@/lib/routes";
+import { SITE_CANONIQUE } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-/** Pages indexables. Exclues : /merci/, /mentions-legales/, /cgv/ (toujours en noindex). */
-const PAGES = ["/", "/kits-accueil-conciergerie/", "/tarifs/", "/kit-essai/", "/contact/", "/a-propos/"];
+/** Pages jamais indexées : hors du sitemap. */
+const EXCLUES = new Set(["merci", "mentionsLegales", "cgv"]);
 
+/** Sitemap : toutes les pages existantes du registre (lib/routes.ts), sur https://www.sinebox.fr. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!INDEXABLE) return [];
-  return PAGES.map((chemin) => ({
-    url: urlAbsolue(chemin),
-    changeFrequency: "monthly",
-    priority: chemin === "/" ? 1 : 0.7,
-  }));
+  return Object.entries(PAGES)
+    .filter(([cle, p]) => p.existe && !EXCLUES.has(cle))
+    .map(([, p]) => ({
+      url: `${SITE_CANONIQUE}${p.url}`,
+      changeFrequency: "monthly" as const,
+      priority: p.url === "/" ? 1 : 0.7,
+    }));
 }

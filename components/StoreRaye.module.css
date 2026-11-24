@@ -1,6 +1,0 @@
-.store {
-  height: 48px;
-  background: repeating-linear-gradient(90deg, var(--rose) 0 64px, var(--creme) 64px 128px);
-  border-bottom: 3px solid var(--encre);
-  border-radius: 0 0 24px 24px;
-}

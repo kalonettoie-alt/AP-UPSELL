@@ -21,14 +21,17 @@ export const INDEXABLE = domaine !== "";
 
 export const SITE_URL = domaine || (vercel ? `https://${vercel.replace(/^https?:\/\//, "")}` : "http://localhost:3000");
 
-/** URL canonique d'une page, seulement quand le domaine est défini. */
-export function canonique(chemin: string): { canonical: string } | undefined {
-  return INDEXABLE ? { canonical: chemin } : undefined;
+/** Domaine officiel : sert aux adresses canoniques et au sitemap, même tant que le site est fermé à Google. */
+export const SITE_CANONIQUE = "https://www.sinebox.fr";
+
+/** URL canonique d'une page, toujours sur https://www.sinebox.fr. */
+export function canonique(chemin: string): { canonical: string } {
+  return { canonical: `${SITE_CANONIQUE}${chemin}` };
 }
 
-/** Adresse absolue d'un chemin du site. */
+/** Adresse absolue d'un chemin du site, sur le domaine officiel (données structurées). */
 export function urlAbsolue(chemin: string): string {
-  return `${SITE_URL}${chemin.startsWith("/") ? chemin : `/${chemin}`}`;
+  return `${SITE_CANONIQUE}${chemin.startsWith("/") ? chemin : `/${chemin}`}`;
 }
 
 export const ROBOTS_FERME = { index: false, follow: false } as const;

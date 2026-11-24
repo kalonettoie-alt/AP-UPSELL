@@ -1,62 +1,128 @@
 .footer {
-  padding: 56px 0 40px;
   background: var(--encre);
-  color: var(--creme);
+  color: var(--fond);
+}
+
+.interieur {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 90px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
 }
 
 .colonnes {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px 24px;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
+  font-size: 15px;
 }
 
-@media (min-width: 860px) {
-  .colonnes {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+.slogan {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sloganTitre {
+  font-family: var(--f-serif), serif;
+  font-size: 34px;
+  line-height: 1.1;
+  max-width: 340px;
+}
+
+.sloganTexte {
+  font-size: 14px;
+  color: var(--sable);
+}
+
+.colonne {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .titre {
-  font-family: var(--police-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.8;
+  font-family: var(--f-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--sable);
 }
 
-.liens {
-  list-style: none;
-  margin-top: 8px;
-  font-size: 15px;
-}
-
-.liens a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  text-underline-offset: 3px;
+.colonne a {
+  color: var(--fond);
+  text-decoration: none;
+  opacity: 0.85;
   overflow-wrap: anywhere;
 }
 
-.liens a:focus-visible {
-  outline-color: var(--creme);
+.colonne a:hover,
+.bas a:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
-.bas {
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(250, 244, 234, 0.25);
+.colonne a:focus-visible,
+.bas a:focus-visible {
+  outline-color: var(--fond);
 }
 
 .marque {
-  font-family: var(--police-titre);
-  font-size: 28px;
-  line-height: 1;
+  font-family: var(--f-serif), serif;
+  font-size: 300px;
+  line-height: 0.75;
+  letter-spacing: -0.04em;
+  text-align: center;
 }
 
-.texte {
-  margin-top: 10px;
-  font-size: 15px;
-  opacity: 0.85;
+.bas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  font-size: 13px;
+  color: var(--sable);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+}
+
+.bas a {
+  color: var(--sable);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .interieur {
+    padding: 64px 20px 32px;
+    gap: 40px;
+  }
+
+  .colonnes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .slogan {
+    grid-column: 1 / -1;
+  }
+
+  .marque {
+    font-size: 96px;
+  }
+
+  .colonne {
+    gap: 0;
+  }
+
+  .colonne a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .bas a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }

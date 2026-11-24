@@ -1,12 +1,12 @@
 import fr, { kits, packs, type Faq } from "@/content/fr";
-import { urlAbsolue, SITE_URL } from "./site";
+import { SITE_CANONIQUE, urlAbsolue } from "./site";
 
 /** Organization : nom, site, logo, zone desservie, contact. */
 export function schemaOrganisation() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organisation`,
+    "@id": `${SITE_CANONIQUE}/#organisation`,
     name: fr.marque,
     url: urlAbsolue("/"),
     logo: urlAbsolue("/apple-icon.png"),
@@ -54,7 +54,7 @@ function offre(prixHT: number, chemin: string) {
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
     },
-    seller: { "@id": `${SITE_URL}/#organisation` },
+    seller: { "@id": `${SITE_CANONIQUE}/#organisation` },
   };
 }
 

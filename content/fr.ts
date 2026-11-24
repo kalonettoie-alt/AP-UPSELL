@@ -13,6 +13,20 @@
  */
 const EMAIL_CONTACT = "contact@sinebox.fr";
 
+/**
+ * Téléphone de SINEBOX : publié uniquement dans les mentions légales (rubrique de l'éditeur).
+ * Ne jamais l'afficher ailleurs (pied de page, contact, données structurées…).
+ */
+export const TELEPHONE_MENTIONS_LEGALES = "06 25 29 93 21";
+
+/** Délais affichés sur le site. */
+export const delais = {
+  /** « Nous vous répondons en moins de 24 h. » */
+  reponse: "24 h",
+};
+
+import type { CleePage } from "@/lib/routes";
+
 export type Pastel =
   | "rose"
   | "bleu"
@@ -43,6 +57,8 @@ export const prix = {
   troisKits: 4.5,
   colisJusqua12: 15,
   colisAuDela: 22,
+  /** Livraison quand les kits sont remis à Deltom Operator. */
+  livraisonDeltom: 0,
 };
 
 export type KitId = "salleDeBain" | "cuisine" | "entretien" | "troisKits";
@@ -133,9 +149,15 @@ export type Pack = {
   prix: number;
   couleur: Pastel;
   contenu: string[];
+  /** Couleur du pack dans la maquette V2. */
+  teinte: string;
+  /** Texte imprimé sur le sac (maquette V2). */
+  etiquetteSac: string;
+  /** Nom court affiché sous le sac (maquette V2). */
+  nomCourt: string;
 };
 
-/** Packs « Qui arrive ? » (spec §8). */
+/** Packs « Qui arrive ? » (spec §8, textes de la maquette V2). */
 export const packs: Pack[] = [
   {
     id: "affaires",
@@ -143,14 +165,10 @@ export const packs: Pack[] = [
     nom: "Pack Affaires",
     prix: 11.5,
     couleur: "lavande",
-    contenu: [
-      "2 cafés en plus",
-      "1 bouteille d'eau",
-      "1 encas emballé",
-      "1 kit dentaire",
-      "1 kit rasage",
-      "bouchons d'oreilles",
-    ],
+    contenu: ["2 cafés en plus", "1 bouteille d'eau", "1 encas emballé", "1 kit dentaire", "1 kit rasage", "Bouchons d'oreilles"],
+    teinte: "#CDDDE8",
+    etiquetteSac: "PACK AFFAIRES",
+    nomCourt: "Voyage d'affaires",
   },
   {
     id: "couple",
@@ -158,7 +176,10 @@ export const packs: Pack[] = [
     nom: "Pack Couple",
     prix: 21.5,
     couleur: "rose",
-    contenu: ["1 boisson pétillante sans alcool", "chocolats", "1 bougie", "2 infusions"],
+    contenu: ["1 boisson pétillante sans alcool", "Chocolats", "1 bougie LED", "2 infusions"],
+    teinte: "#F0C4CF",
+    etiquetteSac: "PACK COUPLE",
+    nomCourt: "Couple",
   },
   {
     id: "chien",
@@ -166,12 +187,10 @@ export const packs: Pack[] = [
     nom: "Pack Chien",
     prix: 9,
     couleur: "kraftClair",
-    contenu: [
-      "sacs de ramassage",
-      "friandises",
-      "1 lingette pour les pattes",
-      "1 mot « bienvenue à votre chien »",
-    ],
+    contenu: ["Sacs de ramassage", "Friandises", "1 lingette pour les pattes", "1 mot « bienvenue à votre chien »"],
+    teinte: "#F2E2AC",
+    etiquetteSac: "PACK CHIEN",
+    nomCourt: "Chien",
   },
   {
     id: "chat",
@@ -179,7 +198,10 @@ export const packs: Pack[] = [
     nom: "Pack Chat",
     prix: 7.5,
     couleur: "sauge",
-    contenu: ["1 sachet de litière", "1 sac pour bac", "friandises"],
+    contenu: ["1 sachet de litière", "1 sac pour bac", "Friandises"],
+    teinte: "#DCD3EA",
+    etiquetteSac: "PACK CHAT",
+    nomCourt: "Chat",
   },
   {
     id: "premiereVisite",
@@ -187,7 +209,10 @@ export const packs: Pack[] = [
     nom: "Pack Première visite",
     prix: 12,
     couleur: "bleu",
-    contenu: ["1 biscuit et 1 confiture d'un producteur de la région", "1 carte du quartier"],
+    contenu: ["1 biscuit d'un producteur de la région", "1 confiture d'un producteur de la région", "1 carte du quartier"],
+    teinte: "#CFDFC7",
+    etiquetteSac: "PACK 1RE VISITE",
+    nomCourt: "Première visite",
   },
   {
     id: "noel",
@@ -195,11 +220,19 @@ export const packs: Pack[] = [
     nom: "Pack Noël",
     prix: 9.5,
     couleur: "corail",
-    contenu: ["papillotes", "1 infusion de Noël", "1 petite décoration", "1 carte de vœux"],
+    contenu: ["Papillotes", "1 infusion de Noël", "1 petite décoration", "1 carte de vœux"],
+    teinte: "#F3C9B8",
+    etiquetteSac: "PACK NOËL",
+    nomCourt: "Noël",
   },
 ];
 
 export const packParDefaut: PackId = "chien";
+
+/** Prix HT d'un pack, lu dans la liste ci-dessus. */
+export function prixPack(id: PackId): number {
+  return packs.find((p) => p.id === id)!.prix;
+}
 
 export type Faq = { question: string; reponse: string };
 
@@ -476,6 +509,104 @@ export const fr = {
       "Dites-nous où l'envoyer. Vous recevez les 3 kits, envoi compris, vous regardez les produits, vous décidez ensuite. Réservé aux professionnels d'Île-de-France, un kit par société.",
   },
 
+  /** En-tête, bandeau et pied de page de la maquette V2. Les liens ne s'affichent que si la page existe (lib/routes.ts). */
+  site: {
+    bandeau: ["Livraison en Île-de-France", "Kit d'essai offert aux professionnels"],
+    bandeauLabel: "À savoir",
+    logo: "sinebox",
+    logoLabel: "SINEBOX, retour à l'accueil",
+    navLabel: "Navigation principale",
+    menu: [
+      { label: "Comment ça marche", page: "ccm" },
+      { label: "Les kits", page: "kits" },
+      { label: "Les packs", page: "packs" },
+      { label: "Tarifs", page: "tarifs" },
+      { label: "Ressources", page: "blog" },
+    ] as { label: string; page: CleePage }[],
+    appel: { label: "Réserver un appel", page: "appel" as CleePage },
+    essai: { label: "Kit d'essai offert", page: "essai" as CleePage },
+    ouvrirMenu: "Ouvrir le menu",
+    fermerMenu: "Fermer le menu",
+    pied: {
+      slogan: "Des kits d'accueil prêts pour chaque arrivée.",
+      sousSlogan: "Préparés et livrés en Île-de-France.",
+      navLabel: "Plan du site",
+      colonnes: [
+        {
+          titre: "SINEBOX",
+          liens: [
+            { label: "Comment ça marche", page: "ccm" },
+            { label: "Tarifs", page: "tarifs" },
+            { label: "Livraison Île-de-France", page: "livraison" },
+            { label: "À votre marque", page: "marque" },
+            { label: "Compatibilités", page: "compat" },
+            { label: "À propos", page: "apropos" },
+            { label: "Nous contacter", page: "contact", email: true },
+          ],
+        },
+        {
+          titre: "KITS D'ACCUEIL",
+          liens: [
+            { label: "Kit d'accueil Airbnb", page: "kits" },
+            { label: "Kit salle de bain", page: "kits" },
+            { label: "Kit cuisine", page: "kits" },
+            { label: "Kit entretien", page: "kits" },
+            { label: "Les packs", page: "packs" },
+          ],
+        },
+        {
+          titre: "POUR QUI",
+          liens: [
+            { label: "Conciergeries", page: "conciergeries" },
+            { label: "Hôtes multi-logements", page: "hotes" },
+          ],
+        },
+        {
+          titre: "RESSOURCES",
+          liens: [
+            { label: "Le journal", page: "blog" },
+            { label: "FAQ", page: "faq" },
+            { label: "À montrer à votre associé", page: "associe" },
+          ],
+        },
+      ] as { titre: string; liens: { label: string; page: CleePage; email?: boolean }[] }[],
+      copyright: "© SINEBOX",
+      legal: [
+        { label: "Mentions légales", page: "mentionsLegales" },
+        { label: "CGV", page: "cgv" },
+        { label: "Confidentialité", page: "mentionsLegales", ancre: "donnees-personnelles" },
+      ] as { label: string; page: CleePage; ancre?: string }[],
+    },
+  },
+
+  /** Accueil V2 : étiquette interactive (jour sélectionné par défaut : vendredi). */
+  etiquetteV2: {
+    groupeLabel: "Jour d'arrivée",
+    arrivee: "ARRIVÉE",
+    dansLeKit: "DANS LE KIT",
+    logo: "LOGO",
+    parDefaut: 4,
+    jours: [
+      { court: "LUN", long: "LUNDI", couleur: "#F3C9B8", date: "30/11", logement: "Studio Oberkampf", kit: "Les 3 kits" },
+      { court: "MAR", long: "MARDI", couleur: "#F2E2AC", date: "01/12", logement: "Duplex Vincennes", kit: "Les 3 kits" },
+      { court: "MER", long: "MERCREDI", couleur: "#CFDFC7", date: "02/12", logement: "T2 Montreuil", kit: "Les 3 kits + Pack Chien" },
+      { court: "JEU", long: "JEUDI", couleur: "#CDDDE8", date: "03/12", logement: "Loft Pantin", kit: "Les 3 kits" },
+      { court: "VEN", long: "VENDREDI", couleur: "#DCD3EA", date: "04/12", logement: "Studio Marais", kit: "Les 3 kits" },
+      { court: "SAM", long: "SAMEDI", couleur: "#F0C4CF", date: "05/12", logement: "Appartement Bastille", kit: "Les 3 kits + Pack Couple" },
+      { court: "DIM", long: "DIMANCHE", couleur: "#E8D5C0", date: "06/12", logement: "Maison Saint-Maur", kit: "Les 3 kits + Pack Première visite" },
+    ],
+  },
+
+  /** Accueil V2 : ticket des packs (pack sélectionné par défaut : Chien). */
+  ticketV2: {
+    titre: "TICKET · ARRIVÉE",
+    jour: "VENDREDI 04/12",
+    troisKits: "Les 3 kits",
+    prefixePack: "Pack",
+    total: "TOTAL HT",
+    groupeLabel: "Choisir un pack",
+  },
+
   /** Coordonnées réelles. */
   coordonnees: {
     /** Adresse e-mail de contact (voir EMAIL_CONTACT en haut du fichier). Pas de téléphone publié. */
@@ -545,6 +676,7 @@ export const fr = {
             "Perrine Gozzi",
             "Adresse : 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil",
             `E-mail : ${EMAIL_CONTACT}`,
+            `Téléphone : ${TELEPHONE_MENTIONS_LEGALES}`,
           ],
         },
         { t: "p", texte: "Directeur de la publication : Armand Auclair." },
