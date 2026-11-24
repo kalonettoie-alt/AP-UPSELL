@@ -20,6 +20,9 @@ export default function Merci() {
           <div>
             <h1 className={styles.titre}>{t.titre}</h1>
             <p className={styles.texte}>{t.texte}</p>
+            <p className={styles.texte}>
+              {t.question} <a href={`mailto:${fr.coordonnees.email}`}>{fr.coordonnees.email}</a>.
+            </p>
             <ul className={contenu.liensSimples}>
               {t.liens.map((l) => (
                 <li key={l.href}>

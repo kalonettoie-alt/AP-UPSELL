@@ -20,12 +20,6 @@ export default function Contact() {
           <h2 id="coordonnees">{k.titre}</h2>
           <dl className={c.coordonnees}>
             <div>
-              <dt>{k.telephone}</dt>
-              <dd>
-                <a href={`tel:${co.telephoneLien}`}>{co.telephone}</a>
-              </dd>
-            </div>
-            <div>
               <dt>{k.email}</dt>
               <dd>
                 <a href={`mailto:${co.email}`}>{co.email}</a>

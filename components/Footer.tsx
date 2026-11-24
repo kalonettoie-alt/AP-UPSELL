@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import fr from "@/content/fr";
 import styles from "./Footer.module.css";
 
@@ -14,20 +15,18 @@ export default function Footer() {
                 <p className={styles.titre}>{col.titre}</p>
                 <ul className={styles.liens}>
                   {col.liens.map((l) => (
-                    <li key={l.href}>
-                      <a href={l.href}>{l.label}</a>
-                    </li>
+                    <Fragment key={l.href}>
+                      <li>
+                        <a href={l.href}>{l.label}</a>
+                      </li>
+                      {/* Adresse e-mail juste sous le lien de contact. */}
+                      {col.avecCoordonnees && l.href === "/contact/" ? (
+                        <li>
+                          <a href={`mailto:${c.email}`}>{c.email}</a>
+                        </li>
+                      ) : null}
+                    </Fragment>
                   ))}
-                  {col.avecCoordonnees ? (
-                    <>
-                      <li>
-                        <a href={`mailto:${c.email}`}>{c.email}</a>
-                      </li>
-                      <li>
-                        <a href={`tel:${c.telephoneLien}`}>{c.telephone}</a>
-                      </li>
-                    </>
-                  ) : null}
                 </ul>
               </div>
             ))}

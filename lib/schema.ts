@@ -11,7 +11,6 @@ export function schemaOrganisation() {
     url: urlAbsolue("/"),
     logo: urlAbsolue("/apple-icon.png"),
     email: fr.coordonnees.email,
-    telephone: fr.coordonnees.telephoneLien,
     areaServed: { "@type": "AdministrativeArea", name: fr.coordonnees.zone },
   };
 }

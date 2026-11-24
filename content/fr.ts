@@ -7,6 +7,12 @@
  * Typographie : une espace insécable (U+00A0) précède « : ? ! ; » et suit « « ».
  */
 
+/**
+ * Adresse e-mail de contact de SINEBOX : seule source, lue partout (pied de page, contact, mentions légales,
+ * CGV, page merci, données structurées). Ne jamais l'écrire en dur ailleurs.
+ */
+const EMAIL_CONTACT = "contact@sinebox.fr";
+
 export type Pastel =
   | "rose"
   | "bleu"
@@ -472,9 +478,8 @@ export const fr = {
 
   /** Coordonnées réelles. */
   coordonnees: {
-    email: "contact@sinebox.fr",
-    telephone: "06 25 29 93 21",
-    telephoneLien: "+33625299321",
+    /** Adresse e-mail de contact (voir EMAIL_CONTACT en haut du fichier). Pas de téléphone publié. */
+    email: EMAIL_CONTACT,
     zone: "Île-de-France",
     horaires: "[horaires]",
   },
@@ -539,8 +544,7 @@ export const fr = {
             "Armand Auclair",
             "Perrine Gozzi",
             "Adresse : 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil",
-            "E-mail : contact@sinebox.fr",
-            "Téléphone : [numéro dédié]",
+            `E-mail : ${EMAIL_CONTACT}`,
           ],
         },
         { t: "p", texte: "Directeur de la publication : Armand Auclair." },
@@ -571,7 +575,7 @@ export const fr = {
           t: "p",
           lead: "Responsables du traitement :",
           texte:
-            "Armand Auclair et Perrine Gozzi, fondateurs de SINEBOX (société en cours de création), joignables à contact@sinebox.fr. La société SINEBOX deviendra responsable du traitement dès son immatriculation.",
+            `Armand Auclair et Perrine Gozzi, fondateurs de SINEBOX (société en cours de création), joignables à ${EMAIL_CONTACT}. La société SINEBOX deviendra responsable du traitement dès son immatriculation.`,
         },
         {
           t: "p",
@@ -601,7 +605,7 @@ export const fr = {
           t: "p",
           lead: "Vos droits :",
           texte:
-            "vous pouvez accéder à vos données, les faire corriger ou supprimer, vous opposer à leur utilisation ou en limiter l'usage, en écrivant à contact@sinebox.fr. Vous pouvez aussi déposer une réclamation auprès de la CNIL ([www.cnil.fr](https://www.cnil.fr)).",
+            `vous pouvez accéder à vos données, les faire corriger ou supprimer, vous opposer à leur utilisation ou en limiter l'usage, en écrivant à ${EMAIL_CONTACT}. Vous pouvez aussi déposer une réclamation auprès de la CNIL ([www.cnil.fr](https://www.cnil.fr)).`,
         },
         { t: "h2", texte: "Cookies" },
         {
@@ -714,7 +718,7 @@ export const fr = {
         {
           t: "p",
           texte:
-            "Le client vérifie le colis à sa réception. Un produit manquant, abîmé ou non conforme doit nous être signalé par e-mail à contact@sinebox.fr dans les [48 heures], avec une photo. Nous remplaçons alors le produit dans le colis suivant, ou nous ne le facturons pas.",
+            `Le client vérifie le colis à sa réception. Un produit manquant, abîmé ou non conforme doit nous être signalé par e-mail à ${EMAIL_CONTACT} dans les [48 heures], avec une photo. Nous remplaçons alors le produit dans le colis suivant, ou nous ne le facturons pas.`,
         },
         { t: "h2", texte: "9. Produits et responsabilité" },
         {
@@ -838,7 +842,7 @@ export const fr = {
     },
     tarifs: { titre: "Tous nos prix", texte: "Kits, packs, frais d'envoi et calculateur de coût mensuel.", href: "/tarifs/" },
     kitEssai: { titre: "Le kit d'essai offert", texte: "Recevez les 3 kits pour juger sur pièce.", href: "/kit-essai/" },
-    contact: { titre: "Nous contacter", texte: "Téléphone, e-mail et formulaire.", href: "/contact/" },
+    contact: { titre: "Nous contacter", texte: "E-mail et formulaire.", href: "/contact/" },
     aPropos: { titre: "Qui sommes-nous", texte: "L'équipe et la préparation des kits.", href: "/a-propos/" },
   },
 
@@ -856,6 +860,8 @@ export const fr = {
       titreGoogle: "Merci | SINEBOX",
       titre: "C'est noté.",
       texte: "Nous vous écrivons sous 24 h ouvrées pour confirmer l'adresse d'envoi.",
+      /** Suivi de l'adresse e-mail de contact, en lien. */
+      question: "Une question d'ici là ? Écrivez à",
       liens: [
         { label: "Voir tous nos prix", href: "/tarifs/" },
         { label: "Retour à l'accueil", href: "/" },
@@ -1024,11 +1030,10 @@ export const fr = {
       fil: "Contact",
       titreGoogle: "Contact | SINEBOX",
       description:
-        "Contactez SINEBOX par téléphone au 06 25 29 93 21, par e-mail à contact@sinebox.fr ou par le formulaire. Kits d'accueil livrés en Île-de-France.",
+        `Contactez SINEBOX par e-mail à ${EMAIL_CONTACT} ou par le formulaire. Kits d'accueil livrés en Île-de-France.`,
       titre: "Nous contacter",
       coordonnees: {
         titre: "Nos coordonnées",
-        telephone: "Téléphone",
         email: "E-mail",
         horaires: "Horaires",
         zone: "Zone livrée",
