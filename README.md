@@ -66,7 +66,7 @@ Copier `.env.example` en `.env.local` (ce fichier n'est jamais envoyé sur GitHu
 
 | Variable | Contenu |
 | --- | --- |
-| `NEXT_PUBLIC_FORMSPREE_ESSAI` | Identifiant du formulaire Formspree « Kit d'essai » (la fin de `https://formspree.io/f/xxxxxxx`). Sert aussi au formulaire de la page Contact. |
+| `NEXT_PUBLIC_FORMSPREE_ESSAI` | Identifiant du formulaire Formspree « Kit d'essai » (la fin de `https://formspree.io/f/xxxxxxx`). Sert aussi aux formulaires « Réserver un appel » et « Maquette à mon logo ». |
 | `NEXT_PUBLIC_FORMSPREE_ATTENTE` | Identifiant du formulaire Formspree « Liste d'attente hors Île-de-France ». |
 | `NEXT_PUBLIC_SITE_URL` | Nom de domaine du site, sans barre finale, par ex. `https://www.sinebox.fr`. **Tant qu'elle est vide, le site est fermé à Google.** |
 
@@ -130,5 +130,5 @@ Le fichier `vercel.json` les sert avec le bon type (`image/png`).
 
 ## Reste à fournir
 
-Horaires (page Contact), prénoms et photo de l'équipe, lieu de préparation et origine des produits (page À propos),
-photos réelles des kits, et les éléments entre crochets des mentions légales et des CGV.
+Voir « Informations à fournir » plus haut, ainsi que la liste 15 du fichier `.md` (photos, marques et origine des produits,
+histoire et rôles des fondateurs, TVA, politique de confidentialité, auteur et date des articles).
