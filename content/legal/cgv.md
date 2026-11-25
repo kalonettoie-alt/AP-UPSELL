@@ -6,7 +6,7 @@
 
 Le service SINEBOX est proposé par **SINEBOX, société en cours de création**, représentée par Armand Auclair et Perrine Gozzi, dont l'adresse provisoire est 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil.
 
-Contact : contact@sinebox.fr
+Contact : support@sinebox.fr
 
 Les engagements pris au nom de SINEBOX avant son immatriculation au registre du commerce et des sociétés seront repris par la société une fois immatriculée, conformément à l'article L. 210-6 du Code de commerce. Le numéro d'immatriculation sera ajouté à ces conditions dès son obtention.
 
@@ -56,7 +56,7 @@ Une semaine sans Arrivée ne donne lieu à aucun Colis ni aucune facturation.
 
 ### 5.3 Modifications et Packs
 
-Le Client peut ajouter un Pack, modifier un Logement, sa capacité ou le lieu de livraison, en écrivant à contact@sinebox.fr **au plus tard le vendredi à 12 h** pour le Colis du dimanche suivant. Une demande reçue après ce délai s'applique au Colis de la semaine d'après.
+Le Client peut ajouter un Pack, modifier un Logement, sa capacité ou le lieu de livraison, en écrivant à support@sinebox.fr **au plus tard le vendredi à 12 h** pour le Colis du dimanche suivant. Une demande reçue après ce délai s'applique au Colis de la semaine d'après.
 
 L'ajout automatique des Packs selon la réservation n'est pas encore disponible.
 
@@ -129,7 +129,7 @@ SINEBOX peut modifier ses prix. Les nouveaux prix sont communiqués au Client pa
 
 ## Article 10 — Durée et arrêt du service
 
-Le service est sans engagement de durée. Le Client peut l'arrêter à tout moment en écrivant à contact@sinebox.fr **au plus tard le vendredi à 12 h** : le Colis suivant ne part pas. Les Jeux déjà livrés, les Packs et les Kits d'avance utilisés restent dus.
+Le service est sans engagement de durée. Le Client peut l'arrêter à tout moment en écrivant à support@sinebox.fr **au plus tard le vendredi à 12 h** : le Colis suivant ne part pas. Les Jeux déjà livrés, les Packs et les Kits d'avance utilisés restent dus.
 
 SINEBOX peut mettre fin au service en prévenant le Client par e-mail au moins 30 jours à l'avance, ou sans délai en cas de manquement grave du Client, notamment un défaut de paiement.
 
@@ -149,7 +149,7 @@ Le Client autorise SINEBOX à reproduire ces éléments uniquement pour la fabri
 
 ## Article 13 — Réclamations
 
-Toute réclamation sur un Colis (produit manquant, abîmé, erreur d'étiquette) doit être adressée à contact@sinebox.fr **dans les 48 heures suivant la livraison**, avec une photo si possible. Si la réclamation est fondée, SINEBOX remplace les produits concernés lors du Colis suivant ou établit un avoir.
+Toute réclamation sur un Colis (produit manquant, abîmé, erreur d'étiquette) doit être adressée à support@sinebox.fr **dans les 48 heures suivant la livraison**, avec une photo si possible. Si la réclamation est fondée, SINEBOX remplace les produits concernés lors du Colis suivant ou établit un avoir.
 
 ## Article 14 — Responsabilité
 

@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
-const LIEN = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|([\w.+-]+@[\w-]+\.[\w.]+[a-z])/g;
+const LIEN = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)|([\w.+-]+@[\w-]+\.[\w.]+[a-z])/g;
 
 /**
  * Affiche un texte de content/fr.ts en transformant :
- * - les liens écrits [libellé](https://…) en liens externes ;
+ * - les liens écrits [libellé](https://…) en liens externes, [libellé](/page/) en liens internes ;
  * - les adresses e-mail en liens mailto.
  * Les crochets sans lien ([à fournir], [30]…) restent tels quels.
  */
@@ -16,7 +16,7 @@ export function TexteRiche({ texte }: { texte: string }) {
     if (debut > dernier) morceaux.push(texte.slice(dernier, debut));
     if (m[1] && m[2]) {
       morceaux.push(
-        <a key={debut} href={m[2]} target="_blank" rel="noopener">
+        <a key={debut} href={m[2]} {...(m[2].startsWith("/") ? {} : { target: "_blank", rel: "noopener" })}>
           {m[1]}
         </a>,
       );

@@ -40,8 +40,7 @@ Le registre `lib/routes.ts` liste toutes les pages : un lien n'apparaît que si 
 
 Les valeurs encore inconnues sont dans `content/fr.ts` (objet `aFournir`) et s'affichent entre crochets :
 délai d'envoi du kit d'essai, délai de mise en place, jour et heure limite, créneau de livraison,
-départements livrés, délai de paiement, délai maquette. Les articles ont une date `[date de publication]`
-(en tête de chaque fichier de `content/blog/`). Aucune page ne doit être mise en ligne avec un crochet visible.
+départements livrés, délai de paiement, délai maquette. Aucune page ne doit être mise en ligne avec un crochet visible.
 
 ## Lancer le site en local
 
@@ -126,6 +125,7 @@ Le fichier `vercel.json` les sert avec le bon type (`image/png`).
 
 ## Organisation
 
+- Relances en fin de section (phrase + bouton + lien discret) : textes dans `fr.relances` (`content/fr.ts`), composant `components/v2/Relance.tsx`.
 - `content/fr.ts` : tous les textes, les prix, les coordonnées, les mentions légales et les CGV.
 - `components/` : un composant par bloc de l'accueil, le modèle des pages intérieures (`PageModele`), l'en-tête, le pied de page, les formulaires, le calculateur.
 - `lib/` : prix (`prix.ts`), estimation mensuelle (`calcul.ts`), Formspree (`formspree.ts`), adresse du site et indexation (`site.ts`), métadonnées (`meta.ts`), données structurées (`schema.ts`), images de partage (`og.tsx`).

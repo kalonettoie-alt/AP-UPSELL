@@ -10,7 +10,7 @@
  * Adresse e-mail de contact de SINEBOX : seule source, lue partout (pied de page, contact, mentions légales,
  * CGV, page merci, données structurées). Ne jamais l'écrire en dur ailleurs.
  */
-const EMAIL_CONTACT = "contact@sinebox.fr";
+const EMAIL_CONTACT = "support@sinebox.fr";
 
 /**
  * Téléphone de SINEBOX : publié uniquement dans les mentions légales (rubrique de l'éditeur).
@@ -46,7 +46,7 @@ export const aFournir = {
   creneauLivraison: "[créneau de livraison]",
   departementsLivres: "[départements livrés]",
   delaiPaiement: "15 jours",
-  delaiMaquette: "[délai maquette]",
+  delaiMaquette: "72 heures ouvrées",
 };
 
 /** Délais affichés sur le site. */
@@ -321,6 +321,25 @@ export const fr = {
   },
 
   /** Accueil V2 : étiquette interactive (jour sélectionné par défaut : vendredi). */
+  /**
+   * Relances discrètes en fin de section (components/v2/Relance.tsx).
+   * texte : [début, fin en italique] ; lien : page du site (lib/routes.ts) ; second : lien secondaire, plus discret.
+   */
+  relances: {
+    essayer: { texte: ["Le plus simple, c'est d'essayer. ", "Les 3 kits sont offerts."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
+    calculer: { texte: ["Combien pour vos logements ? ", "Faites le calcul."], lien: { page: "tarifs", ancre: "calculateur", label: "Estimer mon coût" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    question: { texte: ["Une autre question ? ", "Parlons-en."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    etiquette: { texte: ["L'étiquette se juge ", "en main."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
+    produits: { texte: ["Touchez les produits ", "avant de décider."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "tarifs", label: "ou voir les tarifs" } },
+    maquette: { texte: ["Votre logo, ", "sur une maquette gratuite."], lien: { page: "marque", ancre: "maquette", label: "Demander ma maquette" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    pack: { texte: ["Un pack vous tente ? ", "Parlons de vos voyageurs."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    outil: { texte: ["Un doute sur votre outil ? ", "Posez-nous la question."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    parler: { texte: ["Le mieux, c'est ", "de se parler."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    associe: { texte: ["Votre associé préfère nous parler ", "directement ?"], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    livraison: { texte: ["Vous êtes en Île-de-France ? ", "Le kit d'essai part chez vous."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
+    facture: { texte: ["Une question sur la facturation ? ", "On vous répond."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
+    journal: { texte: ["Envie de voir le kit ", "en vrai ?"], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
+  },
   etiquetteV2: {
     groupeLabel: "Jour d'arrivée",
     arrivee: "ARRIVÉE",
@@ -452,39 +471,7 @@ export const fr = {
         { t: "h2", texte: "Données personnelles" },
         {
           t: "p",
-          lead: "Responsables du traitement :",
-          texte:
-            `Armand Auclair et Perrine Gozzi, fondateurs de SINEBOX (société en cours de création), joignables à ${EMAIL_CONTACT}. La société SINEBOX deviendra responsable du traitement dès son immatriculation.`,
-        },
-        {
-          t: "p",
-          lead: "Données collectées :",
-          texte:
-            "par les formulaires du site (kit d'essai, liste d'attente, contact) : nom, société, nombre de logements, ville, adresse e-mail, téléphone (facultatif), origine de la visite, message.",
-        },
-        {
-          t: "p",
-          lead: "Pourquoi :",
-          texte:
-            "répondre à votre demande, vous envoyer un kit d'essai, vous prévenir de l'ouverture de la livraison dans votre zone, et vous proposer nos services. La base légale est votre demande (mesures précontractuelles) et notre intérêt légitime à prospecter des professionnels.",
-        },
-        {
-          t: "p",
-          lead: "Durée de conservation :",
-          texte:
-            "3 ans après notre dernier échange, sauf si vous devenez client (durée du contrat, puis durées légales de conservation des documents comptables).",
-        },
-        {
-          t: "p",
-          lead: "Destinataires :",
-          texte:
-            "l'équipe de SINEBOX uniquement. Les formulaires sont transmis par notre prestataire Formspree (États-Unis), et le site est hébergé par Vercel (États-Unis).",
-        },
-        {
-          t: "p",
-          lead: "Vos droits :",
-          texte:
-            `vous pouvez accéder à vos données, les faire corriger ou supprimer, vous opposer à leur utilisation ou en limiter l'usage, en écrivant à ${EMAIL_CONTACT}. Vous pouvez aussi déposer une réclamation auprès de la CNIL ([www.cnil.fr](https://www.cnil.fr)).`,
+          texte: "Pour savoir comment nous utilisons vos données, consultez notre [politique de confidentialité](/confidentialite/).",
         },
         { t: "h2", texte: "Cookies" },
         {

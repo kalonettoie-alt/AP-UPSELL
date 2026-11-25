@@ -126,7 +126,7 @@ def text_jsx(t):
             log.append(f"PRIX non relié: {val} € dans «{t.strip()[:60]}»")
     pieces.append(json.dumps(t[last:]))
     t2 = "{" + " + ".join(p for p in pieces if p != '""') + "}"
-    t2 = t2.replace("contact@sinebox.fr", '" + fr.coordonnees.email + "')
+    t2 = t2.replace("support@sinebox.fr", '" + fr.coordonnees.email + "')
     t2 = t2.replace("24\u00a0h", '" + delais.reponse + "')
     t2 = re.sub(r"1 bougie(?! LED)", "1 bougie LED", t2)
     return t2

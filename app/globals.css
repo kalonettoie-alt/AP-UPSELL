@@ -545,3 +545,48 @@ details[open] .pl {
 main {
   overflow-x: clip;
 }
+
+/* Relance discrète en fin de section (components/v2/Relance.tsx) */
+.relance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(35, 26, 19, 0.14);
+}
+
+.relance-texte {
+  margin: 0;
+  font-family: var(--f-serif);
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.relance-liens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+}
+
+.relance-second {
+  font-size: 15px;
+  color: #6b5b4a;
+}
+
+.relance-sombre {
+  border-top-color: rgba(246, 238, 226, 0.2);
+}
+
+.relance-sombre .relance-second {
+  color: #e8dccb;
+}
+
+@media (max-width: 760px) {
+  .relance-texte {
+    font-size: 24px;
+  }
+}

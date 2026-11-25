@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 import JsonLd from "@/components/JsonLd";
 import LienPage from "@/components/LienPage";
 import { dateIso, lireArticle, rubriqueDe, typo, type CleArticle } from "@/lib/blog";
@@ -9,6 +9,7 @@ import AppelFinalArticle from "./AppelFinalArticle";
 import CarteArticle from "./CarteArticle";
 import { HEROS } from "./HerosArticles";
 import TexteMarkdown from "./TexteMarkdown";
+import Relance from "./Relance";
 
 const sH2: CSSProperties = {
   fontFamily: "var(--f-serif)",
@@ -35,6 +36,9 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
   const aLire = m.aLireAussi.split(",").map((x) => x.trim() as CleArticle);
   let premier = true;
 
+  /** Relance au milieu de l'article, juste avant le titre de partie central. */
+  const titres = a.blocs.flatMap((b, i) => (b.t === "h2" ? [i] : []));
+  const milieu = titres.length >= 3 ? titres[Math.floor(titres.length / 2)] : -1;
   return (
     <>
       <header
@@ -80,9 +84,16 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
             switch (b.t) {
               case "h2":
                 return (
-                  <h2 key={i} id={b.id} style={sH2} className="m-fs44">
-                    {b.texte}
-                  </h2>
+                  <Fragment key={i}>
+                    {i === milieu ? (
+                      <div style={{ margin: "26px 0 6px" }}>
+                        <Relance id="journal" />
+                      </div>
+                    ) : null}
+                    <h2 id={b.id} style={sH2} className="m-fs44">
+                      {b.texte}
+                    </h2>
+                  </Fragment>
                 );
               case "h3":
                 return (

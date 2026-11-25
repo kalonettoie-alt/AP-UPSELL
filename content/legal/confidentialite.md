@@ -6,7 +6,7 @@
 
 SINEBOX, société en cours de création, représentée par Armand Auclair et Perrine Gozzi, adresse provisoire : 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil.
 
-Contact pour toute question sur vos données : contact@sinebox.fr
+Contact pour toute question sur vos données : support@sinebox.fr
 
 ## Les données que nous collectons
 
@@ -41,7 +41,7 @@ Le site sinebox.fr ne dépose aucun cookie publicitaire ni de mesure d'audience.
 
 ## Vos droits
 
-Vous pouvez demander à accéder à vos données, les rectifier, les effacer, en limiter l'usage, vous opposer à leur traitement ou les récupérer, en écrivant à contact@sinebox.fr. Nous répondons dans un délai d'un mois.
+Vous pouvez demander à accéder à vos données, les rectifier, les effacer, en limiter l'usage, vous opposer à leur traitement ou les récupérer, en écrivant à support@sinebox.fr. Nous répondons dans un délai d'un mois.
 
 Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL (www.cnil.fr).
 
