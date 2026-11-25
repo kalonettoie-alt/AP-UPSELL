@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: fr.seo.titre,
   description: fr.seo.description,
-  // Fermé aux moteurs de recherche tant que NEXT_PUBLIC_SITE_URL n'est pas définie (voir lib/site.ts).
+  // Ouvert aux moteurs de recherche (voir lib/site.ts) ; /merci/ reste en noindex.
   robots: robotsPage(),
 };
 

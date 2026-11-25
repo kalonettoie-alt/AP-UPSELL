@@ -30,7 +30,7 @@ Textes visibles, mise en page et style : maquette SINEBOX V2.
 | `/blog/` | Le journal |
 | `/blog/accueil-des-voyageurs/`, `/blog/organisation-conciergerie/` | Rubriques |
 | `/blog/<rubrique>/<article>/` | 3 articles (Markdown dans `content/blog/`) |
-| `/mentions-legales/`, `/cgv/` | Pages légales (noindex, hors sitemap) ; texte des CGV dans `content/legal/cgv.md` |
+| `/mentions-legales/`, `/cgv/` | Pages légales ; texte des CGV dans `content/legal/cgv.md` |
 | `/confidentialite/` | Politique de confidentialité (`content/legal/confidentialite.md`), dans le sitemap |
 
 L'ancienne adresse `/contact/` redirige vers `/appel/` (`vercel.json`).
@@ -60,27 +60,17 @@ npm run build
 npm start
 ```
 
-## Variables d'environnement
+## Ouverture à Google
 
-Copier `.env.example` en `.env.local` (ce fichier n'est jamais envoyé sur GitHub) pour travailler en local.
+Le site est ouvert aux moteurs de recherche depuis le lancement (`INDEXABLE = true` dans `lib/site.ts`) :
 
-| Variable | Contenu |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Nom de domaine du site, sans barre finale, par ex. `https://www.sinebox.fr`. **Tant qu'elle est vide, le site est fermé à Google.** |
+- balise robots `index, follow` sur toutes les pages, sauf `/merci/` (`noindex`) ;
+- `robots.txt` : `Allow: /` et `Sitemap: https://www.sinebox.fr/sitemap.xml` ;
+- `sitemap.xml` : toutes les pages publiques du registre `lib/routes.ts`, sauf `/merci/` ;
+- adresses canoniques, sitemap et images de partage sur `https://www.sinebox.fr`.
 
-Les valeurs sont intégrées au moment du build : après chaque changement, relancer le build (ou redéployer sur Vercel).
-
-### Ce que change `NEXT_PUBLIC_SITE_URL`
-
-| | Vide | Définie |
-| --- | --- | --- |
-| Balise robots | `noindex, nofollow` partout | `index, follow` (sauf merci, mentions légales, CGV) |
-| `robots.txt` | `Disallow: /` | `Allow: /` + lien vers le sitemap |
-| `sitemap.xml` | vide | 6 pages |
-| URL canonique | absente | sur chaque page |
-| Adresses de partage (og:url, image) | adresse de production fournie par Vercel | le domaine |
-
-Hors Vercel, en local uniquement, l'adresse de repli est `http://localhost:3000`.
+Pour refermer le site : passer `INDEXABLE` à `false` dans `lib/site.ts`, puis redéployer.
+Aucune variable d'environnement n'est nécessaire.
 
 ## Formulaires (Formspree)
 
@@ -107,16 +97,13 @@ Le champ caché `_gotcha` sert d'anti-spam : Formspree ignore les envois où il 
 
 1. Sur vercel.com : **Add New → Project**, importer le dépôt GitHub.
 2. Framework : **Next.js** (détecté automatiquement). Ne rien changer aux commandes de build.
-3. Dans **Settings → Environment Variables**, ajouter :
-   - `NEXT_PUBLIC_SITE_URL` pour **Production** seulement, **et seulement le jour du lancement** (les versions Preview restent ainsi fermées à Google).
-4. Lancer le déploiement. Après toute modification d'une variable : **Deployments → Redeploy**.
+3. Lancer le déploiement.
 
 ### Le jour du lancement
 
 1. **Settings → Domains** : ajouter le domaine (par ex. `www.sinebox.fr`).
 2. Toujours dans **Domains**, sur la ligne de l'adresse `….vercel.app` de production : **Edit → Redirect to** le domaine, en redirection permanente (308).
    Le site étant un export statique, cette redirection se règle dans Vercel et non dans le code.
-3. Renseigner `NEXT_PUBLIC_SITE_URL` (Production) avec le domaine, puis **Redeploy**.
 
 ### Images de partage
 

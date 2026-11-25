@@ -5,7 +5,7 @@ import { SITE_CANONIQUE } from "@/lib/site";
 export const dynamic = "force-static";
 
 /** Pages jamais indexées : hors du sitemap. */
-const EXCLUES = new Set(["merci", "mentionsLegales", "cgv"]);
+const EXCLUES = new Set(["merci"]);
 
 /** Sitemap : toutes les pages existantes du registre (lib/routes.ts), sur https://www.sinebox.fr. */
 export default function sitemap(): MetadataRoute.Sitemap {
