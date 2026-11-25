@@ -22,3 +22,9 @@ export function formatPrixHT(montant: number): string {
 export function additionner(...montants: number[]): number {
   return montants.reduce((total, m) => total + Math.round(m * 100), 0) / 100;
 }
+
+/** Prix toujours avec deux décimales : 9 → « 9,00 € » (écriture des textes juridiques fournis). */
+export function formatPrixDecimales(montant: number): string {
+  if (montant === 0) return formatPrix(0);
+  return `${montant.toFixed(2).replace(".", ",")} €`;
+}

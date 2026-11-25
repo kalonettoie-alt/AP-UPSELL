@@ -30,7 +30,8 @@ export type CleePage =
   | "articleListe"
   | "articleVendrePack"
   | "mentionsLegales"
-  | "cgv";
+  | "cgv"
+  | "confidentialite";
 
 export type Page = { url: string; existe: boolean; nom: string };
 
@@ -80,6 +81,7 @@ export const PAGES: Record<CleePage, Page> = {
   },
   mentionsLegales: { url: "/mentions-legales/", existe: true, nom: "Mentions légales" },
   cgv: { url: "/cgv/", existe: true, nom: "Conditions générales de vente" },
+  confidentialite: { url: "/confidentialite/", existe: true, nom: "Politique de confidentialité" },
 };
 
 export function urlPage(cle: CleePage): string | null {

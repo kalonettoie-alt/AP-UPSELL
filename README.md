@@ -30,7 +30,8 @@ Textes visibles, mise en page et style : maquette SINEBOX V2.
 | `/blog/` | Le journal |
 | `/blog/accueil-des-voyageurs/`, `/blog/organisation-conciergerie/` | Rubriques |
 | `/blog/<rubrique>/<article>/` | 3 articles (Markdown dans `content/blog/`) |
-| `/mentions-legales/`, `/cgv/` | Pages légales (noindex, hors sitemap) |
+| `/mentions-legales/`, `/cgv/` | Pages légales (noindex, hors sitemap) ; texte des CGV dans `content/legal/cgv.md` |
+| `/confidentialite/` | Politique de confidentialité (`content/legal/confidentialite.md`), dans le sitemap |
 
 L'ancienne adresse `/contact/` redirige vers `/appel/` (`vercel.json`).
 Le registre `lib/routes.ts` liste toutes les pages : un lien n'apparaît que si sa page existe.

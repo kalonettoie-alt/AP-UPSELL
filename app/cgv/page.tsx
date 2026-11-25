@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import fr from "@/content/fr";
-import PageLegale from "@/components/PageLegale";
+import PageTexteLegal from "@/components/v2/PageTexteLegal";
 import { metaPage } from "@/lib/meta";
 
 const t = fr.pagesLegales.cgv;
-const chemin = "/cgv/";
 
-export const metadata: Metadata = metaPage({ titre: t.titreGoogle, description: t.description, chemin, jamaisIndexee: true });
+// Jamais indexée, et hors du sitemap.
+export const metadata: Metadata = metaPage({ titre: t.titreGoogle, description: t.description, chemin: "/cgv/", jamaisIndexee: true });
 
 export default function Cgv() {
-  return <PageLegale titre={t.titre} page="cgv" blocs={t.blocs} sommaire={t.sommaire} />;
+  return <PageTexteLegal fichier="cgv" page="cgv" sommaire={t.sommaire} />;
 }

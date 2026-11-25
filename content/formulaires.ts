@@ -6,7 +6,7 @@
 import type { Champ } from "@/components/v2/FormulaireV2";
 import fr from "./fr";
 
-const lienConfidentialite = { label: "Politique de confidentialité", href: "/mentions-legales/#donnees-personnelles" };
+const lienConfidentialite = { label: "Politique de confidentialité", href: "/confidentialite/" };
 const consentement: Champ = {
   nom: "consentement",
   type: "consentement",

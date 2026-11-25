@@ -21,16 +21,15 @@ export const TELEPHONE_MENTIONS_LEGALES = "06 25 29 93 21";
 /**
  * Formspree : une seule adresse pour tous les formulaires (un sujet différent par formulaire).
  * Mettre ici l'identifiant donné par Formspree, la fin de https://formspree.io/f/XXXXXXXX.
- * Tant qu'il est vide, les formulaires affichent « L'envoi n'a pas marché. Réessayez dans un instant. ».
  */
-export const FORMSPREE_ID = "";
+export const FORMSPREE_ID = "meagvdbr";
 export const FORMSPREE_URL = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : "";
 
 /**
  * Lien Calendly de la page /appel/ (bouton « Choisir un créneau », ouvert dans un nouvel onglet,
- * sans intégration dans la page : aucun cookie Calendly sur le site). Tant qu'il est vide, le bouton n'apparaît pas.
+ * sans intégration dans la page : aucun cookie Calendly sur le site).
  */
-export const CALENDLY_URL = "";
+export const CALENDLY_URL = "https://calendly.com/sinebox-support/new-meeting";
 
 /** Date de lancement du site, affichée comme date de publication des 3 premiers articles. */
 export const DATE_LANCEMENT = "25/11/2026";
@@ -316,7 +315,7 @@ export const fr = {
       legal: [
         { label: "Mentions légales", page: "mentionsLegales" },
         { label: "CGV", page: "cgv" },
-        { label: "Confidentialité", page: "mentionsLegales", ancre: "donnees-personnelles" },
+        { label: "Confidentialité", page: "confidentialite" },
       ] as { label: string; page: CleePage; ancre?: string }[],
     },
   },
@@ -495,161 +494,16 @@ export const fr = {
         },
       ] as BlocLegal[],
     },
+    /** Texte : content/legal/cgv.md (fichier du 25/11/2026). */
     cgv: {
-      titre: "Conditions générales de vente",
       titreGoogle: "Conditions générales de vente | SINEBOX",
       description: "Conditions générales de vente de SINEBOX : commande, prix, livraison, facturation, réclamations et arrêt du service.",
       sommaire: "Sommaire",
-      blocs: [
-        {
-          t: "p",
-          texte:
-            "En vigueur au [date]. Ces conditions s'appliquent à toutes les ventes de [SINEBOX] et prévalent sur tout autre document du client, sauf accord écrit contraire.",
-        },
-        { t: "h2", texte: "1. Qui peut commander" },
-        {
-          t: "p",
-          texte:
-            "Nos services sont réservés aux professionnels : conciergeries, gestionnaires de locations courte durée, hôtes agissant dans le cadre de leur activité professionnelle. Ils ne sont pas proposés aux consommateurs.",
-        },
-        { t: "h2", texte: "2. Ce que nous vendons" },
-        { t: "p", texte: "[SINEBOX] prépare et livre des kits de produits d'accueil pour locations courte durée :" },
-        {
-          t: "ul",
-          items: [
-            "Kit Salle de bain, Kit Cuisine, Kit Entretien, vendus à l'unité ou ensemble (« Les 3 kits ») ;",
-            "des packs en complément (par exemple Chien, Chat, Couple, Voyage d'affaires, Première visite, Noël).",
-          ],
-        },
-        {
-          t: "p",
-          texte:
-            "Le contenu de chaque kit et de chaque pack est décrit sur le site. Si un produit n'est plus disponible, nous pouvons le remplacer par un produit équivalent, de même usage et de qualité au moins égale, sans changement de prix.",
-        },
-        {
-          t: "p",
-          texte:
-            "Le kit sert à démarrer un séjour. Il n'y a pas de réassort pendant le séjour, sauf commande d'un pack prévu à cet effet.",
-        },
-        { t: "h2", texte: "3. Fonctionnement de la commande" },
-        {
-          t: "ol",
-          items: [
-            "Le client nous communique le lien de calendrier de chaque logement et sa capacité d'accueil.",
-            "À partir des dates d'arrivée, nous préparons chaque semaine un kit par arrivée prévue, étiqueté avec le nom du logement et la date d'arrivée.",
-            "Nombre de jeux de kits par arrivée selon la capacité du logement : jusqu'à 3 voyageurs, un jeu ; de 4 à 6 voyageurs, deux jeux ; 7 voyageurs et plus, trois jeux.",
-            "Le client peut ajouter un pack pour un logement, pour une période ou pour une réservation, au plus tard [jour et heure limite] pour la livraison suivante.",
-          ],
-        },
-        {
-          t: "p",
-          texte:
-            "Le client reste responsable de l'exactitude des informations qu'il nous transmet (calendriers, capacités, adresse de livraison).",
-        },
-        { t: "h2", texte: "4. Prix" },
-        { t: "p", texte: "Les prix sont indiqués hors taxes (HT). La TVA au taux en vigueur s'ajoute." },
-        {
-          t: "ul",
-          items: [
-            "1,50 € HT par kit, 4,50 € HT les 3 kits, par arrivée ;",
-            "prix des packs : selon la grille du site au jour de la livraison ;",
-            "frais d'envoi : 15 € HT par colis jusqu'à 12 arrivées dans la semaine, 22 € HT au-delà ;",
-            "aucuns frais d'envoi lorsque les kits sont remis à Deltom Operator pour les clients qui utilisent ce service.",
-          ],
-        },
-        {
-          t: "p",
-          texte: "Nous pouvons modifier nos prix. Le client en est informé par e-mail au moins [30] jours avant leur application.",
-        },
-        { t: "h2", texte: "5. Livraison" },
-        {
-          t: "ul",
-          items: [
-            "Zone : Île-de-France.",
-            "Un colis par semaine, livré le [dimanche], à l'adresse indiquée par le client (bureau ou logement).",
-            "Pour les clients de Deltom Operator : les kits sont remis à Deltom Operator, qui les dépose dans le logement lors du ménage.",
-            "Chaque colis contient 1 ou 2 kits d'avance pour les réservations de dernière minute.",
-          ],
-        },
-        {
-          t: "p",
-          texte:
-            "Le transfert des risques a lieu à la remise du colis au client ou à Deltom Operator. Un retard de livraison ne donne pas droit à une indemnité, sauf faute grave de notre part.",
-        },
-        { t: "h2", texte: "6. Kits d'avance et réservations annulées" },
-        {
-          t: "ul",
-          items: [
-            "Les kits d'avance ne sont facturés que s'ils sont utilisés.",
-            "Si une réservation est annulée après l'envoi du colis, le kit reste chez le client comme kit d'avance et n'est facturé que s'il est utilisé.",
-            "[Les kits d'avance non utilisés au moment de l'arrêt du service sont : restitués / facturés / laissés au client — à décider.]",
-          ],
-        },
-        { t: "h2", texte: "7. Facturation et paiement" },
-        {
-          t: "ul",
-          items: [
-            "Une facture par mois, établie au début du mois suivant, pour les kits et packs utilisés et les frais d'envoi du mois.",
-            "Paiement à [30] jours à compter de la date de la facture, par [virement / prélèvement].",
-            "En cas de retard de paiement : pénalités au taux de trois fois le taux d'intérêt légal, et indemnité forfaitaire de 40 € pour frais de recouvrement (article L441-10 du Code de commerce). Nous pouvons aussi suspendre les livraisons jusqu'au paiement.",
-          ],
-        },
-        { t: "h2", texte: "8. Réclamations" },
-        {
-          t: "p",
-          texte:
-            `Le client vérifie le colis à sa réception. Un produit manquant, abîmé ou non conforme doit nous être signalé par e-mail à ${EMAIL_CONTACT} dans les [48 heures], avec une photo. Nous remplaçons alors le produit dans le colis suivant, ou nous ne le facturons pas.`,
-        },
-        { t: "h2", texte: "9. Produits et responsabilité" },
-        {
-          t: "p",
-          texte:
-            "Les produits sont fournis dans leur emballage d'origine, avec l'étiquetage de leur fabricant (composition, précautions d'emploi, dates). [SINEBOX] n'est pas le fabricant des produits.",
-        },
-        {
-          t: "p",
-          texte:
-            "Le client informe ses voyageurs, si besoin, de la présence de produits alimentaires ou cosmétiques dans le logement. [SINEBOX] ne peut pas être tenue responsable d'une allergie ou d'une mauvaise utilisation d'un produit dont la composition figure sur l'emballage.",
-        },
-        { t: "p", texte: "Notre responsabilité est limitée au montant facturé au client sur les trois derniers mois." },
-        { t: "h2", texte: "10. Personnalisation à votre marque" },
-        {
-          t: "p",
-          texte:
-            "Le client qui demande un autocollant à son logo et une carte d'accueil à son nom nous fournit les fichiers nécessaires. Il garantit qu'il a le droit d'utiliser ce logo et ces textes. Les produits gardent leur emballage d'origine.",
-        },
-        { t: "h2", texte: "11. Kit d'essai" },
-        {
-          t: "p",
-          texte:
-            "Le kit d'essai est offert, envoi compris, aux professionnels d'Île-de-France, à raison d'un kit par société. Il ne vaut pas engagement de commander.",
-        },
-        { t: "h2", texte: "12. Durée et arrêt du service" },
-        {
-          t: "p",
-          texte:
-            "Le service est sans engagement de durée. Le client peut l'arrêter à tout moment, par e-mail, avant le [samedi midi] : le colis suivant n'est alors pas envoyé. Les kits déjà livrés et utilisés restent dus.",
-        },
-        { t: "p", texte: "Nous pouvons arrêter le service avec un préavis de [30] jours, ou sans préavis en cas de non-paiement." },
-        { t: "h2", texte: "13. Force majeure" },
-        {
-          t: "p",
-          texte:
-            "Aucune des parties n'est responsable d'un retard ou d'un manquement dû à un événement de force majeure au sens de l'article 1218 du Code civil.",
-        },
-        { t: "h2", texte: "14. Données personnelles" },
-        {
-          t: "p",
-          texte:
-            "Le traitement des données du client est décrit dans les mentions légales du site, rubrique « Données personnelles ».",
-        },
-        { t: "h2", texte: "15. Droit applicable et litiges" },
-        {
-          t: "p",
-          texte:
-            "Ces conditions sont soumises au droit français. En cas de litige, les parties cherchent d'abord une solution amiable. À défaut, le tribunal compétent est celui du ressort du siège de [SINEBOX].",
-        },
-      ] as BlocLegal[],
+    },
+    /** Texte : content/legal/confidentialite.md (fichier du 25/11/2026). */
+    confidentialite: {
+      titreGoogle: "Politique de confidentialité | SINEBOX",
+      description: "Les données que SINEBOX collecte, pourquoi, combien de temps, qui les reçoit, et comment exercer vos droits.",
     },
   },
 
