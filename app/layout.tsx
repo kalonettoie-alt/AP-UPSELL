@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import JsonLd from "@/components/JsonLd";
+import BarreEssaiMobile from "@/components/v2/BarreEssaiMobile";
 import fr from "@/content/fr";
 import { caveat, dmMono, instrumentSerif, inter } from "@/lib/fonts";
 import { schemaOrganisation } from "@/lib/schema";
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="fr" className={`${instrumentSerif.variable} ${inter.variable} ${dmMono.variable} ${caveat.variable}`}>
       <body className="sx">
         {children}
+        <BarreEssaiMobile />
         <JsonLd donnees={schemaOrganisation()} />
       </body>
     </html>

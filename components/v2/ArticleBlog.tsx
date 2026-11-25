@@ -10,6 +10,7 @@ import CarteArticle from "./CarteArticle";
 import { HEROS } from "./HerosArticles";
 import TexteMarkdown from "./TexteMarkdown";
 import Relance from "./Relance";
+import BoutonsEssaiAppel from "./BoutonsEssaiAppel";
 
 const sH2: CSSProperties = {
   fontFamily: "var(--f-serif)",
@@ -55,6 +56,7 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
         <span style={{ fontFamily: "var(--f-mono)", fontSize: "12px", letterSpacing: ".12em", color: "#7A6A58" }}>
           {m.auteur.toUpperCase()} · {m.date}
         </span>
+        <BoutonsEssaiAppel style={{ justifyContent: "center", marginTop: "4px" }} />
       </header>
       {HEROS[m.illustration]}
       <section
@@ -75,7 +77,7 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
           <div style={{ background: "#231A13", color: "#F6EEE2", borderRadius: "22px", padding: "22px", display: "flex", flexDirection: "column", gap: "12px", marginTop: "20px" }}>
             <span style={{ fontFamily: "var(--f-serif)", fontSize: "24px", lineHeight: "1.1" }}>Les 3 kits, offerts.</span>
             <LienPage page="essai" sansPage="masquer" style={{ color: "#F6EEE2", fontWeight: 600, fontSize: "14px", display: "inline-flex", alignItems: "center", minHeight: "44px" }}>
-              {"Recevoir mon kit d'essai →"}
+              {fr.boutons.essai + " →"}
             </LienPage>
           </div>
         </aside>
