@@ -56,6 +56,7 @@ export const delais = {
 };
 
 import type { CleePage } from "@/lib/routes";
+import { formatPrixHT } from "@/lib/prix";
 
 export type Pastel =
   | "rose"
@@ -240,9 +241,8 @@ export type BlocLegal =
 export const fr = {
   marque: "SINEBOX",
   seo: {
-    titre: "Kits d'accueil Airbnb pour conciergeries, livrés chaque semaine",
-    description:
-      "Conciergeries d'Île-de-France : un kit d'accueil prêt à poser par arrivée, livré chaque dimanche selon vos réservations. 4,50 € HT. Kit d'essai offert.",
+    titre: "Kits d'accueil Airbnb pour conciergeries | SINEBOX",
+    description: `Conciergeries d'Île-de-France : un kit d'accueil prêt à poser par arrivée, livré chaque dimanche selon vos réservations. ${formatPrixHT(prix.troisKits)}. Kit d'essai offert.`,
   },
 
   general: {
