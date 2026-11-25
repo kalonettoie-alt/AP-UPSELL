@@ -4,7 +4,7 @@ description: Pourquoi le stock de consommables déraille dans une conciergerie, 
 h1: Conciergerie : gérer le stock de consommables sans y passer vos dimanches
 rubrique: organisation-conciergerie
 date: DATE_LANCEMENT
-auteur: Armand Auclair · Perrine Gozzi
+auteur: SINEBOX
 motCle: gérer stock consommables conciergerie
 illustration: stock
 aLireAussi: articleListe

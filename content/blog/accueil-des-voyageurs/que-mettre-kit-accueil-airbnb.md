@@ -4,7 +4,7 @@ description: Salle de bain, cuisine, entretien : les produits à prévoir dans u
 h1: Que mettre dans un kit d'accueil Airbnb : la liste pièce par pièce
 rubrique: accueil-des-voyageurs
 date: DATE_LANCEMENT
-auteur: Armand Auclair · Perrine Gozzi
+auteur: SINEBOX
 motCle: que mettre dans un kit d'accueil Airbnb
 illustration: liste
 aLireAussi: articleNoel, articleStock

@@ -4,7 +4,7 @@ description: Que prévoir pour les voyageurs qui arrivent pendant les fêtes ? L
 h1: Noël dans une location Airbnb : les attentions qui comptent
 rubrique: accueil-des-voyageurs
 date: DATE_LANCEMENT
-auteur: Armand Auclair · Perrine Gozzi
+auteur: SINEBOX
 motCle: kit de bienvenue Airbnb Noël
 illustration: noel
 aLireAussi: articleListe

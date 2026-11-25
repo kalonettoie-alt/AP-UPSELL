@@ -141,7 +141,7 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
           inLanguage: "fr-FR",
           mainEntityOfPage: urlAbsolue(a.url),
           image: urlAbsolue(`${a.url}opengraph-image`),
-          author: m.auteur.split(" · ").map((n) => ({ "@type": "Person", name: n })),
+          author: { "@type": "Organization", name: fr.marque, url: urlAbsolue("/") },
           publisher: { "@id": `${SITE_CANONIQUE}/#organisation`, "@type": "Organization", name: fr.marque },
           ...(dateIso(m.date) ? { datePublished: dateIso(m.date) } : {}),
         }}
