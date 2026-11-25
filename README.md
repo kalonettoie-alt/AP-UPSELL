@@ -66,8 +66,6 @@ Copier `.env.example` en `.env.local` (ce fichier n'est jamais envoyé sur GitHu
 
 | Variable | Contenu |
 | --- | --- |
-| `NEXT_PUBLIC_FORMSPREE_ESSAI` | Identifiant du formulaire Formspree « Kit d'essai » (la fin de `https://formspree.io/f/xxxxxxx`). Sert aussi aux formulaires « Réserver un appel » et « Maquette à mon logo ». |
-| `NEXT_PUBLIC_FORMSPREE_ATTENTE` | Identifiant du formulaire Formspree « Liste d'attente hors Île-de-France ». |
 | `NEXT_PUBLIC_SITE_URL` | Nom de domaine du site, sans barre finale, par ex. `https://www.sinebox.fr`. **Tant qu'elle est vide, le site est fermé à Google.** |
 
 Les valeurs sont intégrées au moment du build : après chaque changement, relancer le build (ou redéployer sur Vercel).
@@ -86,6 +84,11 @@ Hors Vercel, en local uniquement, l'adresse de repli est `http://localhost:3000`
 
 ## Formulaires (Formspree)
 
+- Une seule adresse pour tous les formulaires : `FORMSPREE_ID` dans `content/fr.ts` (la fin de `https://formspree.io/f/XXXXXXXX`).
+  Chaque formulaire envoie son propre sujet (« Kit d'essai — Société », « Appel — Société », « Maquette à mon logo — Société »,
+  « Liste d'attente hors Île-de-France »).
+- Lien Calendly de la page /appel/ : `CALENDLY_URL` dans `content/fr.ts` (bouton « Choisir un créneau », nouvel onglet, sans intégration).
+
 - Chaque formulaire a `method="POST"` et `action="https://formspree.io/f/…"`.
 - **Avec JavaScript** : le site vérifie les champs, envoie, puis redirige le kit d'essai vers `/merci/`.
 - **Sans JavaScript** : le navigateur vérifie les champs obligatoires et envoie directement à Formspree, qui affiche sa propre page de remerciement. La redirection vers `/merci/` sans JavaScript demande une option payante de Formspree : elle n'est pas utilisée.
@@ -93,10 +96,10 @@ Hors Vercel, en local uniquement, l'adresse de repli est `http://localhost:3000`
 
 Champs reçus :
 - Tous les formulaires envoient aussi `source` (valeur de `utm_source` dans l'adresse), `page_origine` et `date_heure`.
-- Kit d'essai (Formspree « essai ») : nom, e-mail, téléphone, société, profil, nombre de logements, ville, logiciel, Deltom Operator, `connu_par`, adresse, code postal (Île-de-France vérifiée), ville de livraison, instructions, consentement ; sujet « Kit d'essai — {Société} » ; puis `/merci/?demande=kit-essai`.
-- Réserver un appel (Formspree « essai ») : sujet « Appel — {Société} » ; puis `/merci/?demande=appel`.
-- Maquette à mon logo (Formspree « essai ») : le logo s'envoie par e-mail (l'offre gratuite de Formspree n'accepte pas les fichiers) ; puis `/merci/?demande=maquette`.
-- Listes d'attente (Formspree « attente ») : hors Île-de-France et nouveautés ; puis `/merci/?demande=liste-attente`.
+- Kit d'essai  : nom, e-mail, téléphone, société, profil, nombre de logements, ville, logiciel, Deltom Operator, `connu_par`, adresse, code postal (Île-de-France vérifiée), ville de livraison, instructions, consentement ; sujet « Kit d'essai — {Société} » ; puis `/merci/?demande=kit-essai`.
+- Réserver un appel  : sujet « Appel — {Société} » ; puis `/merci/?demande=appel`.
+- Maquette à mon logo  : le logo s'envoie par e-mail (l'offre gratuite de Formspree n'accepte pas les fichiers) ; puis `/merci/?demande=maquette`.
+- Listes d'attente  : hors Île-de-France et nouveautés ; puis `/merci/?demande=liste-attente`.
 
 Le champ caché `_gotcha` sert d'anti-spam : Formspree ignore les envois où il est rempli.
 
@@ -105,7 +108,6 @@ Le champ caché `_gotcha` sert d'anti-spam : Formspree ignore les envois où il 
 1. Sur vercel.com : **Add New → Project**, importer le dépôt GitHub.
 2. Framework : **Next.js** (détecté automatiquement). Ne rien changer aux commandes de build.
 3. Dans **Settings → Environment Variables**, ajouter :
-   - `NEXT_PUBLIC_FORMSPREE_ESSAI` et `NEXT_PUBLIC_FORMSPREE_ATTENTE` pour **Production** et **Preview** ;
    - `NEXT_PUBLIC_SITE_URL` pour **Production** seulement, **et seulement le jour du lancement** (les versions Preview restent ainsi fermées à Google).
 4. Lancer le déploiement. Après toute modification d'une variable : **Deployments → Redeploy**.
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import fr from "@/content/fr";
-import { actionFormspree, dateHeureEnvoi, envoyerFormspree, formspreeIds, lireUtmSource } from "@/lib/formspree";
+import { actionFormspree, dateHeureEnvoi, envoyerFormspree, lireUtmSource } from "@/lib/formspree";
 import { estEmail, estVide } from "@/lib/validation";
 import { ChampsCaches } from "./FormulaireV2";
 
@@ -33,7 +33,7 @@ export default function ListeAttenteV2({ sujet, prefixe }: { sujet: string; pref
       return;
     }
     setEtat("envoi");
-    const ok = await envoyerFormspree(formspreeIds.attente, {
+    const ok = await envoyerFormspree({
       email: v.trim(),
       source: utm,
       page_origine: origine,
@@ -51,7 +51,7 @@ export default function ListeAttenteV2({ sujet, prefixe }: { sujet: string; pref
       <form
         ref={ref}
         method="POST"
-        action={actionFormspree(formspreeIds.attente)}
+        action={actionFormspree()}
         onSubmit={envoyer}
         noValidate={hydrate}
         style={{ display: "flex", borderBottom: "1.5px solid #231A13" }}

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { packs, prix, type PackId } from "@/content/fr";
+import { DATE_LANCEMENT, packs, prix, type PackId } from "@/content/fr";
 import { formatPrix } from "./prix";
 import type { CleePage } from "./routes";
 
@@ -58,6 +58,8 @@ export function lireArticle(cle: CleArticle): Article {
     const i = l.indexOf(":");
     meta[l.slice(0, i).trim()] = l.slice(i + 1).trim();
   }
+  // « DATE_LANCEMENT » dans l'en-tête : date de lancement du site (content/fr.ts).
+  if (meta.date === "DATE_LANCEMENT") meta.date = DATE_LANCEMENT;
   const blocs: Bloc[] = [];
   for (const morceau of prixDansTexte(corps).trim().split(/\n\s*\n/)) {
     const lignes = morceau.trim().split("\n");
@@ -75,4 +77,10 @@ export function lireArticle(cle: CleArticle): Article {
 export function rubriqueDe(cle: CleArticle): CleePage {
   const r = ARTICLES.find((x) => x.cle === cle)!.rubrique;
   return r === "accueil-des-voyageurs" ? "rubriqueAccueil" : "rubriqueOrganisation";
+}
+
+/** Date « 25/11/2026 » au format ISO « 2026-11-25 » (données structurées). */
+export function dateIso(d: string): string | undefined {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(d);
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : undefined;
 }

@@ -1,8 +1,7 @@
 /**
  * Tous les textes de la page de vente SINEBOX (français).
  * Source de vérité : docs/spec-page-de-vente.md.
- * Les textes entre crochets [...] sont des informations pas encore connues :
- * ils restent tels quels.
+ * Aucun texte entre crochets ne doit rester visible à la mise en ligne.
  * Les prix sont en nombres (HT) ; le format d'affichage est dans lib/prix.ts.
  * Typographie : une espace insécable (U+00A0) précède « : ? ! ; » et suit « « ».
  */
@@ -20,17 +19,34 @@ const EMAIL_CONTACT = "contact@sinebox.fr";
 export const TELEPHONE_MENTIONS_LEGALES = "06 25 29 93 21";
 
 /**
+ * Formspree : une seule adresse pour tous les formulaires (un sujet différent par formulaire).
+ * Mettre ici l'identifiant donné par Formspree, la fin de https://formspree.io/f/XXXXXXXX.
+ * Tant qu'il est vide, les formulaires affichent « L'envoi n'a pas marché. Réessayez dans un instant. ».
+ */
+export const FORMSPREE_ID = "";
+export const FORMSPREE_URL = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : "";
+
+/**
+ * Lien Calendly de la page /appel/ (bouton « Choisir un créneau », ouvert dans un nouvel onglet,
+ * sans intégration dans la page : aucun cookie Calendly sur le site). Tant qu'il est vide, le bouton n'apparaît pas.
+ */
+export const CALENDLY_URL = "";
+
+/** Date de lancement du site, affichée comme date de publication des 3 premiers articles. */
+export const DATE_LANCEMENT = "25/11/2026";
+
+/**
  * Informations pas encore fournies par les fondateurs (liste 15 du fichier .md).
  * Elles s'affichent entre crochets tant qu'elles ne sont pas remplies ici : aucune page ne doit être
  * mise en ligne avec un crochet visible.
  */
 export const aFournir = {
-  delaiKitEssai: "[délai kit d'essai]",
+  delaiKitEssai: "72 heures ouvrées",
   delaiMiseEnPlace: "[délai de mise en place]",
-  jourHeureLimite: "[jour et heure limite]",
+  jourHeureLimite: "le vendredi à 12 h",
   creneauLivraison: "[créneau de livraison]",
   departementsLivres: "[départements livrés]",
-  delaiPaiement: "[délai de paiement]",
+  delaiPaiement: "15 jours",
   delaiMaquette: "[délai maquette]",
 };
 
@@ -340,7 +356,11 @@ export const fr = {
 
   /** Page « Réserver un appel » : formulaire (pas d'outil de prise de rendez-vous). */
   appelV2: {
-    petitTitre: "VOS DISPONIBILITÉS · 15 MIN · TÉLÉPHONE OU VISIO",
+    petitTitreCreneau: "15 MIN · TÉLÉPHONE OU VISIO",
+    boutonCreneau: "Choisir un créneau",
+    nouvelOnglet: "(s'ouvre dans un nouvel onglet)",
+    titreRappel: "Vous préférez qu'on vous rappelle ?",
+    petitTitre: "VOS DISPONIBILITÉS",
     sujet: "Appel",
     bouton: "Réserver un appel",
     sousBouton: `Nous vous répondons en moins de ${delais.reponse} pour fixer l'heure exacte.`,
@@ -410,29 +430,14 @@ export const fr = {
         {
           t: "p",
           texte:
-            "Le site [www.sinebox.fr](https://www.sinebox.fr) est édité par SINEBOX, société en cours de création, représentée par ses fondateurs :",
-        },
-        {
-          t: "ul",
-          items: [
-            "Armand Auclair",
-            "Perrine Gozzi",
-            "Adresse : 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil",
-            `E-mail : ${EMAIL_CONTACT}`,
-            `Téléphone : ${TELEPHONE_MENTIONS_LEGALES}`,
-          ],
+            "Le site [www.sinebox.fr](https://www.sinebox.fr) est édité par SINEBOX, société en cours de création, représentée par Armand Auclair et Perrine Gozzi, 21 bis avenue du Maréchal de Lattre de Tassigny, 94000 Créteil. Numéro d'immatriculation : en cours d'attribution.",
         },
         { t: "p", texte: "Directeur de la publication : Armand Auclair." },
-        {
-          t: "p",
-          texte:
-            "Dès l'immatriculation de la société, cette rubrique sera complétée par : forme et capital, siège social, numéro RCS / SIREN, numéro de TVA intracommunautaire.",
-        },
+        { t: "p", texte: `Contact : ${EMAIL_CONTACT} · Téléphone : ${TELEPHONE_MENTIONS_LEGALES}.` },
         { t: "h2", texte: "Hébergeur" },
         {
           t: "p",
-          texte:
-            "Le site est hébergé par : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com [Adresse à vérifier sur le site de Vercel au moment de la mise en ligne.]",
+          texte: "Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis.",
         },
         { t: "h2", texte: "Propriété intellectuelle" },
         {
@@ -474,7 +479,7 @@ export const fr = {
           t: "p",
           lead: "Destinataires :",
           texte:
-            "l'équipe de SINEBOX uniquement. Les formulaires sont transmis par notre prestataire Formspree (États-Unis), et le site est hébergé par Vercel (États-Unis). Ces transferts hors de l'Union européenne sont encadrés par [les clauses contractuelles types de la Commission européenne / le cadre de protection des données UE–États-Unis — à vérifier pour chaque prestataire].",
+            "l'équipe de SINEBOX uniquement. Les formulaires sont transmis par notre prestataire Formspree (États-Unis), et le site est hébergé par Vercel (États-Unis).",
         },
         {
           t: "p",
@@ -486,7 +491,7 @@ export const fr = {
         {
           t: "p",
           texte:
-            "Ce site ne dépose aucun cookie et n'utilise aucun outil de suivi publicitaire. [À mettre à jour si un outil de mesure d'audience est ajouté.]",
+            "Ce site ne dépose aucun cookie et n'utilise aucun outil de suivi publicitaire.",
         },
       ] as BlocLegal[],
     },

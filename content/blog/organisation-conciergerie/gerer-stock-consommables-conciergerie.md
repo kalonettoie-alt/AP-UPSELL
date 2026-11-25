@@ -3,7 +3,7 @@ titreGoogle: Conciergerie : gérer le stock de consommables | SINEBOX
 description: Pourquoi le stock de consommables déraille dans une conciergerie, et une méthode en six étapes pour le tenir à partir de votre calendrier de réservations.
 h1: Conciergerie : gérer le stock de consommables sans y passer vos dimanches
 rubrique: organisation-conciergerie
-date: [date de publication]
+date: DATE_LANCEMENT
 auteur: Armand Auclair · Perrine Gozzi
 motCle: gérer stock consommables conciergerie
 illustration: stock

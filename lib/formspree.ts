@@ -1,22 +1,16 @@
 /**
- * Envoi des formulaires vers Formspree (sans paquet, en fetch).
- * Les identifiants viennent des variables d'environnement, intégrées au moment du build.
- * Ils doivent être lus en toutes lettres (process.env.NEXT_PUBLIC_...) pour que Next.js les remplace.
+ * Envoi des formulaires vers Formspree (sans paquet, en fetch), à une seule adresse : FORMSPREE_URL (content/fr.ts).
+ * Chaque formulaire a son propre sujet (_subject).
  *
  * Les formulaires ont method="POST" et action="https://formspree.io/f/…" : sans JavaScript, le navigateur envoie
  * directement à Formspree, qui affiche sa propre page de remerciement (la redirection vers /merci/ sans JavaScript
- * demande une option payante de Formspree). Avec JavaScript, l'envoi passe par fetch, puis le kit d'essai redirige
- * vers /merci/.
+ * demande une option payante de Formspree). Avec JavaScript, l'envoi passe par fetch, puis redirige vers /merci/.
  */
-export const formspreeIds = {
-  essai: process.env.NEXT_PUBLIC_FORMSPREE_ESSAI,
-  attente: process.env.NEXT_PUBLIC_FORMSPREE_ATTENTE,
-};
+import { FORMSPREE_URL } from "@/content/fr";
 
-/** Adresse d'envoi (attribut action du formulaire), ou undefined si l'identifiant manque. */
-export function actionFormspree(identifiant: string | undefined): string | undefined {
-  const id = identifiant?.trim();
-  return id ? `https://formspree.io/f/${encodeURIComponent(id)}` : undefined;
+/** Adresse d'envoi (attribut action du formulaire), ou undefined si l'identifiant n'est pas encore renseigné. */
+export function actionFormspree(): string | undefined {
+  return FORMSPREE_URL || undefined;
 }
 
 /** Valeur de utm_source dans l'adresse de la page (vide si absente). */
@@ -25,12 +19,9 @@ export function lireUtmSource(): string {
   return new URLSearchParams(window.location.search).get("utm_source")?.slice(0, 200) ?? "";
 }
 
-/** Renvoie true si Formspree a accepté l'envoi, false sinon (identifiant absent, erreur réseau ou serveur). */
-export async function envoyerFormspree(
-  identifiant: string | undefined,
-  donnees: Record<string, string>,
-): Promise<boolean> {
-  const action = actionFormspree(identifiant);
+/** Renvoie true si Formspree a accepté l'envoi, false sinon (adresse absente, erreur réseau ou serveur). */
+export async function envoyerFormspree(donnees: Record<string, string>): Promise<boolean> {
+  const action = actionFormspree();
   if (!action) return false;
   try {
     const reponse = await fetch(action, {

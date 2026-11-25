@@ -3,7 +3,7 @@ titreGoogle: Noël dans une location Airbnb : les attentions qui comptent
 description: Que prévoir pour les voyageurs qui arrivent pendant les fêtes ? Les attentions qui font plaisir, celles à éviter, et comment l'organiser sur vos logements.
 h1: Noël dans une location Airbnb : les attentions qui comptent
 rubrique: accueil-des-voyageurs
-date: [date de publication]
+date: DATE_LANCEMENT
 auteur: Armand Auclair · Perrine Gozzi
 motCle: kit de bienvenue Airbnb Noël
 illustration: noel

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import fr from "@/content/fr";
-import { actionFormspree, dateHeureEnvoi, envoyerFormspree, formspreeIds, lireUtmSource } from "@/lib/formspree";
+import { actionFormspree, dateHeureEnvoi, envoyerFormspree, lireUtmSource } from "@/lib/formspree";
 import { estEmail, estNombreLogements, estVide } from "@/lib/validation";
 
 /** Codes postaux livrés : Île-de-France (75, 77, 78, 91, 92, 93, 94, 95). */
@@ -160,7 +160,6 @@ export function RenduChamp({ c, prefixe, erreur }: { c: Champ; prefixe: string; 
 
 type Props = {
   prefixe: string;
-  formspree: "essai" | "attente";
   /** Sujet de l'e-mail reçu, complété par la valeur du champ `champSujet` (« Appel — Société »). */
   sujet: string;
   champSujet?: string;
@@ -176,7 +175,7 @@ type Props = {
 };
 
 /** Formulaire au style de la maquette V2 : POST Formspree, vérification, puis /merci/?demande=… */
-export default function FormulaireV2({ prefixe, formspree, sujet, champSujet, champs, bouton, demande, colonnes = 1, sousBouton, style, className }: Props) {
+export default function FormulaireV2({ prefixe, sujet, champSujet, champs, bouton, demande, colonnes = 1, sousBouton, style, className }: Props) {
   const ref = useRef<HTMLFormElement>(null);
   const [erreurs, setErreurs] = useState<Record<string, ReactNode>>({});
   const [etat, setEtat] = useState<"attente" | "envoi" | "erreur">("attente");
@@ -206,7 +205,7 @@ export default function FormulaireV2({ prefixe, formspree, sujet, champSujet, ch
     }
     const donnees = lireValeurs(f);
     setEtat("envoi");
-    const ok = await envoyerFormspree(formspreeIds[formspree], {
+    const ok = await envoyerFormspree({
       ...donnees,
       date_heure: dateHeureEnvoi(),
       _subject: champSujet && donnees[champSujet] ? `${sujet} — ${donnees[champSujet]}` : sujet,
@@ -219,7 +218,7 @@ export default function FormulaireV2({ prefixe, formspree, sujet, champSujet, ch
     <form
       ref={ref}
       method="POST"
-      action={actionFormspree(formspreeIds[formspree])}
+      action={actionFormspree()}
       onSubmit={envoyer}
       noValidate={hydrate}
       className={className}

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import JsonLd from "@/components/JsonLd";
 import LienPage from "@/components/LienPage";
-import { lireArticle, rubriqueDe, typo, type CleArticle } from "@/lib/blog";
+import { dateIso, lireArticle, rubriqueDe, typo, type CleArticle } from "@/lib/blog";
 import { PAGES } from "@/lib/routes";
 import { SITE_CANONIQUE, urlAbsolue } from "@/lib/site";
 import fr from "@/content/fr";
@@ -143,7 +143,7 @@ export default function ArticleBlog({ cle }: { cle: CleArticle }) {
           image: urlAbsolue(`${a.url}opengraph-image`),
           author: m.auteur.split(" · ").map((n) => ({ "@type": "Person", name: n })),
           publisher: { "@id": `${SITE_CANONIQUE}/#organisation`, "@type": "Organization", name: fr.marque },
-          ...(m.date.startsWith("[") ? {} : { datePublished: m.date }),
+          ...(dateIso(m.date) ? { datePublished: dateIso(m.date) } : {}),
         }}
       />
     </>

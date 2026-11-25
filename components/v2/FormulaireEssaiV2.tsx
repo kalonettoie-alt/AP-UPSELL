@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import fr from "@/content/fr";
 import { etapesEssai } from "@/content/formulaires";
-import { actionFormspree, dateHeureEnvoi, envoyerFormspree, formspreeIds, lireUtmSource } from "@/lib/formspree";
+import { actionFormspree, dateHeureEnvoi, envoyerFormspree, lireUtmSource } from "@/lib/formspree";
 import { ChampsCaches, lireValeurs, RenduChamp, verifierChamp } from "./FormulaireV2";
 
 const m = fr.formulaires;
@@ -50,7 +50,7 @@ export default function FormulaireEssaiV2() {
     }
     const donnees = lireValeurs(ref.current!);
     setEtat("envoi");
-    const ok = await envoyerFormspree(formspreeIds.essai, {
+    const ok = await envoyerFormspree({
       ...donnees,
       date_heure: dateHeureEnvoi(),
       _subject: m.essai.sujet(donnees.societe ?? ""),
@@ -90,7 +90,7 @@ export default function FormulaireEssaiV2() {
       <form
         ref={ref}
         method="POST"
-        action={actionFormspree(formspreeIds.essai)}
+        action={actionFormspree()}
         onSubmit={suivant}
         noValidate={hydrate}
         style={{ display: "flex", flexDirection: "column", gap: "26px" }}
