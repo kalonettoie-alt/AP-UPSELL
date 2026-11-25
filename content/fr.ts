@@ -265,7 +265,7 @@ export const fr = {
       { label: "Ressources", page: "blog" },
     ] as { label: string; page: CleePage }[],
     appel: { label: "Réserver un appel", page: "appel" as CleePage },
-    essai: { label: "Kit d'essai offert", page: "essai" as CleePage },
+    essai: { label: "Recevoir mon kit d'essai", page: "essai" as CleePage },
     ouvrirMenu: "Ouvrir le menu",
     fermerMenu: "Fermer le menu",
     pied: {
@@ -321,25 +321,31 @@ export const fr = {
   },
 
   /** Accueil V2 : étiquette interactive (jour sélectionné par défaut : vendredi). */
+  /** Intitulés des deux boutons, identiques sur tout le site. */
+  boutons: {
+    essai: "Recevoir mon kit d'essai",
+    appel: "Réserver un appel",
+  },
+
   /**
-   * Relances discrètes en fin de section (components/v2/Relance.tsx).
-   * texte : [début, fin en italique] ; lien : page du site (lib/routes.ts) ; second : lien secondaire, plus discret.
+   * Relances discrètes en fin de section (components/v2/Relance.tsx) : une phrase [début, fin en italique],
+   * puis les deux boutons standard (fr.boutons). Au plus deux par page, jamais l'une après l'autre.
    */
   relances: {
-    essayer: { texte: ["Le plus simple, c'est d'essayer. ", "Les 3 kits sont offerts."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
-    calculer: { texte: ["Combien pour vos logements ? ", "Faites le calcul."], lien: { page: "tarifs", ancre: "calculateur", label: "Estimer mon coût" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    question: { texte: ["Une autre question ? ", "Parlons-en."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    etiquette: { texte: ["L'étiquette se juge ", "en main."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
-    produits: { texte: ["Touchez les produits ", "avant de décider."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "tarifs", label: "ou voir les tarifs" } },
-    maquette: { texte: ["Votre logo, ", "sur une maquette gratuite."], lien: { page: "marque", ancre: "maquette", label: "Demander ma maquette" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    pack: { texte: ["Un pack vous tente ? ", "Parlons de vos voyageurs."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    outil: { texte: ["Un doute sur votre outil ? ", "Posez-nous la question."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    parler: { texte: ["Le mieux, c'est ", "de se parler."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    associe: { texte: ["Votre associé préfère nous parler ", "directement ?"], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    livraison: { texte: ["Vous êtes en Île-de-France ? ", "Le kit d'essai part chez vous."], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
-    facture: { texte: ["Une question sur la facturation ? ", "On vous répond."], lien: { page: "appel", label: "Réserver un appel" }, second: { page: "essai", label: "ou recevoir un kit d'essai" } },
-    journal: { texte: ["Envie de voir le kit ", "en vrai ?"], lien: { page: "essai", label: "Recevoir mon kit d'essai" }, second: { page: "appel", label: "ou réserver un appel" } },
+    essayer: ["Le plus simple, c'est d'essayer. ", "Les 3 kits sont offerts."],
+    prix: ["Un prix clair par arrivée, ", "et un kit d'essai offert."],
+    question: ["Une autre question ? ", "Parlons-en."],
+    etiquette: ["L'étiquette se juge ", "en main."],
+    produits: ["Touchez les produits ", "avant de décider."],
+    pack: ["Un pack vous tente ? ", "Parlons de vos voyageurs."],
+    outil: ["Un doute sur votre outil ? ", "Posez-nous la question."],
+    parler: ["Le mieux, c'est ", "de se parler."],
+    associe: ["Votre associé préfère nous parler ", "directement ?"],
+    livraison: ["Vous êtes en Île-de-France ? ", "Le kit d'essai part chez vous."],
+    facture: ["Une question sur la facturation ? ", "On vous répond."],
+    journal: ["Envie de voir le kit ", "en vrai ?"],
   },
+
   etiquetteV2: {
     groupeLabel: "Jour d'arrivée",
     arrivee: "ARRIVÉE",
@@ -397,6 +403,14 @@ export const fr = {
     bouton: "Rejoindre la liste d'attente",
     sujetHorsIdf: "Liste d'attente hors Île-de-France",
     sujetNouveautes: "Liste d'attente — nouveautés (logiciels, packs automatiques)",
+  },
+
+  /** Bloc final de la page /blog/ (mêmes textes que la rubrique Accueil des voyageurs). */
+  journalAppel: {
+    petitTitre: "Le kit d'essai",
+    titre: "Un accueil soigné, ",
+    italique: "sans stock.",
+    texte: "Les kits et les packs arrivent avec le colis du dimanche. Commencez par le kit d'essai.",
   },
 
   /** Rubriques du journal : textes de la maquette (Accueil des voyageurs) et du .md (Organisation d'une conciergerie). */

@@ -148,3 +148,51 @@
     opacity: 1;
   }
 }
+
+/* Tablette : le menu et les deux boutons tiennent sur une ligne. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .barre {
+    padding: 18px 20px;
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 38px;
+  }
+
+  .nav {
+    gap: 18px;
+    font-size: 14px;
+  }
+
+  .actions {
+    gap: 14px;
+    font-size: 14px;
+  }
+
+  .essai {
+    white-space: nowrap;
+    padding: 0 16px !important;
+  }
+}
+
+/* Petits téléphones (320 px) : l'en-tête tient sur une ligne. */
+@media (max-width: 380px) {
+  .barre {
+    padding: 12px 12px;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 32px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .essai {
+    font-size: 12px !important;
+    padding: 0 12px !important;
+  }
+}

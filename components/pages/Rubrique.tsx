@@ -6,12 +6,14 @@ import Image from "next/image";
 import LienPage from "@/components/LienPage";
 import { ALT_SAC, IMG_SAC } from "@/lib/images";
 
+import BoutonsEssaiAppel from "@/components/v2/BoutonsEssaiAppel";
+
 /** Page « Rubrique » — blocs générés depuis la maquette SINEBOX V2 (styles fidèles à la maquette). */
 export default function Rubrique({ cle }: { cle: "rubriqueAccueil" | "rubriqueOrganisation" }) {
   const r = fr.rubriques[cle];
   return (
     <>
-<section style={{ maxWidth: "1280px", margin: "0 auto", padding: "56px 32px 40px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "40px", flexWrap: "wrap" }} className="m-px m-pt36"><div style={{ display: "flex", flexDirection: "column", gap: "22px" }}><span style={{ fontFamily: "var(--f-mono)", fontSize: "12px", letterSpacing: ".18em", textTransform: "uppercase", color: "#7A6A58" }}>{"Rubrique"}</span><h1 style={{ fontFamily: "var(--f-serif)", fontWeight: "400", fontSize: "120px", lineHeight: ".9", letterSpacing: "-0.03em", margin: "0" }}><TitreH1 page={cle} /></h1><p style={{ margin: "0", fontSize: "19px", color: "#4A3D30", maxWidth: "560px" }}>{r.intro}</p></div><PucesRubriques active={cle} /></section>
+<section style={{ maxWidth: "1280px", margin: "0 auto", padding: "56px 32px 40px", display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "40px", flexWrap: "wrap" }} className="m-px m-pt36"><div style={{ display: "flex", flexDirection: "column", gap: "22px" }}><span style={{ fontFamily: "var(--f-mono)", fontSize: "12px", letterSpacing: ".18em", textTransform: "uppercase", color: "#7A6A58" }}>{"Rubrique"}</span><h1 style={{ fontFamily: "var(--f-serif)", fontWeight: "400", fontSize: "120px", lineHeight: ".9", letterSpacing: "-0.03em", margin: "0" }}><TitreH1 page={cle} /></h1><p style={{ margin: "0", fontSize: "19px", color: "#4A3D30", maxWidth: "560px" }}>{r.intro}</p><BoutonsEssaiAppel style={{ marginTop: "8px" }} /></div><PucesRubriques active={cle} /></section>
 <section style={{ background: "transparent" }}><div style={{ maxWidth: "1280px", margin: "0 auto", padding: "40px 32px", display: "flex", flexDirection: "column", gap: "56px" }} className="m-px m-gap32"><h2 className="visuellement-cache">{"Les articles de la rubrique"}</h2><div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px", alignItems: "start" }} className="m-gtc">{r.articles.map((a) => (
 <CarteArticle key={a} cle={a} />
 ))}</div></div></section>
