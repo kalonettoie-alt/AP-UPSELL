@@ -265,7 +265,7 @@ export const fr = {
       { label: "Ressources", page: "blog" },
     ] as { label: string; page: CleePage }[],
     appel: { label: "Réserver un appel", page: "appel" as CleePage },
-    essai: { label: "Recevoir mon kit d'essai", page: "essai" as CleePage },
+    essai: { label: "Kit d'essai offert", page: "essai" as CleePage },
     ouvrirMenu: "Ouvrir le menu",
     fermerMenu: "Fermer le menu",
     pied: {
