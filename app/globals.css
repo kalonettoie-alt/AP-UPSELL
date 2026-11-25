@@ -516,3 +516,32 @@ details[open] .pl {
     transition: none !important;
   }
 }
+
+/* Fil d'Ariane (maquette V2) */
+.fil-ariane {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fil-ariane a,
+.pied-allege a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+@media (max-width: 760px) {
+  .pied-allege a {
+    min-height: 44px;
+  }
+}
+
+/* Comme la maquette (racine en overflow: hidden) : les illustrations à largeur fixe ne créent pas de défilement horizontal. */
+main {
+  overflow-x: clip;
+}

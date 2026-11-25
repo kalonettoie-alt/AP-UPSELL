@@ -2,16 +2,18 @@
 
 import { useState } from "react";
 import fr from "@/content/fr";
-import { urlPage } from "@/lib/routes";
+import { urlPage, type CleePage } from "@/lib/routes";
 import styles from "./Header.module.css";
 
 type Props = {
-  /** Page /kit-essai/ : logo seul, sans menu ni boutons. */
+  /** Ancien gabarit : logo seul, sans menu ni boutons. */
   simple?: boolean;
+  /** Gabarit allégé (kit d'essai, appel, merci) : pas de bandeau ni de menu, un seul lien à droite. */
+  allege?: { page: CleePage; label: string };
 };
 
 /** Bandeau + en-tête collant de la maquette V2. Menu repliable sur téléphone. */
-export default function Header({ simple = false }: Props) {
+export default function Header({ simple = false, allege }: Props) {
   const t = fr.site;
   const [ouvert, setOuvert] = useState(false);
   const onglets = t.menu.flatMap((o) => {
@@ -20,6 +22,24 @@ export default function Header({ simple = false }: Props) {
   });
   const urlAppel = urlPage(t.appel.page);
   const urlEssai = urlPage(t.essai.page);
+
+  if (allege) {
+    const url = urlPage(allege.page);
+    return (
+      <header id="haut" className={`dk ${styles.allege}`}>
+        <div className={styles.barre}>
+          <a href="/" className={styles.logo} aria-label={t.logoLabel}>
+            {t.logo}
+          </a>
+          {url ? (
+            <a href={url} className={`lk ${styles.lienAllege}`}>
+              {allege.label}
+            </a>
+          ) : null}
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>

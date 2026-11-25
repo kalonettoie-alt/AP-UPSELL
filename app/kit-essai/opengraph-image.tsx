@@ -1,11 +1,12 @@
-import fr from "@/content/fr";
+import { reglages } from "@/content/pages";
 import { imagePartage, tailleOg, typeOg } from "@/lib/og";
 
 export const dynamic = "force-static";
-export const alt = fr.pages.kitEssai.titre;
+export const alt = reglages.essai!.titre;
 export const size = tailleOg;
 export const contentType = typeOg;
 
 export default function Image() {
-  return imagePartage(fr.pages.kitEssai.titre);
+  const [debut, fin] = reglages.essai!.h1;
+  return imagePartage(debut, fin);
 }

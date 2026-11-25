@@ -9,5 +9,5 @@ const chemin = "/cgv/";
 export const metadata: Metadata = metaPage({ titre: t.titreGoogle, description: t.description, chemin, jamaisIndexee: true });
 
 export default function Cgv() {
-  return <PageLegale titre={t.titre} chemin={chemin} blocs={t.blocs} sommaire={t.sommaire} />;
+  return <PageLegale titre={t.titre} page="cgv" blocs={t.blocs} sommaire={t.sommaire} />;
 }

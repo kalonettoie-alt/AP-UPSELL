@@ -1,59 +1,85 @@
 /**
- * Registre des pages du site (maquette SINEBOX V2).
+ * Registre des pages du site : adresses du fichier sinebox-v2-pages-secondaires.md (version du 25/11/2026).
  *
- * Un lien vers une page n'est affiché que si `existe` vaut true (voir components/LienPage.tsx) :
- * on ne publie jamais de lien vers une page qui n'est pas encore construite.
- * Les adresses définitives viendront du fichier sinebox-v2-pages-secondaires.md (étape 2).
+ * Un lien n'est affiché que si sa page existe (`existe: true`), voir components/LienPage.tsx.
  */
 export type CleePage =
   | "accueil"
   | "ccm"
   | "etiquette"
+  | "marque"
+  | "livraison"
   | "kits"
   | "packs"
   | "tarifs"
   | "conciergeries"
   | "hotes"
-  | "livraison"
-  | "marque"
-  | "compat"
   | "faq"
-  | "apropos"
+  | "compat"
   | "associe"
+  | "apropos"
   | "essai"
   | "appel"
-  | "contact"
   | "merci"
   | "blog"
-  | "rubrique"
-  | "article"
+  | "rubriqueAccueil"
+  | "rubriqueOrganisation"
+  | "rubriqueConsommables"
+  | "articleNoel"
+  | "articleStock"
+  | "articleListe"
+  | "articleVendrePack"
   | "mentionsLegales"
   | "cgv";
 
-export const PAGES: Record<CleePage, { url: string; existe: boolean }> = {
-  accueil: { url: "/", existe: true },
-  ccm: { url: "/comment-ca-marche/", existe: false },
-  etiquette: { url: "/etiquette/", existe: false },
-  kits: { url: "/kits/", existe: false },
-  packs: { url: "/packs/", existe: false },
-  tarifs: { url: "/tarifs/", existe: true },
-  conciergeries: { url: "/kits-accueil-conciergerie/", existe: true },
-  hotes: { url: "/hotes/", existe: false },
-  livraison: { url: "/livraison/", existe: false },
-  marque: { url: "/a-votre-marque/", existe: false },
-  compat: { url: "/compatibilites/", existe: false },
-  faq: { url: "/faq/", existe: false },
-  apropos: { url: "/a-propos/", existe: true },
-  associe: { url: "/associe/", existe: false },
-  essai: { url: "/kit-essai/", existe: true },
-  appel: { url: "/appel/", existe: false },
-  contact: { url: "/contact/", existe: true },
-  merci: { url: "/merci/", existe: true },
-  blog: { url: "/journal/", existe: false },
-  rubrique: { url: "/journal/accueil-des-voyageurs/", existe: false },
-  article: { url: "/journal/noel-location-airbnb/", existe: false },
-  mentionsLegales: { url: "/mentions-legales/", existe: true },
-  cgv: { url: "/cgv/", existe: true },
+export type Page = { url: string; existe: boolean; nom: string };
+
+export const PAGES: Record<CleePage, Page> = {
+  accueil: { url: "/", existe: true, nom: "Accueil" },
+  ccm: { url: "/comment-ca-marche/", existe: true, nom: "Comment ça marche" },
+  etiquette: { url: "/kit-et-etiquette/", existe: true, nom: "Le kit et son étiquette" },
+  marque: { url: "/kits-a-votre-marque/", existe: true, nom: "À votre marque" },
+  livraison: { url: "/livraison-ile-de-france/", existe: true, nom: "Livraison Île-de-France" },
+  kits: { url: "/kit-accueil-airbnb/", existe: true, nom: "Les kits" },
+  packs: { url: "/packs/", existe: true, nom: "Les packs" },
+  tarifs: { url: "/tarifs/", existe: true, nom: "Tarifs" },
+  conciergeries: { url: "/kits-accueil-conciergerie/", existe: true, nom: "Conciergeries" },
+  hotes: { url: "/hotes-multi-logements/", existe: true, nom: "Hôtes multi-logements" },
+  faq: { url: "/faq/", existe: true, nom: "FAQ" },
+  compat: { url: "/compatibilites/", existe: true, nom: "Compatibilités" },
+  associe: { url: "/a-montrer-a-votre-associe/", existe: true, nom: "À montrer à votre associé" },
+  apropos: { url: "/a-propos/", existe: true, nom: "À propos" },
+  essai: { url: "/kit-essai/", existe: true, nom: "Kit d'essai" },
+  appel: { url: "/appel/", existe: true, nom: "Réserver un appel" },
+  merci: { url: "/merci/", existe: true, nom: "Merci" },
+  blog: { url: "/blog/", existe: true, nom: "Le journal" },
+  rubriqueAccueil: { url: "/blog/accueil-des-voyageurs/", existe: true, nom: "Accueil des voyageurs" },
+  rubriqueOrganisation: { url: "/blog/organisation-conciergerie/", existe: true, nom: "Organisation d'une conciergerie" },
+  // Aucun article publié dans cette rubrique : pas de page (règle 14.1 du .md).
+  rubriqueConsommables: { url: "/blog/consommables-et-couts/", existe: false, nom: "Consommables et coûts" },
+  articleNoel: {
+    url: "/blog/accueil-des-voyageurs/noel-location-airbnb/",
+    existe: true,
+    nom: "Noël dans une location Airbnb : les attentions qui comptent",
+  },
+  articleStock: {
+    url: "/blog/organisation-conciergerie/gerer-stock-consommables-conciergerie/",
+    existe: true,
+    nom: "Conciergerie : gérer le stock de consommables sans y passer vos dimanches",
+  },
+  articleListe: {
+    url: "/blog/accueil-des-voyageurs/que-mettre-kit-accueil-airbnb/",
+    existe: true,
+    nom: "Que mettre dans un kit d'accueil Airbnb : la liste pièce par pièce",
+  },
+  // Article 9 du plan, pas encore écrit : lien masqué.
+  articleVendrePack: {
+    url: "/blog/organisation-conciergerie/vendre-pack-accueil-en-option/",
+    existe: false,
+    nom: "Vendre un pack d'accueil en option",
+  },
+  mentionsLegales: { url: "/mentions-legales/", existe: true, nom: "Mentions légales" },
+  cgv: { url: "/cgv/", existe: true, nom: "Conditions générales de vente" },
 };
 
 export function urlPage(cle: CleePage): string | null {

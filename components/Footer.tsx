@@ -27,7 +27,7 @@ export default function Footer() {
                 <p className={styles.titre}>{col.titre}</p>
                 {liens.map((l) => (
                   <Fragment key={l.label}>
-                    <a href={l.url}>{l.label}</a>
+                    <a href={l.ancre ? `${l.url}#${l.ancre}` : l.url}>{l.label}</a>
                     {l.email ? <a href={`mailto:${email}`}>{email}</a> : null}
                   </Fragment>
                 ))}

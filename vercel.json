@@ -3,11 +3,33 @@
   "headers": [
     {
       "source": "/opengraph-image",
-      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
     },
     {
       "source": "/:page*/opengraph-image",
-      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/png"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/contact/",
+      "destination": "/appel/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/appel/",
+      "permanent": true
     }
   ]
 }

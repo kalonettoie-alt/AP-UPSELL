@@ -17,7 +17,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
 import { metaPage } from "@/lib/meta";
-import { schemaFilAriane, schemaProduits } from "@/lib/schema";
+import { schemaFilAriane } from "@/lib/schema";
 
 export const metadata: Metadata = metaPage({ titre: fr.seo.titre, description: fr.seo.description, chemin: "/" });
 
@@ -45,10 +45,7 @@ export default function Page() {
         <Essai />
       </main>
       <Footer />
-      <JsonLd donnees={schemaFilAriane([{ nom: fr.modele.accueil, chemin: "/" }])} />
-      {schemaProduits().map((p) => (
-        <JsonLd key={p.name} donnees={p} />
-      ))}
+      <JsonLd donnees={schemaFilAriane([{ nom: "Accueil", chemin: "/" }])} />
     </>
   );
 }

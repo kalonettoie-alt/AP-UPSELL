@@ -1,11 +1,12 @@
-import fr from "@/content/fr";
+import { reglages } from "@/content/pages";
 import { imagePartage, tailleOg, typeOg } from "@/lib/og";
 
 export const dynamic = "force-static";
-export const alt = fr.pages.conciergerie.titre;
+export const alt = reglages.conciergeries!.titre;
 export const size = tailleOg;
 export const contentType = typeOg;
 
 export default function Image() {
-  return imagePartage(fr.pages.conciergerie.titre);
+  const [debut, fin] = reglages.conciergeries!.h1;
+  return imagePartage(debut, fin);
 }

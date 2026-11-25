@@ -9,5 +9,5 @@ const chemin = "/mentions-legales/";
 export const metadata: Metadata = metaPage({ titre: t.titreGoogle, description: t.description, chemin, jamaisIndexee: true });
 
 export default function MentionsLegales() {
-  return <PageLegale titre={t.titre} chemin={chemin} blocs={t.blocs} />;
+  return <PageLegale titre={t.titre} page="mentionsLegales" blocs={t.blocs} />;
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import fr from "@/content/fr";
+import { reglages } from "@/content/pages";
+import { PAGES, type CleePage } from "./routes";
 import { canonique, robotsPage } from "./site";
 
 type Options = {
@@ -30,4 +32,11 @@ export function metaPage({ titre, description, chemin, jamaisIndexee = false }: 
     },
     twitter: { card: "summary_large_image", title: titre, description },
   };
+}
+
+/** Métadonnées d'une page du registre, avec les réglages du fichier .md (content/pages.ts). */
+export function metaReglages(cle: CleePage, jamaisIndexee = false): Metadata {
+  const r = reglages[cle];
+  if (!r) throw new Error(`Réglages manquants pour la page ${cle}`);
+  return metaPage({ titre: r.titre, description: r.description, chemin: PAGES[cle].url, jamaisIndexee });
 }

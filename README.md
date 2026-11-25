@@ -5,20 +5,42 @@ La spécification de départ est `docs/spec-page-de-vente.md`.
 
 ## Pages
 
-| Adresse | Page | Indexée par Google |
-| --- | --- | --- |
-| `/` | Accueil (page de vente) | oui |
-| `/kits-accueil-conciergerie/` | Kits d'accueil pour conciergeries | oui |
-| `/tarifs/` | Tarifs et calculateur | oui |
-| `/kit-essai/` | Formulaire du kit d'essai, sans menu | oui |
-| `/contact/` | Contact | oui |
-| `/a-propos/` | À propos | oui |
-| `/merci/` | Remerciement après le kit d'essai | non (noindex, hors sitemap) |
-| `/mentions-legales/` | Mentions légales | non (noindex, hors sitemap) |
-| `/cgv/` | Conditions générales de vente | non (noindex, hors sitemap) |
-| toute autre adresse | Page 404 | non |
+Adresses, titres et descriptions Google, H1 : fichier `sinebox-v2-pages-secondaires.md` (25/11/2026).
+Textes visibles, mise en page et style : maquette SINEBOX V2.
 
-« Indexée » ne s'applique qu'une fois `NEXT_PUBLIC_SITE_URL` définie (voir plus bas). Avant, tout le site est fermé à Google.
+| Adresse | Page |
+| --- | --- |
+| `/` | Accueil |
+| `/comment-ca-marche/` | Comment ça marche |
+| `/kit-et-etiquette/` | Le kit et son étiquette |
+| `/kits-a-votre-marque/` | À votre marque (demande de maquette au logo) |
+| `/livraison-ile-de-france/` | Livraison (liste d'attente hors Île-de-France, ancre `#ailleurs`) |
+| `/kit-accueil-airbnb/` | Les kits (ancres `#salle-de-bain`, `#cuisine`, `#entretien`) |
+| `/packs/` | Les packs (ancres `#voyage-affaires`, `#couple`, `#chien`, `#chat`, `#premiere-visite`, `#noel`) |
+| `/tarifs/` | Tarifs et calculateur (ancre `#calculateur`) |
+| `/kits-accueil-conciergerie/` | Conciergeries |
+| `/hotes-multi-logements/` | Hôtes multi-logements |
+| `/faq/` | FAQ |
+| `/compatibilites/` | Compatibilités |
+| `/a-montrer-a-votre-associe/` | À montrer à votre associé (e-mail à copier) |
+| `/a-propos/` | À propos |
+| `/kit-essai/` | Kit d'essai (formulaire en 3 étapes) |
+| `/appel/` | Réserver un appel (formulaire) |
+| `/merci/` | Merci, texte selon `?demande=` (noindex, hors sitemap) |
+| `/blog/` | Le journal |
+| `/blog/accueil-des-voyageurs/`, `/blog/organisation-conciergerie/` | Rubriques |
+| `/blog/<rubrique>/<article>/` | 3 articles (Markdown dans `content/blog/`) |
+| `/mentions-legales/`, `/cgv/` | Pages légales (noindex, hors sitemap) |
+
+L'ancienne adresse `/contact/` redirige vers `/appel/` (`vercel.json`).
+Le registre `lib/routes.ts` liste toutes les pages : un lien n'apparaît que si sa page existe.
+
+## Informations à fournir
+
+Les valeurs encore inconnues sont dans `content/fr.ts` (objet `aFournir`) et s'affichent entre crochets :
+délai d'envoi du kit d'essai, délai de mise en place, jour et heure limite, créneau de livraison,
+départements livrés, délai de paiement, délai maquette. Les articles ont une date `[date de publication]`
+(en tête de chaque fichier de `content/blog/`). Aucune page ne doit être mise en ligne avec un crochet visible.
 
 ## Lancer le site en local
 
@@ -70,9 +92,11 @@ Hors Vercel, en local uniquement, l'adresse de repli est `http://localhost:3000`
 - Sans identifiant, le site se construit quand même ; le formulaire affiche « L'envoi n'a pas marché. Réessayez dans un instant. ».
 
 Champs reçus :
-- Kit d'essai : `nom`, `societe`, `nombre_logements`, `ville`, `email`, `telephone`, `source` (« Comment nous avez-vous connus ? »), `utm_source` (recopié de l'adresse de la page), `date_heure`, sujet « Kit d'essai — {Société} ».
-- Contact : `nom`, `email`, `message`, `utm_source`, `date_heure`, sujet « Contact — {nom} » (même Formspree que le kit d'essai).
-- Liste d'attente : `email`, `liste`, `date_heure`, sujet « Liste d'attente hors Île-de-France ».
+- Tous les formulaires envoient aussi `source` (valeur de `utm_source` dans l'adresse), `page_origine` et `date_heure`.
+- Kit d'essai (Formspree « essai ») : nom, e-mail, téléphone, société, profil, nombre de logements, ville, logiciel, Deltom Operator, `connu_par`, adresse, code postal (Île-de-France vérifiée), ville de livraison, instructions, consentement ; sujet « Kit d'essai — {Société} » ; puis `/merci/?demande=kit-essai`.
+- Réserver un appel (Formspree « essai ») : sujet « Appel — {Société} » ; puis `/merci/?demande=appel`.
+- Maquette à mon logo (Formspree « essai ») : le logo s'envoie par e-mail (l'offre gratuite de Formspree n'accepte pas les fichiers) ; puis `/merci/?demande=maquette`.
+- Listes d'attente (Formspree « attente ») : hors Île-de-France et nouveautés ; puis `/merci/?demande=liste-attente`.
 
 Le champ caché `_gotcha` sert d'anti-spam : Formspree ignore les envois où il est rempli.
 

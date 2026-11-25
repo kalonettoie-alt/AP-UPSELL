@@ -21,6 +21,19 @@
   color: var(--fond);
 }
 
+.allege {
+  background: var(--encre);
+  color: var(--fond);
+}
+
+.lienAllege {
+  border: 0 !important;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .barre {
   max-width: 1280px;
   margin: 0 auto;

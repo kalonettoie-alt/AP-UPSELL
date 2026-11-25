@@ -19,6 +19,21 @@ const EMAIL_CONTACT = "contact@sinebox.fr";
  */
 export const TELEPHONE_MENTIONS_LEGALES = "06 25 29 93 21";
 
+/**
+ * Informations pas encore fournies par les fondateurs (liste 15 du fichier .md).
+ * Elles s'affichent entre crochets tant qu'elles ne sont pas remplies ici : aucune page ne doit être
+ * mise en ligne avec un crochet visible.
+ */
+export const aFournir = {
+  delaiKitEssai: "[délai kit d'essai]",
+  delaiMiseEnPlace: "[délai de mise en place]",
+  jourHeureLimite: "[jour et heure limite]",
+  creneauLivraison: "[créneau de livraison]",
+  departementsLivres: "[départements livrés]",
+  delaiPaiement: "[délai de paiement]",
+  delaiMaquette: "[délai maquette]",
+};
+
 /** Délais affichés sur le site. */
 export const delais = {
   /** « Nous vous répondons en moins de 24 h. » */
@@ -38,18 +53,6 @@ export type Pastel =
   | "sauge"
   | "corail";
 
-/** Couleurs pastel (spec §1). Reprises en variables CSS dans app/globals.css. */
-export const pastels: Record<Pastel, string> = {
-  rose: "#F6C9C4",
-  bleu: "#BFD9F2",
-  jaune: "#F7E3A1",
-  menthe: "#BFE3D0",
-  lavande: "#CFC8F0",
-  peche: "#F8D5B8",
-  kraftClair: "#E3CDA8",
-  sauge: "#D6E5B5",
-  corail: "#F4B9A0",
-};
 
 /** Prix HT, en euros. */
 export const prix = {
@@ -116,29 +119,6 @@ export const kits: Kit[] = [
   },
 ];
 
-export type JourId = "lun" | "mar" | "mer" | "jeu" | "ven" | "sam" | "dim";
-
-export type Jour = {
-  id: JourId;
-  court: string;
-  long: string;
-  couleur: Pastel;
-  date: string;
-  logement: string;
-};
-
-/** Étiquette des 7 jours (spec §6). Exemples de démonstration entre crochets. */
-export const jours: Jour[] = [
-  { id: "lun", court: "LUN", long: "Lundi", couleur: "bleu", date: "[30/11]", logement: "[Loft Montreuil]" },
-  { id: "mar", court: "MAR", long: "Mardi", couleur: "peche", date: "[01/12]", logement: "[T2 Oberkampf]" },
-  { id: "mer", court: "MER", long: "Mercredi", couleur: "menthe", date: "[02/12]", logement: "[T3 Bastille]" },
-  { id: "jeu", court: "JEU", long: "Jeudi", couleur: "lavande", date: "[03/12]", logement: "[Studio Nation]" },
-  { id: "ven", court: "VEN", long: "Vendredi", couleur: "jaune", date: "[04/12]", logement: "[Studio Marais]" },
-  { id: "sam", court: "SAM", long: "Samedi", couleur: "rose", date: "[05/12]", logement: "[Maison Vincennes]" },
-  { id: "dim", court: "DIM", long: "Dimanche", couleur: "kraftClair", date: "[06/12]", logement: "[T2 République]" },
-];
-
-export const jourParDefaut: JourId = "ven";
 
 export type PackId = "affaires" | "couple" | "chien" | "chat" | "premiereVisite" | "noel";
 
@@ -244,8 +224,6 @@ export type BlocLegal =
 
 export const fr = {
   marque: "SINEBOX",
-  baseline: "Kits d'accueil pour locations courte durée",
-
   seo: {
     titre: "Kits d'accueil Airbnb pour conciergeries, livrés chaque semaine",
     description:
@@ -255,258 +233,6 @@ export const fr = {
   general: {
     ht: "HT",
     lienEvitement: "Aller au contenu",
-  },
-
-  header: {
-    navLabel: "Navigation principale",
-    /** Onglets du menu. Un onglet n'apparaît que si sa page existe (href non nul). */
-    menu: [
-      { label: "Les kits", href: null },
-      { label: "Les packs", href: null },
-      { label: "Conciergeries", href: "/kits-accueil-conciergerie/" },
-      { label: "Tarifs", href: "/tarifs/" },
-      { label: "Livraison", href: null },
-      { label: "Conseils", href: null },
-    ] as { label: string; href: string | null }[],
-    bouton: { label: "Kit d'essai offert", href: "/kit-essai/" },
-    ouvrirMenu: "Menu",
-    fermerMenu: "Fermer",
-  },
-
-  hero: {
-    petitTitre: "Pour les conciergeries et les hôtes · Île-de-France",
-    titre: "Conciergeries : un kit d'accueil par arrivée, livré chaque semaine.",
-    sousTitre:
-      "Pour vos logements en location courte durée ou en location saisonnière : connectez vos calendriers Airbnb et Booking. Chaque dimanche, vous recevez un colis avec un kit de bienvenue prêt à poser pour chaque arrivée de la semaine. Plus de courses, plus de stock de consommables, plus de sachets à préparer.",
-    lignePrix: "4,50 € HT par arrivée pour les 3 kits",
-    bouton: { label: "Recevoir mon kit d'essai", href: "#essai" },
-    lien: { label: "Voir le contenu des kits", href: "#kits" },
-    sousBouton: "Offert, envoi compris.",
-    /** Boîtes du visuel, dans l'ordre de l'étagère. */
-    boites: ["salleDeBain", "cuisine", "entretien", "troisKits"] as KitId[],
-  },
-
-  avant: {
-    petitTitre: "Avant",
-    titre: "Votre liste de courses de la semaine. Rayez tout.",
-    texte:
-      "Acheter, stocker, compter, préparer, repartir en urgence parce qu'il manque du café. Avec SINEBOX, cette liste n'existe plus.",
-    feuilleTitre: "À faire cette semaine",
-    liste: [
-      "Acheter les savons",
-      "Recompter le stock de café",
-      "Préparer les sachets d'accueil",
-      "Ranger les cartons",
-      "Course de dernière minute",
-    ],
-    pastille: "Fait par nous",
-  },
-
-  commentCaMarche: {
-    titre: "Trois étapes, puis vous n'y pensez plus.",
-    etapeLabel: "ÉTAPE",
-    etapes: [
-      {
-        couleur: "rose" as Pastel,
-        titre: "Vous connectez vos calendriers",
-        texte:
-          "Collez le lien de calendrier de chaque logement, Airbnb ou Booking. Nous voyons les dates d'arrivée, rien d'autre.",
-      },
-      {
-        couleur: "menthe" as Pastel,
-        titre: "Chaque dimanche, vous recevez vos kits",
-        texte: "Un seul colis, avec un kit par arrivée de la semaine.",
-      },
-      {
-        couleur: "jaune" as Pastel,
-        titre: "Votre équipe de ménage le pose",
-        texte:
-          "Chaque kit porte le nom du logement et la date d'arrivée, avec une couleur par jour. Impossible de se tromper.",
-      },
-    ],
-    etiquette: {
-      petitTitre: "L'étiquette de l'étape 3",
-      titre: "Une couleur par jour. Choisissez un jour.",
-      groupeLabel: "Jour d'arrivée",
-      arrivee: "ARRIVÉE",
-      kitLabel: "KIT",
-      kitNom: "Les 3 kits",
-      logo: "LOGO",
-    },
-    bientot: "Connexion directe à votre logiciel de gestion : bientôt.",
-  },
-
-  nosKits: {
-    petitTitre: "Le rayon",
-    titre: "Le contenu des kits d'accueil : salle de bain, cuisine, entretien",
-    texte:
-      "Trois kits, un prix rond : votre kit de bienvenue pour chaque arrivée, en location courte durée comme en location saisonnière. Le même prix que le séjour dure 2 nuits ou 3 semaines.",
-    note: "Les consommables du kit servent à démarrer le séjour. Il n'y a pas de réassort pendant le séjour.",
-    bouton: { label: "Recevoir mon kit d'essai", href: "#essai" },
-  },
-
-  quiArrive: {
-    petitTitre: "En plus, quand vous voulez",
-    titre: "Un couple, un chien, Noël ? Ajoutez le pack qui va avec.",
-    texte:
-      "L'essentiel part à chaque arrivée. Pour les séjours qui méritent plus, ajoutez un pack en un clic : par logement, par dates, ou réservation par réservation. Il arrive dans le même colis, avec la même étiquette.",
-    selecteurLabel: "Qui arrive ?",
-    /** Étiquette de colis d'exemple (vendredi). */
-    etiquetteJour: "VENDREDI",
-    etiquetteDate: "[04/12]",
-    etiquetteLogement: "[Studio Marais]",
-    troisKits: "Les 3 kits",
-    ticketTitre: "TICKET · CETTE ARRIVÉE",
-    total: "TOTAL HT",
-    /** Ligne de calcul : « Les 3 kits 4,50 € + Pack Chien 9 € = 13,50 € HT pour cette arrivée » */
-    pourCetteArrivee: "HT pour cette arrivée",
-    sousTicket:
-      "Vous ne payez un pack que pour les arrivées où vous l'ajoutez. Vous pouvez aussi le proposer en option à vos voyageurs, à votre prix.",
-    detailTitre: "Les 6 packs en détail",
-    bientot: "Ajout automatique selon la réservation : bientôt.",
-  },
-
-  vraiCalcul: {
-    petitTitre: "Le vrai calcul",
-    titre: "Moins cher au carton. Plus cher au total.",
-    texte:
-      "Oui, un carton de produits coûte moins cher à l'unité. Mais le carton n'arrive pas trié, compté et étiqueté dans vos logements. Quelqu'un le fait, et ce quelqu'un, vous le payez.",
-    tableauLegende: "Comparaison : avec des cartons ou avec SINEBOX",
-    colonnes: { critere: "Critère", cartons: "Avec des cartons", sinebox: "Avec SINEBOX" },
-    lignes: [
-      {
-        critere: "Commande",
-        cartons: "Vous commandez à l'avance, par grosses quantités",
-        sinebox: "Rien à commander : le calendrier suffit",
-      },
-      {
-        critere: "Paiement",
-        cartons: "Vous payez tout le carton d'avance",
-        sinebox: "Vous payez les kits livrés, une facture par mois",
-      },
-      {
-        critere: "Stock",
-        cartons: "Des cartons à ranger et à recompter",
-        sinebox: "Aucun stock",
-      },
-      {
-        critere: "Préparation",
-        cartons: "Quelqu'un fait les sachets, logement par logement",
-        sinebox: "Les kits arrivent prêts, étiquetés",
-      },
-      {
-        critere: "Dernière minute",
-        cartons: "Une course en urgence si le stock est vide",
-        sinebox: "1 ou 2 kits d'avance dans chaque colis",
-      },
-    ],
-    phraseFin:
-      "Comptez le temps que votre équipe passe chaque semaine à acheter, compter et préparer. C'est ce temps-là que vous récupérez.",
-    bouton: { label: "Recevoir mon kit d'essai", href: "#essai" },
-  },
-
-  livraison: {
-    titre: "Livraison des kits en Île-de-France",
-    cartes: [
-      {
-        icone: "maison" as const,
-        couleur: "bleu" as Pastel,
-        pastille: "0 € de livraison",
-        titre: "Compatible avec Deltom Operator",
-        texte:
-          "Vos ménages passent par Deltom Operator ? Vos kits sont remis à Deltom Operator et arrivent dans le logement avec le ménage. Pas de colis à réceptionner, pas de frais de livraison.",
-      },
-      {
-        icone: "colis" as const,
-        couleur: "peche" as Pastel,
-        pastille: "Dès 15 € HT le colis",
-        titre: "Par colis, chaque dimanche",
-        texte:
-          "Un seul colis par semaine, livré à votre bureau ou dans un logement. 15 € HT par colis jusqu'à 12 arrivées dans la semaine, 22 € HT au-delà.",
-      },
-    ],
-    derniereMinute: {
-      icone: "horloge" as const,
-      couleur: "menthe" as Pastel,
-      titre: "Prêt pour la dernière minute",
-      texte:
-        "Dans les deux cas, vous avez 1 ou 2 kits d'avance. Vous ne les payez que si vous les utilisez.",
-    },
-    lienDeltom: {
-      label: "Vous ne connaissez pas Deltom Operator ?",
-      href: "https://www.deltomops.com",
-      nouvelOnglet: "(s'ouvre dans un nouvel onglet)",
-    },
-  },
-
-  aVotreMarque: {
-    petitTitre: "À votre marque",
-    titre: "Votre nom sur chaque kit.",
-    texte:
-      "Un autocollant à votre logo sur la boîte et une carte d'accueil à votre nom. Le voyageur voit votre marque, pas la nôtre. Les produits gardent leur emballage d'origine. Sans engagement de durée.",
-    autocollant: "Votre logo",
-    carteTitre: "Bienvenue chez [Nom du logement].",
-    carteTexte: "Wifi, consignes, bonnes adresses.",
-  },
-
-  faq: {
-    titre: "Questions fréquentes sur les kits d'accueil",
-    questions: [
-      {
-        question: "C'est plus cher que d'acheter des cartons, non ?",
-        reponse:
-          "À l'unité, oui. Mais un carton, il faut le commander, le payer d'avance, le ranger, le recompter et en faire des sachets logement par logement. Nos kits arrivent prêts, étiquetés, au bon nombre. Vous payez ce qui est livré, rien d'autre.",
-      },
-      {
-        question: "Y a-t-il un abonnement ou un engagement ?",
-        reponse:
-          "Non. Vous payez les kits livrés, avec une facture par mois. Pour arrêter, prévenez-nous avant le dimanche : le colis suivant ne part pas.",
-      },
-      {
-        question: "Combien coûtent les frais d'envoi ?",
-        reponse:
-          "15 € HT par colis jusqu'à 12 arrivées dans la semaine, 22 € HT au-delà. 0 € si vos ménages passent par Deltom Operator.",
-      },
-      {
-        question: "Comment savez-vous quand mes voyageurs arrivent ?",
-        reponse:
-          "Vous collez le lien de calendrier de chaque logement, Airbnb ou Booking. Nous y lisons les dates d'arrivée. Nous n'avons accès ni aux noms des voyageurs ni à vos revenus.",
-      },
-      {
-        question: "Et si une réservation tombe à la dernière minute ?",
-        reponse: "Chaque colis contient 1 ou 2 kits d'avance. Vous ne les payez que si vous les utilisez.",
-      },
-      {
-        question: "Et si une réservation est annulée après l'envoi ?",
-        reponse: "Le kit reste chez vous comme kit d'avance. Il n'est facturé que s'il est utilisé.",
-      },
-      {
-        question: "Mon logement accueille 6 personnes. Un kit suffit ?",
-        reponse:
-          "Vous indiquez une fois la capacité de chaque logement. Jusqu'à 3 voyageurs : un jeu de 3 kits. De 4 à 6 : deux jeux. 7 et plus : trois jeux.",
-      },
-      {
-        question: "Quels produits y a-t-il dans les kits ?",
-        reponse:
-          "Des produits d'accueil en format individuel, emballés un par un. Le plus simple est de juger sur pièce : le kit d'essai est offert.",
-      },
-      {
-        question: "Puis-je mettre mon logo ?",
-        reponse:
-          "Oui : un autocollant à votre logo sur la boîte et une carte d'accueil à votre nom. Sans engagement de durée.",
-      },
-      {
-        question: "Vous livrez où ?",
-        reponse:
-          "En Île-de-France pour le moment. Le reste de la France arrive : laissez-nous votre e-mail.",
-      },
-    ] as Faq[],
-  },
-
-  kitEssai: {
-    titre: "Jugez sur pièce : votre premier kit est offert.",
-    texte:
-      "Dites-nous où l'envoyer. Vous recevez les 3 kits, envoi compris, vous regardez les produits, vous décidez ensuite. Réservé aux professionnels d'Île-de-France, un kit par société.",
   },
 
   /** En-tête, bandeau et pied de page de la maquette V2. Les liens ne s'affichent que si la page existe (lib/routes.ts). */
@@ -541,16 +267,16 @@ export const fr = {
             { label: "À votre marque", page: "marque" },
             { label: "Compatibilités", page: "compat" },
             { label: "À propos", page: "apropos" },
-            { label: "Nous contacter", page: "contact", email: true },
+            { label: "Nous contacter", page: "appel", email: true },
           ],
         },
         {
           titre: "KITS D'ACCUEIL",
           liens: [
             { label: "Kit d'accueil Airbnb", page: "kits" },
-            { label: "Kit salle de bain", page: "kits" },
-            { label: "Kit cuisine", page: "kits" },
-            { label: "Kit entretien", page: "kits" },
+            { label: "Kit salle de bain", page: "kits", ancre: "salle-de-bain" },
+            { label: "Kit cuisine", page: "kits", ancre: "cuisine" },
+            { label: "Kit entretien", page: "kits", ancre: "entretien" },
             { label: "Les packs", page: "packs" },
           ],
         },
@@ -569,7 +295,7 @@ export const fr = {
             { label: "À montrer à votre associé", page: "associe" },
           ],
         },
-      ] as { titre: string; liens: { label: string; page: CleePage; email?: boolean }[] }[],
+      ] as { titre: string; liens: { label: string; page: CleePage; email?: boolean; ancre?: string }[] }[],
       copyright: "© SINEBOX",
       legal: [
         { label: "Mentions légales", page: "mentionsLegales" },
@@ -597,6 +323,60 @@ export const fr = {
     ],
   },
 
+  /** Page « Le kit et son étiquette » (maquette V2) : sélecteur de jour, samedi par défaut. */
+  etiquettePageV2: {
+    groupeLabel: "Jour d'arrivée",
+    parDefaut: 5,
+    jours: [
+      { court: "L", long: "LUNDI", couleur: "#F3C9B8", date: "24 nov.", logement: "Studio Oberkampf", kit: "Salle de bain · Cuisine" },
+      { court: "M", long: "MARDI", couleur: "#F2E2AC", date: "25 nov.", logement: "Duplex Vincennes", kit: "Les 3 kits" },
+      { court: "M", long: "MERCREDI", couleur: "#CFDFC7", date: "26 nov.", logement: "T2 Montreuil", kit: "Les 3 kits + pack Chien" },
+      { court: "J", long: "JEUDI", couleur: "#CDDDE8", date: "27 nov.", logement: "Loft Pantin", kit: "Salle de bain · Entretien" },
+      { court: "V", long: "VENDREDI", couleur: "#DCD3EA", date: "28 nov.", logement: "T3 Nation", kit: "Les 3 kits + pack Couple" },
+      { court: "S", long: "SAMEDI", couleur: "#F0C4CF", date: "29 nov.", logement: "Appartement Bastille", kit: "Les 3 kits" },
+      { court: "D", long: "DIMANCHE", couleur: "#E8D5C0", date: "30 nov.", logement: "Maison Saint-Maur", kit: "Les 3 kits + pack Première visite" },
+    ],
+  },
+
+  /** Page « Réserver un appel » : formulaire (pas d'outil de prise de rendez-vous). */
+  appelV2: {
+    petitTitre: "VOS DISPONIBILITÉS · 15 MIN · TÉLÉPHONE OU VISIO",
+    sujet: "Appel",
+    bouton: "Réserver un appel",
+    sousBouton: `Nous vous répondons en moins de ${delais.reponse} pour fixer l'heure exacte.`,
+  },
+
+  /** Page « À votre marque » : demande de maquette au logo. */
+  maquetteV2: {
+    sujet: "Maquette à mon logo",
+    bouton: "Recevoir ma maquette",
+  },
+
+  /** Listes d'attente (maquette V2). */
+  listeAttenteV2: {
+    label: "Votre e-mail",
+    placeholder: "votre@email.fr",
+    bouton: "Rejoindre la liste d'attente",
+    sujetHorsIdf: "Liste d'attente hors Île-de-France",
+    sujetNouveautes: "Liste d'attente — nouveautés (logiciels, packs automatiques)",
+  },
+
+  /** Rubriques du journal : textes de la maquette (Accueil des voyageurs) et du .md (Organisation d'une conciergerie). */
+  rubriques: {
+    rubriqueAccueil: {
+      intro: "Ce qui compte à l'arrivée, pièce par pièce et saison par saison.",
+      articles: ["articleNoel", "articleListe"] as ("articleNoel" | "articleListe" | "articleStock")[],
+      appel: ["Un accueil soigné, ", "sans stock."],
+      appelTexte: "Les kits et les packs arrivent avec le colis du dimanche. Commencez par le kit d'essai.",
+    },
+    rubriqueOrganisation: {
+      intro: "Les méthodes qui font gagner des heures chaque semaine, du stock de consommables à l'équipe de ménage.",
+      articles: ["articleStock"] as ("articleNoel" | "articleListe" | "articleStock")[],
+      appel: ["Plus de stock à gérer : ", "un kit par arrivée, livré le dimanche."],
+      appelTexte: "Les kits et les packs arrivent avec le colis du dimanche. Commencez par le kit d'essai.",
+    },
+  },
+
   /** Accueil V2 : ticket des packs (pack sélectionné par défaut : Chien). */
   ticketV2: {
     titre: "TICKET · ARRIVÉE",
@@ -613,43 +393,6 @@ export const fr = {
     email: EMAIL_CONTACT,
     zone: "Île-de-France",
     horaires: "[horaires]",
-  },
-
-  footer: {
-    texte: "Kits d'accueil pour locations courte durée · Livraison en Île-de-France",
-    navLabel: "Plan du site",
-    /** 4 colonnes. Liens null = page pas encore créée (non affichés). */
-    colonnes: [
-      {
-        titre: "Les kits et packs",
-        liens: [
-          { label: "Les kits", href: "/#kits" },
-          { label: "Les packs", href: "/#packs" },
-          { label: "Kit d'essai offert", href: "/kit-essai/" },
-        ],
-      },
-      {
-        titre: "Pour qui",
-        liens: [{ label: "Conciergeries", href: "/kits-accueil-conciergerie/" }],
-      },
-      {
-        titre: "Livraison et tarifs",
-        liens: [
-          { label: "Tarifs", href: "/tarifs/" },
-          { label: "Livraison", href: "/#livraison" },
-        ],
-      },
-      {
-        titre: "L'entreprise",
-        avecCoordonnees: true,
-        liens: [
-          { label: "À propos", href: "/a-propos/" },
-          { label: "Contact", href: "/contact/" },
-          { label: "Mentions légales", href: "/mentions-legales/" },
-          { label: "CGV", href: "/cgv/" },
-        ],
-      },
-    ] as { titre: string; avecCoordonnees?: boolean; liens: { label: string; href: string }[] }[],
   },
 
   /**
@@ -913,7 +656,14 @@ export const fr = {
       obligatoire: "Ce champ est obligatoire.",
       email: "Indiquez une adresse e-mail valide.",
       nombreLogements: "Indiquez un nombre entier, au moins 1.",
+      consentement: "Cochez la case pour que nous puissions traiter votre demande.",
+      codePostal: "Indiquez un code postal à 5 chiffres.",
+      horsIdf: "Nous ne livrons pas encore hors d'Île-de-France.",
+      horsIdfLien: "Être prévenu à l'ouverture",
     },
+    choisir: "Choisir…",
+    continuer: "Continuer",
+    retour: "Retour",
     pieges: { label: "Ne pas remplir ce champ" },
     essai: {
       sujet: (societe: string) => `Kit d'essai — ${societe}`,
@@ -934,284 +684,16 @@ export const fr = {
       sousBouton: "Réponse sous 24 h ouvrées. Sans engagement.",
       succes: "C'est noté. Nous vous écrivons sous 24 h ouvrées pour confirmer l'adresse d'envoi.",
     },
-    attente: {
-      sujet: "Liste d'attente hors Île-de-France",
-      label:
-        "Livraison en Île-de-France pour le moment. Ailleurs en France : laissez-nous votre e-mail, nous vous prévenons à l'ouverture.",
-      placeholder: "Votre e-mail",
-      bouton: "Me prévenir",
-      succes: "C'est noté, nous vous prévenons à l'ouverture.",
-    },
-    contact: {
-      sujet: (nom: string) => `Contact — ${nom}`,
-      sujetSansJs: "Contact",
-      champs: { nom: "Nom", email: "E-mail", message: "Message" },
-      bouton: "Envoyer le message",
-      sousBouton: "Réponse sous 24 h ouvrées.",
-      succes: "C'est noté. Nous vous répondons sous 24 h ouvrées.",
-    },
-  },
-
-  /** Éléments communs aux pages intérieures. */
-  modele: {
-    filAriane: "Fil d'Ariane",
-    accueil: "Accueil",
-    aLireAussi: "À lire aussi",
-    cta: {
-      titre: "Le kit d'essai est offert, envoi compris.",
-      texte: "Les 3 kits, à l'adresse de votre choix en Île-de-France. Un kit par société.",
-      bouton: { label: "Recevoir mon kit d'essai", href: "/kit-essai/" },
-    },
-  },
-
-  /** Liens « À lire aussi » : une courte présentation de chaque page. */
-  liensPages: {
-    accueil: { titre: "Comment ça marche", texte: "Les 3 étapes, le contenu des kits et les packs.", href: "/" },
-    conciergerie: {
-      titre: "Kits d'accueil pour conciergeries",
-      texte: "Comment SINEBOX s'intègre au travail d'une conciergerie, avec un exemple chiffré.",
-      href: "/kits-accueil-conciergerie/",
-    },
-    tarifs: { titre: "Tous nos prix", texte: "Kits, packs, frais d'envoi et calculateur de coût mensuel.", href: "/tarifs/" },
-    kitEssai: { titre: "Le kit d'essai offert", texte: "Recevez les 3 kits pour juger sur pièce.", href: "/kit-essai/" },
-    contact: { titre: "Nous contacter", texte: "E-mail et formulaire.", href: "/contact/" },
-    aPropos: { titre: "Qui sommes-nous", texte: "L'équipe et la préparation des kits.", href: "/a-propos/" },
   },
 
   pages: {
-    kitEssai: {
-      titreGoogle: "Kit d'essai offert | SINEBOX",
-      description:
-        "Recevez gratuitement les 3 kits d'accueil SINEBOX, envoi compris. Réservé aux professionnels d'Île-de-France, un kit par société. Réponse sous 24 h ouvrées.",
-      titre: "Recevez votre kit d'essai offert",
-      texte:
-        "Les 3 kits (salle de bain, cuisine, entretien), envoyés gratuitement à l'adresse de votre choix en Île-de-France. Un kit par société, réservé aux professionnels.",
-      retour: "Retour à l'accueil",
-    },
     merci: {
-      titreGoogle: "Merci | SINEBOX",
-      titre: "C'est noté.",
-      texte: "Nous vous écrivons sous 24 h ouvrées pour confirmer l'adresse d'envoi.",
-      /** Suivi de l'adresse e-mail de contact, en lien. */
       question: "Une question d'ici là ? Écrivez à",
-      liens: [
-        { label: "Voir tous nos prix", href: "/tarifs/" },
-        { label: "Retour à l'accueil", href: "/" },
-      ],
-    },
-    conciergerie: {
-      fil: "Conciergeries",
-      titreGoogle: "Kits d'accueil pour conciergerie Airbnb : fournisseur sans stock",
-      description:
-        "Conciergeries d'Île-de-France : des kits d'accueil livrés chaque dimanche selon vos calendriers Airbnb et Booking, étiquetés par logement et par jour. Une facture par mois.",
-      titre: "Le fournisseur de kits d'accueil des conciergeries, sans stock ni carton",
-      intro:
-        "Vous gérez des logements pour leurs propriétaires. À chaque arrivée, il faut du savon, du café, du papier toilette. SINEBOX prépare ces kits pour vous et les livre chaque semaine, au bon nombre.",
-      sections: [
-        {
-          titre: "Le problème : des produits à gérer pour chaque logement",
-          paragraphes: [
-            "Sans fournisseur dédié, quelqu'un dans l'équipe achète les produits, les stocke, les recompte et prépare des sachets logement par logement. Quand le stock est vide un samedi, il faut repartir en course.",
-            "Plus le nombre de logements augmente, plus ce travail prend de place dans la semaine.",
-          ],
-        },
-        {
-          titre: "Comment ça marche, en 3 étapes",
-          etapes: [
-            "Vous collez le lien de calendrier de chaque logement, Airbnb ou Booking, et vous indiquez une fois sa capacité. Nous lisons les dates d'arrivée, rien d'autre.",
-            "Chaque dimanche, un seul colis part avec un kit par arrivée de la semaine.",
-            "Votre équipe de ménage pose le bon kit dans le bon logement.",
-          ],
-        },
-        {
-          titre: "Une étiquette par logement et par jour",
-          paragraphes: [
-            "Chaque kit porte le nom du logement et la date d'arrivée. Chaque jour de la semaine a sa couleur : l'équipe de ménage voit d'un coup d'œil quel kit va où, même quand plusieurs arrivées tombent le même jour.",
-          ],
-        },
-        {
-          titre: "Une facture par mois, sans engagement",
-          paragraphes: [
-            "Vous payez les kits livrés, avec une seule facture par mois. Il n'y a pas d'abonnement : pour arrêter, prévenez-nous avant le dimanche et le colis suivant ne part pas.",
-          ],
-        },
-        {
-          titre: "Des kits d'avance pour la dernière minute",
-          paragraphes: [
-            "Chaque colis contient 1 ou 2 kits d'avance. Une réservation tombe le vendredi pour le soir même ? Le kit est déjà là.",
-            "Un kit d'avance n'est facturé que s'il est utilisé. Si une réservation est annulée après l'envoi, son kit reste chez vous comme kit d'avance.",
-          ],
-        },
-        {
-          titre: "Le logo de votre conciergerie sur chaque kit",
-          paragraphes: [
-            "Un autocollant à votre logo sur la boîte et une carte d'accueil au nom de votre conciergerie : le voyageur voit votre nom, pas le nôtre. Les produits restent dans leur emballage d'origine.",
-          ],
-        },
-      ],
-      exemple: {
-        titre: "Exemple chiffré : 100, 500 et 2 000 arrivées par mois",
-        hypothese:
-          "Hypothèse : logements jusqu'à 3 voyageurs (un jeu de 3 kits par arrivée), sans pack, 4 semaines par mois, arrivées réparties également, un colis par semaine. Les kits d'avance ne sont pas comptés : ils ne sont facturés que s'ils sont utilisés.",
-        legende: "Coût mensuel estimé selon le nombre d'arrivées",
-        colonnes: {
-          arrivees: "Arrivées par mois",
-          parSemaine: "Arrivées par semaine",
-          kits: "Kits (4,50 € HT par arrivée)",
-          colis: "Envoi par colis (4 colis)",
-          totalColis: "Total par colis",
-          totalDeltom: "Total compatible avec Deltom Operator",
-        },
-        arrivees: [100, 500, 2000],
-        note: "Montants HT, hors packs. Avec Deltom Operator, les kits sont remis à Deltom Operator : 0 € de livraison.",
-      },
-      deltom: {
-        titre: "Compatible avec Deltom Operator",
-        texte:
-          "Si vos ménages passent par Deltom Operator, vos kits sont remis à Deltom Operator et arrivent dans le logement avec le ménage. Vous n'avez pas de colis à réceptionner, et la livraison est à 0 €.",
-      },
-      faqTitre: "Questions des conciergeries",
-      faq: [
-        {
-          question: "Comment savez-vous combien de kits envoyer chaque semaine ?",
-          reponse:
-            "À partir des dates d'arrivée lues dans le calendrier de chaque logement, et de la capacité que vous avez indiquée : un jeu de 3 kits jusqu'à 3 voyageurs, deux jeux de 4 à 6, trois jeux à partir de 7.",
-        },
-        {
-          question: "Comment l'équipe de ménage sait-elle quel kit poser dans quel logement ?",
-          reponse:
-            "Chaque kit porte une étiquette avec le nom du logement et la date d'arrivée, dans la couleur du jour. Il suffit de prendre le kit du jour qui porte le nom du logement.",
-        },
-        {
-          question: "Comment la conciergerie est-elle facturée ?",
-          reponse:
-            "Une facture par mois, pour les kits livrés et les frais d'envoi. Les kits d'avance ne sont facturés que s'ils sont utilisés. Il n'y a ni abonnement ni engagement de durée.",
-        },
-        {
-          question: "Les voyageurs voient-ils le nom SINEBOX ?",
-          reponse:
-            "Non, si vous le souhaitez : la boîte porte un autocollant à votre logo et la carte d'accueil est à votre nom. Les produits gardent leur emballage d'origine.",
-        },
-        {
-          question: "Nos ménages passent par Deltom Operator : comment sont livrés les kits ?",
-          reponse:
-            "Vos kits sont remis à Deltom Operator et arrivent dans le logement avec le ménage. La livraison est alors à 0 €.",
-        },
-      ] as Faq[],
-      aLireAussi: ["tarifs", "kitEssai", "accueil"] as const,
-    },
-    tarifs: {
-      fil: "Tarifs",
-      titreGoogle: "Prix des kits d'accueil Airbnb : 4,50 € HT par arrivée",
-      description:
-        "Tous les prix SINEBOX en HT : 4,50 € les 3 kits par arrivée, packs de 7,50 € à 21,50 €, envoi 15 € ou 22 € par colis, 0 € avec Deltom Operator. Calculez votre coût par mois.",
-      titre: "Tous nos prix, sans surprise",
-      intro:
-        "Tous les prix sont hors taxes. Vous payez les kits livrés, avec une facture par mois, sans engagement.",
-      kits: {
-        titre: "Les kits",
-        legende: "Prix des kits",
-        colonnes: { nom: "Kit", contenu: "Contenu", prix: "Prix HT par arrivée" },
-      },
-      packs: {
-        titre: "Les packs",
-        legende: "Prix des packs",
-        colonnes: { nom: "Pack", contenu: "Contenu", prix: "Prix HT" },
-        note: "Un pack n'est facturé que pour les arrivées où vous l'ajoutez.",
-      },
-      envoi: {
-        titre: "Les frais d'envoi",
-        legende: "Frais d'envoi",
-        colonnes: { mode: "Mode de livraison", prix: "Prix HT" },
-        lignes: [
-          { mode: "Par colis, jusqu'à 12 arrivées dans la semaine", prix: 15 },
-          { mode: "Par colis, au-delà de 12 arrivées dans la semaine", prix: 22 },
-          { mode: "Compatible avec Deltom Operator : kits remis à Deltom Operator", prix: 0 },
-        ],
-        note: "Un seul colis par semaine, livré le dimanche à votre bureau ou dans un logement.",
-      },
-      facturation: {
-        titre: "Facturation",
-        points: [
-          "Une facture par mois, pour les kits livrés et les frais d'envoi.",
-          "Les kits d'avance ne sont facturés que s'ils sont utilisés.",
-          "Sans engagement : prévenez-nous avant le dimanche pour arrêter, le colis suivant ne part pas.",
-        ],
-      },
-      calculateur: {
-        titre: "Estimez votre coût mensuel",
-        arrivees: "Arrivées par mois",
-        taille: "Taille des logements",
-        tailles: [
-          { jeux: 1, label: "Jusqu'à 3 voyageurs (1 jeu)" },
-          { jeux: 2, label: "De 4 à 6 voyageurs (2 jeux)" },
-          { jeux: 3, label: "7 voyageurs et plus (3 jeux)" },
-        ],
-        livraison: "Mode de livraison",
-        modes: { colis: "Par colis, chaque dimanche", deltom: "Compatible avec Deltom Operator" },
-        resultat: "Coût estimé par mois, livraison comprise",
-        detailKits: "Kits",
-        detailEnvoi: "Envoi",
-        hypothese: "Calcul sur 4 semaines par mois, arrivées réparties également.",
-        estimation: "Estimation, hors packs.",
-        arriveesParDefaut: 40,
-      },
-      aLireAussi: ["conciergerie", "kitEssai", "contact"] as const,
-    },
-    contact: {
-      fil: "Contact",
-      titreGoogle: "Contact | SINEBOX",
-      description:
-        `Contactez SINEBOX par e-mail à ${EMAIL_CONTACT} ou par le formulaire. Kits d'accueil livrés en Île-de-France.`,
-      titre: "Nous contacter",
-      coordonnees: {
-        titre: "Nos coordonnées",
-        email: "E-mail",
-        horaires: "Horaires",
-        zone: "Zone livrée",
-        zoneTexte: "Île-de-France pour le moment.",
-        zoneLien: { label: "Ailleurs en France : rejoindre la liste d'attente", href: "/#livraison" },
-      },
-      formulaireTitre: "Écrivez-nous",
-      aLireAussi: ["kitEssai", "tarifs", "aPropos"] as const,
-    },
-    aPropos: {
-      fil: "À propos",
-      titreGoogle: "À propos de SINEBOX, kits d'accueil en Île-de-France",
-      description:
-        "SINEBOX est une petite équipe francilienne qui prépare et livre chaque semaine des kits d'accueil pour les conciergeries et les hôtes.",
-      titre: "Qui sommes-nous",
-      sections: [
-        {
-          titre: "Une petite équipe francilienne",
-          paragraphes: ["SINEBOX est une petite équipe basée en Île-de-France : [prénoms de l'équipe]."],
-          photo: "[photo de l'équipe]",
-        },
-        {
-          titre: "Pourquoi ce service",
-          paragraphes: [
-            "Dans une conciergerie, préparer les produits d'accueil revient chaque semaine : acheter, stocker, compter, faire des sachets, logement par logement.",
-            "Nous avons créé SINEBOX pour sortir ce travail de votre semaine : vous connectez vos calendriers, les kits arrivent prêts et étiquetés.",
-          ],
-        },
-        {
-          titre: "Où sont préparés les kits",
-          paragraphes: ["Les kits sont préparés [lieu de préparation des kits], puis livrés chaque dimanche en Île-de-France."],
-        },
-        {
-          titre: "D'où viennent les produits",
-          paragraphes: [
-            "[origine des produits]. Ce sont des produits en format individuel, emballés un par un, qui gardent leur emballage d'origine.",
-          ],
-        },
-      ],
-      aLireAussi: ["conciergerie", "contact", "kitEssai"] as const,
     },
     introuvable: {
       titreGoogle: "Page introuvable | SINEBOX",
       titre: "Cette page n'existe pas (ou plus).",
       texte: "L'adresse est peut-être mal tapée, ou la page a changé de place. Voici où trouver l'essentiel :",
-      liens: ["accueil", "conciergerie", "tarifs", "kitEssai", "contact"] as const,
     },
   },
 };

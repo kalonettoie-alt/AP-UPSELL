@@ -58,25 +58,35 @@ function offre(prixHT: number, chemin: string) {
   };
 }
 
-/** Product pour chaque kit et chaque pack (prix HT). */
-export function schemaProduits() {
+const ANCRES_KITS: Record<string, string> = { salleDeBain: "salle-de-bain", cuisine: "cuisine", entretien: "entretien", troisKits: "" };
+const ANCRES_PACKS: Record<string, string> = {
+  affaires: "voyage-affaires",
+  couple: "couple",
+  chien: "chien",
+  chat: "chat",
+  premiereVisite: "premiere-visite",
+  noel: "noel",
+};
+
+/** Product (prix HT) pour les kits ou pour les packs. */
+export function schemaProduits(quoi: "kits" | "packs") {
   const marque = { "@type": "Brand", name: fr.marque };
-  return [
-    ...kits.map((k) => ({
+  if (quoi === "kits") {
+    return kits.map((k) => ({
       "@context": "https://schema.org",
       "@type": "Product",
       name: k.nom,
       description: k.contenu.join(" · "),
       brand: marque,
-      offers: offre(k.prix, "/#kits"),
-    })),
-    ...packs.map((p) => ({
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: p.nom,
-      description: p.contenu.join(" · "),
-      brand: marque,
-      offers: offre(p.prix, "/#packs"),
-    })),
-  ];
+      offers: offre(k.prix, `/kit-accueil-airbnb/${ANCRES_KITS[k.id] ? `#${ANCRES_KITS[k.id]}` : ""}`),
+    }));
+  }
+  return packs.map((p) => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.nom,
+    description: p.contenu.join(" · "),
+    brand: marque,
+    offers: offre(p.prix, `/packs/#${ANCRES_PACKS[p.id]}`),
+  }));
 }
